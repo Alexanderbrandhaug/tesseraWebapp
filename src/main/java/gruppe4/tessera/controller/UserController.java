@@ -1,12 +1,13 @@
 package gruppe4.tessera.controller;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import gruppe4.tessera.repository.UserRepository;
 import gruppe4.tessera.service.UserService;
 import gruppe4.tessera.model.User;
 
@@ -43,4 +44,21 @@ public class UserController {
     // This returns a JSON or XML with all users
     return userService.getAllUsers();
   }
+
+
+  @GetMapping(path="/user")
+  @Transactional
+  public @ResponseBody String deleteUserByEmail(@RequestParam String email){
+    if(userService.findUserByEmail(email) != null){
+      userService.deleteUserByEmail(email);
+      return "User successfully deleted";
+    }
+    return "There does not exist a user with email: " + email;
+  }
+
+  @GetMapping(path="/user/{email}")
+  @Transactional
+  public @ResponseBody User getUserByEmail(@PathVariable String email){
+    return userService.findUserByEmail(email);
+  }  
 }

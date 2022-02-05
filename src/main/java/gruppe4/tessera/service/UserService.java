@@ -25,4 +25,7 @@ public class UserService  {
     public Iterable<User> getAllUsers(){
         return userRepositoryService.findAll();
     }
+    public void deleteUserByEmail(String email){
+        userRepositoryService.deleteByEmail(email);
+    }
 }
