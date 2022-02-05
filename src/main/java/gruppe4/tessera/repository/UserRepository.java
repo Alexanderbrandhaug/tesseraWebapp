@@ -1,4 +1,5 @@
 package gruppe4.tessera.repository;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import gruppe4.tessera.model.User;

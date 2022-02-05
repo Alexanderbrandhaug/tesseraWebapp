@@ -1,4 +1,5 @@
 package gruppe4.tessera.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +8,13 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity(name = "User") // This tells Hibernate to make a table out of this class
 public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
   private Integer id;
   private String name;
-  @Column(unique=true)
+  @Column(unique=true, nullable = false) // tells the DB that email variable is going to be unique and not nullable in the DB
   private String email;
   private String password;
   private String phoneNumber;

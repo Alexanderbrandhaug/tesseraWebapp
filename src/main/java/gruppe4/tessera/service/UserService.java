@@ -1,8 +1,6 @@
 package gruppe4.tessera.service;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import gruppe4.tessera.model.User;
 import gruppe4.tessera.repository.UserRepository;
 
