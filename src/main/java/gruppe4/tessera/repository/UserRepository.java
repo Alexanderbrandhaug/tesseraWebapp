@@ -8,7 +8,5 @@ import gruppe4.tessera.model.User;
 // CRUD refers Create, Read, Update, Delete
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-    //method to check if a user with a given Email already exists in the database
-    public User findByEmail(String email);
-    public void deleteByEmail(String email);
+
 }

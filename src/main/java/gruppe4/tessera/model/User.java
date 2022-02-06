@@ -18,7 +18,6 @@ public class User {
   @Column(unique=true, nullable = false) // tells the DB that email variable is going to be unique and not nullable in the DB
   private String email;
   private String password;
-  private String phoneNumber;
   @Column(name = "is_admin")
   private boolean isAdmin;
   
@@ -50,10 +49,6 @@ public class User {
     return password;
   }
 
-  public String getPhoneNumber(){
-    return phoneNumber;
-  }
-
   public void setName(String name) {
     this.name = name;
   }
@@ -63,26 +58,6 @@ public class User {
   }
 
   public void setEmail(String email) {
-    if (checkValidEmail(email) && !email.endsWith(" ")) {
-      this.email = email.toLowerCase();
+    this.email = email;
   }
-    else
-      throw new IllegalArgumentException("Invalid Email format(e.g olanordmann@gmail.com) ");
-  }
-
-  public void setPhoneNumber(String phoneNumber) { //checks if phonenum starts with 4 or 9, and that the length is 8
-    if ((String.valueOf(phoneNumber).charAt(0) == '9' || String.valueOf(phoneNumber).charAt(0) == '4') && String.valueOf(phoneNumber).length() == 8) {
-      this.phoneNumber = phoneNumber;
-    
-} 
-  else
-    throw new IllegalArgumentException("Not valid number-format. Must be 8-digits long and start with 9 or 4");
-}
-
-// helper method that checks valid email format
-static boolean checkValidEmail(String email) {
-  String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-    return email.matches(regex);
- 
-}
 }
