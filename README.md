@@ -2,7 +2,7 @@
 
 Forum for kjøp/salg av billetter til kulturarrangementer.
 
-## Developer 
+## Developer installation
 - `git clone` https://gitlab.stud.idi.ntnu.no/tdt4140-2022/landsby-1/gruppe_04/tdt4140_gruppe4.git
 - Open the project as a maven build in your favorite IDE.
 - Install necessary dependency's using `mvn clean install` in root.
