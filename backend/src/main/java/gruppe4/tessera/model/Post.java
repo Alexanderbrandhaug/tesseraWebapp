@@ -37,7 +37,7 @@ public class Post {
     public void setBuyOrSellType(String buyOrSellType){
         this.buyOrSellType = buyOrSellType;
     }
-    public String GetbuyOrSellType(){
+    public String getbuyOrSellType(){
         return buyOrSellType;
     }
     public void setTypeOfPost(String typeOfPost){
