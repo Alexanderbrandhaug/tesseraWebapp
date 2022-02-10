@@ -9,18 +9,18 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Table
-@Entity(name = "User") // This tells Hibernate to make a table out of this class
+@Entity(name = "users") // This tells Hibernate to make a table out of this class
 public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
   private Integer id;
   private String name;
+
   @Column(unique=true, nullable = false) // tells the DB that email variable is going to be unique and not nullable in the DB
   private String email;
   private String password;
   @Column(name = "is_admin")
   private boolean isAdmin;
-  
   
 
   public Integer getId() {
