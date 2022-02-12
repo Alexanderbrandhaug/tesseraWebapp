@@ -17,6 +17,7 @@ public class UserController{
 private UserService userService;
 
 
+
 @GetMapping(path = "/users")
 public @ResponseBody Iterable<User> getAllUsers(){
     return userService.getAllUsers();
