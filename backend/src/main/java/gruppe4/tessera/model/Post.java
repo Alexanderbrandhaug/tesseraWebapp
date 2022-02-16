@@ -23,7 +23,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)// ID will be used as primarykey and will be autoincremented
     private Integer id;
-    private String title, description, contactPoint;
+    private String title, description, contactPoint, location;
     @Column(name = "buy_or_sell_post", nullable = false)
     private String buyOrSellType;
     @Column(name = "type_of_post", nullable = false)
