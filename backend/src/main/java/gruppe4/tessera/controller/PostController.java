@@ -17,18 +17,17 @@ import gruppe4.tessera.service.PostService;
 @RequestMapping(path = "/tessera/api")
 @CrossOrigin("*")
 public class PostController {
-    
 
     @Autowired
     private PostService postService;
 
+    @GetMapping(path = "/posts")
+    public @ResponseBody Iterable<Post> getAllPosts() {
+        return postService.findAllPosts();
+    }
 
-@GetMapping(path = "/posts")
-public @ResponseBody Iterable<Post> getAllPosts(){
-    return postService.findAllPosts();
-}
-@GetMapping(path = "/post/{id}")
-public @ResponseBody Optional<Post> getAllPosts(@RequestParam Integer id){
-    return postService.findPostById(id);
-}
+    @GetMapping(path = "/post/{id}")
+    public @ResponseBody Optional<Post> getAllPosts(@RequestParam Integer id) {
+        return postService.findPostById(id);
+    }
 }
