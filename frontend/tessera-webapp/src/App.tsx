@@ -13,7 +13,6 @@ function App() {
       >
         <Link to="/feed">Feed</Link> | <Link to="/newpost">New Post</Link> |{" "}
         <Link to="/profile">Profile</Link>|{" "}
-        <Link to="/login">Login</Link>
       </nav>
       <Outlet />
     </div>

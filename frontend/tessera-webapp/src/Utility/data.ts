@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 let posts = [
   {
@@ -41,4 +41,13 @@ let posts = [
 
 export function getPosts() {
   return posts;
+}
+
+export async function getUser() {
+  const config = {
+    method: 'get',
+    url: 'http://localhost:8080/tessera/api/user/tesseraAdmin'
+  }
+  let user = await axios(config)
+
 }
