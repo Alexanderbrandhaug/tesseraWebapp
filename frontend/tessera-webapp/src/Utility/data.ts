@@ -3,7 +3,7 @@ import { Post } from '../DataTypes/Post';
 
 let posts = [
   {
-    title: "Hendrick Lamar (Trondheim)",
+    title: "Hendrick Lamar ",
     userID: 666,
     description: "Thugs of Stabekk live in Trondheim.",
     contactPoint: "47868327",
@@ -18,7 +18,7 @@ let posts = [
   {
     userID: 123,
     id: 1995,
-    title: "Lavrans3000 (Oslo)",
+    title: "Lavrans3000 ",
     location: "Bergen",
     description: "Thugs of Stabekk live in Trondheim.",
     createdAt: "01/02/2022",
@@ -27,6 +27,79 @@ let posts = [
     active: "true",
     postType: "Sell",
     eventType: "Standup",
+  },
+  {
+    title: "Hendrick Lamar ",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
+  },{
+    title: "Hendrick Lamar ",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
+  },{
+    title: "Hendrick Lamar",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
+  },{
+    title: "Hendrick Lamar",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
+  },{
+    title: "Hendrick Lamar",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
+  },{
+    title: "Hendrick Lamar",
+    userID: 666,
+    description: "Thugs of Stabekk live in Trondheim.",
+    contactPoint: "47868327",
+    active: "true",
+    postType: "Sell",
+    eventType: "Konsert",
+    id: 1995,
+    price: 10800,
+    createdAt: "01/02/2022",
+    location: "Trondheim"
   },
 ];
 
