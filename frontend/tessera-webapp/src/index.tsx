@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NewPostPage from './Pages/newpost';
-import UnknownURLPage from './Pages/unknownurl';
-import ProfilePage from './Pages/profile';
+import './index.css';
 import FeedPage from './Pages/feed';
+import LogInPage from './Pages/logInPage';
+import NewPostPage from './Pages/newpost';
+import ProfilePage from './Pages/profile';
+import UnknownURLPage from './Pages/unknownurl';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
+          <Route path="login" element={<LogInPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
