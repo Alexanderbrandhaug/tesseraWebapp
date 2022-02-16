@@ -19,6 +19,7 @@ code {
   background-color: lightblue;
   display: flex;
   flex-direction: row;
+  
 }
 
 .sidebar {
@@ -34,4 +35,20 @@ code {
 .feedColumn {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+}
+
+.postComponent {
+  background-color:white;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.postComponent:hover {
+  box-shadow: 5px 5px 5px;
+}
+
+.postComponent:active {
+  background-color: blue;
 }

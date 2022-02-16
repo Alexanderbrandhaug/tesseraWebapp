@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Post from "../Components/PostWidget";
+import PostComponent from "../Components/PostComponent";
+import Post from "../Components/PostComponent";
 import { getPosts } from "../Utility/data";
 
 export default function FeedPage() {
@@ -17,7 +18,7 @@ export default function FeedPage() {
         </div>
         <div className="feedColumn">
           {posts.map((post) => (
-            <div>{post.title}</div>
+            <PostComponent post={post}/>
           ))}
         </div>
         <div className="column-3">
