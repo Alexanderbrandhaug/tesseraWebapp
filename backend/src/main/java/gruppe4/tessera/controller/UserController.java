@@ -2,6 +2,7 @@ package gruppe4.tessera.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +25,8 @@ public @ResponseBody Iterable<User> getAllUsers(){
 }
 
 
-@GetMapping(path = "/user/{id}")
-public @ResponseBody User getUserById(@PathVariable int id){
-    return userService.findUserById(id);
+@GetMapping(path = "/user/{username}")
+public @ResponseBody User getUserByUsername(@PathVariable String username){
+    return userService.getUserByUsername(username);
 }
-
-
-
-
-
-
 }
