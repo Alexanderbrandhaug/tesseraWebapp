@@ -19,7 +19,7 @@ ReactDOM.render(
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
-          <Route path="login" element={<LogInPage />} />
+          <Route path="" element={<LogInPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NameForm() {
 
@@ -19,25 +18,32 @@ export default function NameForm() {
         };
       };
 
-    const { value:firstName, bind:bindFirstName, reset:resetFirstName } = useInput('');
+      const navigate = useNavigate();
+
+    const { value:name, bind:bindName, reset:resetName } = useInput('');
     const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
-    
+
     const handleSubmit = (evt: any) => {
         evt.preventDefault();
-        alert(`Submitting Name ${firstName} ${password}`);
-        resetFirstName();
+        let url = "/feed"
+        navigate(url)
+        resetName();
         resetPassword();
     }
     return (
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input type="text" {...bindFirstName} />
-        </label>
+        <tr>
+            <label>
+              Username:
+              <input type="text" {...bindName} />
+            </label>
+        </tr>
+        <tr>
         <label>
           Password:
           <input type="text" {...bindPassword} />
         </label>
+        </tr>
         <input type="submit" value="Submit" />
       </form>
     );
