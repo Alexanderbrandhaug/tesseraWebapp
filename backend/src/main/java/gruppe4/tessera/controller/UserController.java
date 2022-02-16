@@ -1,5 +1,6 @@
 package gruppe4.tessera.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +23,7 @@ private UserService userService;
 
 @GetMapping(path = "/users")
 public @ResponseBody Iterable<User> getAllUsers(){
+    System.out.println("test");
     return userService.getAllUsers();
 }
 

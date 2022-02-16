@@ -1,15 +1,16 @@
 package gruppe4.tessera.model;
 import java.time.LocalDate;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 
@@ -23,18 +24,14 @@ public class Post {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)// ID will be used as primarykey and will be autoincremented
     private Integer id;
-    private String title, description, contactPoint, location;
-    @Column(name = "buy_or_sell_post", nullable = false)
-    private String buyOrSellType;
-    @Column(name = "type_of_post", nullable = false)
-    private String typeOfPost;
+    private String title, description, contactPoint, location,postType,eventType;
     private int price;
-    private boolean activeOrUnactive;
+    private boolean showPost;
     private LocalDate createdAt;
+   
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"username", "description", "creationDate", "profilePicture", "password", "suspended", "admin"})
+    private User user;
 
-
-    @JsonProperty("Show post")
-    public boolean getActiveOrUnactive(){
-        return activeOrUnactive;
-    }
 }
