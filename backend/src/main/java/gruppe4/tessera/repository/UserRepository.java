@@ -10,5 +10,5 @@ import gruppe4.tessera.model.User;
 // CRUD refers Create, Read, Update, Delete
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
- User findById(int id);
+ User findByUsername(String username);
 }

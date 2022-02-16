@@ -16,12 +16,13 @@ public class UserService  {
         this.userRepository = userRepository;
     }
 
-    public User findUserById(int id){
-        return userRepository.findById(id);
-    }
 
     public Iterable <User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    public User getUserByUsername(String username){
+        return userRepository.findByUsername(username);
     }
   
 }

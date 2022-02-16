@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Post from "../Components/PostWidget";
+import PostComponent from "../Components/PostComponent";
+import Post from "../Components/PostComponent";
 import { getPosts } from "../Utility/data";
 
 export default function FeedPage() {
@@ -11,18 +12,30 @@ export default function FeedPage() {
     <main style={{ padding: "1rem 0" }}>
       <h2>Feed</h2>
 
-      <div style={{ display: "flex" }}>
-        <nav
-          style={{
-            borderRight: "solid 1px",
-            padding: "1rem",
-          }}
-        >
+      <div className="threeColumnFlex">
+        <div className="sidebarColumn">
+          <Sidebar />
+        </div>
+        <div className="feedColumn">
           {posts.map((post) => (
-            <Post key={post.number} pid={post.number + ""} title={post.name} />
+            <PostComponent post={post}/>
           ))}
-        </nav>
+        </div>
+        <div className="column-3">
+
+        </div>
       </div>
     </main>
   );
+}
+
+function Sidebar() {
+
+  return (
+    <div className="sidebar">
+      <input type="text" name="Search" placeholder="Search titles!"/>
+      <label><input type="checkbox" defaultChecked={true} /> Selling</label>
+      <label><input type="checkbox" defaultChecked={true} /> Buying</label>
+    </div>
+  )
 }
