@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
 import Post from "../Components/PostComponent";
 import { getPosts } from "../Utility/data";
+import PostPage from "./postpage";
 
 export default function FeedPage() {
 
@@ -22,7 +23,10 @@ export default function FeedPage() {
           ))}
         </div>
         <div className="column-3">
-
+          <Routes>
+            <Route path="post" element={<div>No post selected</div>} />
+            <Route path="post/:id" element={<PostPage  />} />
+          </Routes>
         </div>
       </div>
     </main>

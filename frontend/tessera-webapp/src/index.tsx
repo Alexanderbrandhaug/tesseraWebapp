@@ -11,13 +11,14 @@ import NewPostPage from './Pages/newpost';
 import UnknownURLPage from './Pages/unknownurl';
 import ProfilePage from './Pages/profile';
 import FeedPage from './Pages/feed';
+import PostPage from './Pages/postpage';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="feed" element={<FeedPage />} />
+          <Route path="feed/*" element={<FeedPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
