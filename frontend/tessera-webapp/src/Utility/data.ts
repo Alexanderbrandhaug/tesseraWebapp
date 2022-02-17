@@ -106,11 +106,14 @@ export function getPosts() {
   return posts;
 }
 
-export async function getUser() {
+export async function getUser(userName: string) {
   const config = {
     method: 'get',
-    url: 'http://localhost:8080/tessera/api/user/tesseraAdmin'
+    url: 'http://localhost:8080/tessera/api/user/' + userName
   }
   let user = await axios(config)
-
+  if (user.data) {
+    return user.data.password;
+  }
+  return false
 }
