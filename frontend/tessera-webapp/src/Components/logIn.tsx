@@ -59,14 +59,14 @@ export default function NameForm() {
         <form onSubmit={handleSubmit}>
           <label>
             Username:
-            <input type="text" {...bindName} />
+            <input className="userName" type="text" {...bindName} />
           </label>
           <label>
             Password:
-            <input type="password" {...bindPassword} id="password"/>
+            <input className="passwordButton" type="password" {...bindPassword} id="password"/>
           </label>
           <button type="button" onClick={passwordVisibility}>Show password</button>
-          <input type="submit" value="Submit" />
+          <input className="submit" type="submit" value="Submit" />
         </form>
       </div>
     );

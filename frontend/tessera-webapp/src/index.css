@@ -52,3 +52,17 @@ code {
 .postComponent:active {
   background-color: blue;
 }
+
+/* LOGGIN SITE */
+
+.userName {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.passwordButton {
+  display: flex;
+  width: 150px;
+  flex-direction: column-reverse;
+}
