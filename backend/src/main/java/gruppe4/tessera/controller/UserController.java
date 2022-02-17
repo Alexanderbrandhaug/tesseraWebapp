@@ -52,8 +52,8 @@ public @ResponseBody User getUserByUsername(@PathVariable String username){
      newUser.setPassword(password);
      
      if(userService.saveUser(newUser)){
-        return "User successfully saved";
+        return "User successfully created";
      }
-     return "Not saved";
+     return "Not created";
   }
 }

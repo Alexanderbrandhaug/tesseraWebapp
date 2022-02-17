@@ -25,10 +25,10 @@ public class Post {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)// ID will be used as primarykey and will be autoincremented
     private Integer id;
-    private String title, description, contactPoint, location,postType,eventType;
+    private String title, description, contactPoint, location, postType, eventType;
     private int price;
     private boolean showPost;
-    private LocalDate createdAt;
+    private LocalDate creationDate;
     @Column(name = "user_id", insertable = false, updatable = false)
     private Integer userId;
    
