@@ -61,7 +61,7 @@ export default function NameForm() {
             Username:
             <input className="userName" type="text" {...bindName} />
           </label>
-          <label>
+          <label className="whole">
             Password:
             <input className="passwordButton" type="password" {...bindPassword} id="password"/>
           </label>

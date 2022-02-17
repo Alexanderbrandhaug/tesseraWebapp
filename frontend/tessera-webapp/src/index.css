@@ -50,7 +50,7 @@ code {
 }
 
 .postComponent:active {
-  background-color: blue;
+  background-color: black;
 }
 
 /* LOGGIN SITE */
@@ -61,8 +61,15 @@ code {
   flex-direction: column;
 }
 
+
 .passwordButton {
   display: flex;
   width: 150px;
   flex-direction: column-reverse;
 }
+
+.submit {
+  display: flex;
+  flex-direction: column;
+}
+
