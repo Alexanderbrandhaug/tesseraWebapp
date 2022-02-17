@@ -16,7 +16,7 @@ export default function PostPage() {
       const postID = location.pathname.split('/')[2];
 
       let id: number = +postID
-      let thisPost = getPosts().find((p) => p.id === id )
+      let thisPost = getPosts().find((p: Post) => p.id === id )
       
       if(thisPost){
         setPost(thisPost)

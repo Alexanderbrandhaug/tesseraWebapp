@@ -1,6 +1,8 @@
 const axios = require('axios');
+import Axios from "axios"
+import { Post } from "../DataTypes/Post";
 
-let posts = [
+let posts: any = [
   {
     title: "Hendrick Lamar ",
     userID: 666,
@@ -101,6 +103,19 @@ let posts = [
     location: "Trondheim"
   },
 ];
+
+export async function retrievePosts() {
+  Axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
+    console.log(response.data);
+    
+    posts = response.data.map((post: any) => {
+      return new Post(post.id, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+    });posts.map( (p: any) => {
+      
+    })
+  })
+
+}
 
 export function getPosts() {
   return posts;
