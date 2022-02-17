@@ -31,5 +31,5 @@ public @ResponseBody Iterable<User> getAllUsers(){
 @GetMapping(path = "/user/{username}")
 public @ResponseBody User getUserByUsername(@PathVariable String username){
     return userService.getUserByUsername(username);
-}
+ }
 }

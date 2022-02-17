@@ -28,7 +28,7 @@ public @ResponseBody Iterable<Post> getAllPosts(){
     return postService.findAllPosts();
 }
 @GetMapping(path = "/post/{id}")
-public @ResponseBody Optional<Post> getAllPosts(@PathVariable Integer id){
+public @ResponseBody Optional<Post> getPostById(@PathVariable Integer id){
     return postService.findPostById(id);
 }
 

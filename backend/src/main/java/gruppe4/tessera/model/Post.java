@@ -1,9 +1,10 @@
 package gruppe4.tessera.model;
 import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,12 @@ public class Post {
     private int price;
     private boolean showPost;
     private LocalDate createdAt;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Integer userId;
    
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnoreProperties({"username", "description", "creationDate", "profilePicture", "password", "suspended", "admin"})
+    @JsonIgnore
     private User user;
 
 }
