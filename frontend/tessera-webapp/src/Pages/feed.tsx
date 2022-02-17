@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
 import Post from "../Components/PostComponent";
 import { getPosts } from "../Utility/data";
+import PostPage from "./postpage";
 
 export default function FeedPage() {
 
@@ -22,7 +23,7 @@ export default function FeedPage() {
           ))}
         </div>
         <div className="column-3">
-
+          <Outlet />
         </div>
       </div>
     </main>
