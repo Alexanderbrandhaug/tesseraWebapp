@@ -1,5 +1,6 @@
 package gruppe4.tessera.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,16 +17,19 @@ import gruppe4.tessera.service.UserService;
 @CrossOrigin("*")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+@GetMapping(path = "/users")
+public @ResponseBody Iterable<User> getAllUsers(){
+    System.out.println("test");
+    return userService.getAllUsers();
+}
 
     @GetMapping(path = "/users")
     public @ResponseBody Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping(path = "/user/{username}")
-    public @ResponseBody User getUserByUsername(@PathVariable String username) {
-        return userService.getUserByUsername(username);
-    }
+@GetMapping(path = "/user/{username}")
+public @ResponseBody User getUserByUsername(@PathVariable String username){
+    return userService.getUserByUsername(username);
+ }
 }

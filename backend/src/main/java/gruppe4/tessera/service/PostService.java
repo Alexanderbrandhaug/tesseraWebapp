@@ -22,4 +22,7 @@ public class PostService {
     public Optional<Post> findPostById(Integer id){
         return postRepository.findById(id);
     }
+    public Iterable<Post> findAllPostsByUserId(Integer id){
+        return postRepository.findPostsByUserId(id);
+    }
 }
