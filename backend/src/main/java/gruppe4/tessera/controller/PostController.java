@@ -36,4 +36,5 @@ public @ResponseBody Optional<Post> getPostById(@PathVariable Integer id){
 public @ResponseBody Iterable<Post> getAllPostsFromUser(@PathVariable Integer id){
     return postService.findAllPostsByUserId(id);
 }
+
 }
