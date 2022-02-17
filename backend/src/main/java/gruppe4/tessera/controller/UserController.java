@@ -37,13 +37,13 @@ public class UserController {
 
     @PostMapping(path = "/user")
     public @ResponseBody String createNewUser(@RequestParam String username, String description,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate creationDate, String profilePicture,
-            boolean isAdmin, String password) {
+            String profilePicture, boolean isAdmin, String password) {
 
         User newUser = new User();
+        LocalDate localdate = LocalDate.now();
         newUser.setUsername(username);
         newUser.setDescription(description);
-        newUser.setCreationDate(creationDate);
+        newUser.setCreationDate(localdate);
         newUser.setProfilePicture(profilePicture);
         newUser.setSuspended(false);
         newUser.setAdmin(isAdmin);
