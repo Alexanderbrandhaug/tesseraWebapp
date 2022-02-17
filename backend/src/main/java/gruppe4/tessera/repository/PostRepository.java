@@ -8,6 +8,7 @@ import gruppe4.tessera.model.Post;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Integer> {
-    Optional <Post> getPostById(Integer id);
-    Iterable <Post> findPostsByUserId(Integer id);
+    Optional<Post> getPostById(Integer id);
+
+    Iterable<Post> findPostsByUserId(Integer id);
 }
