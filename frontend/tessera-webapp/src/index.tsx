@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Profile from './Pages/profile';
-import Feed from './Pages/feed';
-import UnknownURL from './Pages/unknownurl';
 import NewPostPage from './Pages/newpost';
 import UnknownURLPage from './Pages/unknownurl';
 import ProfilePage from './Pages/profile';
@@ -18,7 +15,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="feed/*" element={<FeedPage />} />
+          <Route path="feed" element={<FeedPage />}>
+            <Route path=":id" element={<PostPage />} />
+          </Route>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />

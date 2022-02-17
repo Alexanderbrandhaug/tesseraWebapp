@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +9,11 @@ interface PostProps {
 }
 
 export default function PostComponent(props: PostProps){
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  let navigate = useNavigate();
   function redirect() {
-      navigate("post/" + props.post.id)
+      navigate("/feed/" + props.post.id)
   }
 
   return (
