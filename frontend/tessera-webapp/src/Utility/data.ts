@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { Post } from '../DataTypes/Post';
+const axios = require('axios');
 
 let posts = [
   {
@@ -104,7 +103,17 @@ let posts = [
 ];
 
 export function getPosts() {
-  return posts.map(post => {
-    return new Post(post.id, post.userID, post.title, post.location, post.description, post.createdAt, post.price, post.contactPoint, post.active, post.postType, post.eventType)
-  });
+  return posts;
+}
+
+export async function getUser(userName: string) {
+  const config = {
+    method: 'get',
+    url: 'http://localhost:8080/tessera/api/user/' + userName
+  }
+  let user = await axios(config)
+  if (user.data) {
+    return user.data.password;
+  }
+  return false
 }

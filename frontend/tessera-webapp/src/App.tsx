@@ -1,5 +1,5 @@
+import { Link, Outlet } from "react-router-dom";
 import './App.css';
-import {Outlet, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         }}
       >
         <Link to="/feed">Feed</Link> | <Link to="/newpost">New Post</Link> |{" "}
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile">Profile</Link>|{" "}
       </nav>
       <Outlet />
     </div>
