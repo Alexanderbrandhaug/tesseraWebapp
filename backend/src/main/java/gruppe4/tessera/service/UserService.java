@@ -1,7 +1,6 @@
 package gruppe4.tessera.service;
 
 import org.springframework.stereotype.Service;
-
 import gruppe4.tessera.model.User;
 import gruppe4.tessera.repository.UserRepository;
 
@@ -24,5 +23,4 @@ public class UserService  {
     public User getUserByUsername(String username){
         return userRepository.findByUsername(username);
     }
-  
 }

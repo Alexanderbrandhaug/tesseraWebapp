@@ -5,14 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;    
+import java.time.LocalDate;
+import java.util.List;    
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "users")
@@ -23,7 +27,6 @@ import java.time.LocalDate;
 public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
-  
   private Integer id;
 
   @Column(name = "username", unique = true, nullable = false)
@@ -42,6 +45,10 @@ public class User {
   private String password;
   @Column(name = "is_admin", nullable = false)
   private boolean isAdmin;
+
+  @OneToMany(mappedBy = "user")
+  @JsonIgnore
+  private List<Post> posts;
 
   @JsonProperty("admin")
   public boolean getRole(){
