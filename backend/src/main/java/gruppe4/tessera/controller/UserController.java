@@ -36,8 +36,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/user")
-    public @ResponseBody String createNewUser(@RequestParam String username, String description,
-            String profilePicture, boolean isAdmin, String password) {
+    public @ResponseBody String createNewUser(@RequestParam String username, String description, String profilePicture, boolean isAdmin, String password) {
 
         User newUser = new User();
         LocalDate localdate = LocalDate.now();
