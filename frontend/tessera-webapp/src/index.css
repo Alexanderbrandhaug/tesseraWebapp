@@ -14,12 +14,10 @@ code {
 
 
 /* FEEDPAGE */
-
 .threeColumnFlex {
   background-color: lightblue;
   display: flex;
   flex-direction: row;
-  
 }
 
 .sidebar {

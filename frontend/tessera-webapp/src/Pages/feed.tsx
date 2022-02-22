@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
 import { Post } from "../DataTypes/Post";
-import { getPosts, retrievePosts } from "../Utility/data";
-import PostPage from "./postpage";
+import { retrievePosts } from "../Utility/data";
 
 export default function FeedPage() {
-  let [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<Post[]>([])
+  
 
   //Retrieve posts from backend
   useEffect(() => {
-    retrievePosts().then(() => {
-      let loadedPosts = getPosts()
-      console.log("LOADING POSTS TO FEED: " + loadedPosts)
-      setPosts(loadedPosts)
+    retrievePosts.then((res: Post[]) => {
+      setPosts(res)
     })
   }, [])
 
@@ -31,7 +29,7 @@ export default function FeedPage() {
           ))}
         </div>
         <div className="column-3">
-          <Outlet />
+          <Outlet context={posts} />
         </div>
       </div>
     </main>
