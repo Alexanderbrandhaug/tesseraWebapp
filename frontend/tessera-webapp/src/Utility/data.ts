@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 import { Post } from "../DataTypes/Post";
 
 export let posts: any = [
@@ -36,11 +36,11 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     if(response.status !== 200){
       reject("Invalid status-code: " + response.status);
     }
-
+    
     posts = response.data.map((post: any) => {
       return new Post(post.id, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
-
+    
     console.log("Done retrieving posts.");
     resolve(posts)
   })
@@ -80,8 +80,8 @@ export async function getUser(userName: string) {
 export async function getUser(userName: string) {
   const response = await axios.get("http://localhost:8080/tessera/api/user/")
   if(response.data){
-      return response
+      return response.data.password
     }
-  return false
+    return false
 }
 
