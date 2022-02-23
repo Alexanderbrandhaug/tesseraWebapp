@@ -1,13 +1,17 @@
-import { useState } from "react";
 import React from "react";
 import LogIn from "../Components/logIn";
 
-export default function LogInPage() {
+interface LogInPageProps {
+  setToken: (token: string) => void
+}
+
+export default function LogInPage(props: LogInPageProps) {
+
   return (
     <main style={{ padding: "1rem 0" }}>
       <div>
         <nav>
-        <LogIn />
+        <LogIn setToken={props.setToken} />
         </nav>
       </div>
     </main>

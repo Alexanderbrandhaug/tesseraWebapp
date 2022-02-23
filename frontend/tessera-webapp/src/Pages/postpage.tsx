@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
-import { getPosts } from "../Utility/data";
+import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
 
 export default function PostPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [post, setPost] = useState<Post | null>(null);
+  const posts = useOutletContext()
+
 
   useEffect(() => {
     const pathArr = location.pathname.split('/');
@@ -16,13 +18,13 @@ export default function PostPage() {
       const postID = location.pathname.split('/')[2];
 
       let id: number = +postID
-      let thisPost = getPosts().find((p) => p.id === id )
+      let thisPost = getLoadedPosts().find((p: Post) => p.id === id )
       
       if(thisPost){
         setPost(thisPost)
       }
     }
-  }, [location.pathname])
+  }, [location.pathname, posts])
 
   function redirect() {
     navigate("/profile/" + post?.userID)
@@ -42,7 +44,6 @@ export default function PostPage() {
           <p>Date: {post.createdAt}</p>
           <p>Price: {post.price}</p>
           <p>Contact {post.contactPoint}</p>
-
 
           <p>Beskrivelse</p>
           <p>{post.description}</p>

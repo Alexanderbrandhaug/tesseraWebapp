@@ -1,7 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
+import {useState} from 'react';
 import './App.css';
+import LogInPage from "./Pages/logInPage";
 
 function App() {
+  const [token, setToken] = useState("");
+
+  if (!token) {
+    return <LogInPage setToken={setToken} />
+  }
+
   return (
     <div>
       <h1>Tessera</h1>
@@ -11,7 +19,7 @@ function App() {
           paddingBottom: "1rem",
         }}
       >
-        <Link to="/feed">Feed</Link> | <Link to="/newpost">New Post</Link> |{" "}
+        <Link to="/feed">Feed</Link> |{" "}
         <Link to="/profile">Profile</Link>|{" "}
       </nav>
       <Outlet />

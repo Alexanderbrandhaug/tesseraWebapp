@@ -14,7 +14,12 @@ import '@fontsource/roboto/700.css';
 import { Box } from "@mui/material";
 import FormControl from '@mui/material/FormControl';
 
-export default function NameForm() {
+interface logInProps{
+  setToken: (token:string) => void
+}
+
+
+export default function NameForm(props:logInProps) {
 
     function useInput(initialValue: string){
         const [value, setValue] = useState(initialValue);
@@ -50,13 +55,12 @@ export default function NameForm() {
 
     function handleSubmit()  {
         getUser(name).then((result) => {
-          if (result === password) {
-            let url = "/feed"
-            navigate(url)
+          if (result && result.data.password === password) {
+            props.setToken(result.data.id);
             resetName();
           }
           else {
-            setErrorMessage("wrong username or password");
+            setErrorMessage("Wrong username or password");
           }
         })
         resetPassword();

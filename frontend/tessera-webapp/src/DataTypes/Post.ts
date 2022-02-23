@@ -27,4 +27,19 @@ class Post {
         this.postType = postType
         this.eventType = eventType
     }
+
+    getPostData() {
+        return {
+            userID: this.userID,
+            title: this.title,
+            location: this.location,
+            description: this.description,
+            price: this.price,
+            contactPoint: this.contactPoint,
+            active: this.active,
+            postType: this.postType,
+            eventType: this.eventType
+
+        }
+    }
 }

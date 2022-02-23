@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 interface PostProps {
   post: Post
-  
 }
 
 export default function PostComponent(props: PostProps){
@@ -19,6 +18,7 @@ export default function PostComponent(props: PostProps){
   return (
     <div className="postComponent" onClick = {redirect}>
       <p>{props.post.createdAt}</p>
+      <p>{props.post.postType}</p>
       <p>{props.post.title}, {props.post.location}</p>
       <p>{props.post.price} kr</p>
     </div>
