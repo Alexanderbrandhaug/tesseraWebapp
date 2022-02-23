@@ -58,7 +58,7 @@ export async function getUser(userName: string) {
   }
   let user = await axios(config)
   if (user.data) {
-    return user.data.password;
+    return user;
   }
   return false
 }

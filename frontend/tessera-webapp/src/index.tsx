@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import LogInPage from './Pages/logInPage';
 import reportWebVitals from './reportWebVitals';
 import NewPostPage from './Pages/newpost';
 import UnknownURLPage from './Pages/unknownurl';
@@ -22,7 +21,6 @@ ReactDOM.render(
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
-          <Route path="" element={<LogInPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

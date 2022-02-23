@@ -1,7 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
+import {useState} from 'react';
 import './App.css';
+import LogInPage from "./Pages/logInPage";
 
 function App() {
+  const [token, setToken] = useState("");
+
+  if (!token) {
+    return <LogInPage setToken={setToken} />
+  }
+
   return (
     <div>
       <h1>Tessera</h1>
