@@ -1,5 +1,4 @@
-const axios = require('axios');
-import Axios from "axios"
+import axios from "axios"
 import { Post } from "../DataTypes/Post";
 
 export let posts: any = [
@@ -33,7 +32,7 @@ export let posts: any = [
 
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
   console.log("Retrieving posts!")
-  Axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
+  axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
     if(response.status !== 200){
       reject("Invalid status-code: " + response.status);
     }
@@ -51,6 +50,20 @@ export function getLoadedPosts() {
   return posts;
 }
 
+export function createPosts(post: Post) {
+
+  return new Promise( (resolve, reject) => {
+    axios.post("http://localhost:8080/tessera/api/post/", post.getPostData()).then( (response) => {
+      if(response.status !== 200){
+        reject("Invalid status-code: " + response.status)
+      }
+      resolve("Success: " + response.statusText)
+    })
+  })
+}
+
+/*
+Gammel metode
 export async function getUser(userName: string) {
   const config = {
     method: 'get',
@@ -62,3 +75,13 @@ export async function getUser(userName: string) {
   }
   return false
 }
+*/
+
+export async function getUser(userName: string) {
+  const response = await axios.get("http://localhost:8080/tessera/api/user/")
+  if(response.data){
+      return response.data.password
+    }
+    return false
+}
+
