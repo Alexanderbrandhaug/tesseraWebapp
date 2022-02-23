@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUser } from "../Utility/data";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Box } from "@mui/material";
+import FormControl from '@mui/material/FormControl';
 
 interface logInProps{
   setToken: (token:string) => void
@@ -41,8 +53,7 @@ export default function NameForm(props:logInProps) {
     }
 
 
-    const handleSubmit = (evt: any) => {
-        evt.preventDefault();
+    function handleSubmit()  {
         getUser(name).then((result) => {
           if (result && result.data.password === password) {
             props.setToken(result.data.id);
@@ -56,22 +67,41 @@ export default function NameForm(props:logInProps) {
     }
 
     return (
+      
+      <Card sx={{ maxWidth: 500 , minHeight: 500, margin: 'auto' }}>
+        <CardContent >
+        <Typography variant="h4" component="div">
+          Login
+        </Typography>
       <div>
-        <div className="error">
+        <FormControl onSubmit={handleSubmit}>
+        <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '35ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+            <TextField  required label="username" variant="standard"type="username" {...bindName}/>
+            <TextField required type="password" {...bindPassword}  label="password" variant="standard" id="password"/>
+            </Box>
+          <CardActions>
+          <Button variant="outlined" size = "small" color="secondary" onClick={() => {passwordVisibility()}}>Show password</Button>
+          <Button variant="contained" size = "small"  onClick={() => {handleSubmit()}}>Submit</Button>
+          </CardActions>
+          <div>
           {errorMessage && <div>{errorMessage}</div>}
         </div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Username:
-            <input className="userName" type="text" {...bindName} />
-          </label>
-          <label className="whole">
-            Password:
-            <input className="passwordButton" type="password" {...bindPassword} id="password"/>
-          </label>
-          <button type="button" onClick={passwordVisibility}>Show password</button>
-          <input className="submit" type="submit" value="Submit" />
-        </form>
+        </FormControl>
       </div>
+      <Typography variant="h6" component="div" marginTop={10}>
+         Don't have an account already?
+        </Typography>
+        <CardActions>
+        <Button size="medium">Register</Button>
+      </CardActions>
+      </CardContent>
+      </Card>
     );
   }
