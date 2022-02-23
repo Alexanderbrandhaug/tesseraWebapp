@@ -51,6 +51,19 @@ export function getLoadedPosts() {
   return posts;
 }
 
+export function createPosts(post: Post) {
+
+  return new Promise( (resolve, reject) => {
+    Axios.post("http://localhost:8080/tessera/api/post/", post.getPostData()).then( (response) => {
+      if(response.status !== 200){
+        reject("Invalid status-code: " + response.status)
+      }
+      resolve("Success: " + response.statusText)
+    })
+  })
+}
+
+
 export async function getUser(userName: string) {
   const config = {
     method: 'get',
@@ -62,3 +75,4 @@ export async function getUser(userName: string) {
   }
   return false
 }
+
