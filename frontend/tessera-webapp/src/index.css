@@ -70,3 +70,7 @@ code {
   flex-direction: column;
 }
 
+.error {
+  color: red;
+}
+
