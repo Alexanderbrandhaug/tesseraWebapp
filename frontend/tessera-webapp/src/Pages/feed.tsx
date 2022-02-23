@@ -3,6 +3,7 @@ import { Link, Outlet, Route, Routes } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
 import { Post } from "../DataTypes/Post";
 import { retrievePosts } from "../Utility/data";
+import { useNavigate } from "react-router-dom";
 
 export default function FeedPage() {
   const [posts, setPosts] = useState<Post[]>([])
@@ -48,13 +49,24 @@ export default function FeedPage() {
   );
 }
 
+
+
 function Sidebar() {
+  const navigate = useNavigate();
+
+  function redirect() {
+    navigate("/newpost")
+}
+  
 
   return (
-    <div className="sidebar">
+    <div className="sidebar" >
+      <button onClick={redirect} type="button">Nytt innlegg</button >
       <input type="text" name="Search" placeholder="Search titles!"/>
       <label><input type="checkbox" defaultChecked={true} /> Selling</label>
       <label><input type="checkbox" defaultChecked={true} /> Buying</label>
     </div>
+    
+    
   )
 }

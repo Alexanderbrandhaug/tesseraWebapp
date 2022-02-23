@@ -11,7 +11,7 @@ function App() {
           paddingBottom: "1rem",
         }}
       >
-        <Link to="/feed">Feed</Link> | <Link to="/newpost">New Post</Link> |{" "}
+        <Link to="/feed">Feed</Link> |{" "}
         <Link to="/profile">Profile</Link>|{" "}
       </nav>
       <Outlet />
