@@ -1,6 +1,9 @@
 package gruppe4.tessera.model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
@@ -9,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.val;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,7 +44,44 @@ public class Post {
     private User user;
 
     public void setTitle (String title) {
-
+        if (validate.isValidTitle(title)) {
+            this.title = title;
+        }
     }
 
+    public void setDescription(String description) {
+        if (validate.isValidDescription(description)) {
+            this.description = description;
+        }
+    }
+
+    public void setContactPoint(String contactPoint) {
+        if (validate.isValidContactPoint(contactPoint)) {
+            this.contactPoint = contactPoint;
+        }
+    }
+
+    public void setLocation(String location) {
+        if (validate.isValidLocation(location)) {
+            this.location = location;
+        }
+    }
+
+    public void setPostType(String posttype) {
+        if (validate.isValidPostType(posttype)) {
+            this.postType = posttype;
+        }
+    }
+
+    public void setEventType(String eventtype) {
+        if (validate.isValidEventType(eventtype)) {
+            this.eventType = eventtype;
+        }
+    }
+
+    public void setPrice(int price) {
+        if (validate.isValidPrice(price)) {
+            this.price = price;
+        }
+    }
 }
