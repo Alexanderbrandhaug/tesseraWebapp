@@ -34,11 +34,14 @@ export let posts: any = [
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
   console.log("Retrieving posts!")
   Axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
-    console.log(response.data);
+    if(response.status !== 200){
+      reject("Invalid status-code: " + response.status);
+    }
     
     posts = response.data.map((post: any) => {
       return new Post(post.id, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
+    
     console.log("Done retrieving posts.");
     resolve(posts)
   })

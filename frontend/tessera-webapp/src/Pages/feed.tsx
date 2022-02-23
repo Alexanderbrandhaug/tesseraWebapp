@@ -11,6 +11,8 @@ export default function FeedPage() {
   useEffect(() => {
     retrievePosts.then((res: Post[]) => {
       setPosts(res)
+    }).catch(message => {
+      console.log("Error: " + message);
     })
   }, [])
 
@@ -23,9 +25,20 @@ export default function FeedPage() {
           <Sidebar />
         </div>
         <div className="feedColumn">
-          {posts.map((post: Post) => (
-            <PostComponent key={post.id} post={post}/>
-          ))}
+          {
+            posts.length !== 0 ? 
+            
+            posts.map((post: Post) => (
+              <PostComponent key={post.id} post={post}/>
+            ))
+            
+            : 
+            
+            <>
+              Ingen innlegg
+            </>
+          }
+          
         </div>
         <div className="column-3">
           <Outlet context={posts} />
