@@ -127,7 +127,7 @@ public class Validations {
 
     if (count >= 1) {
       return true;
-    }
+    } 
 
     return false;
   }
