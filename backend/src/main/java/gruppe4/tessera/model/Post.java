@@ -21,6 +21,8 @@ import javax.persistence.ManyToOne;
 @Data
 public class Post {
 
+    private Validations validate = new Validations();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
     private Integer id;
@@ -35,5 +37,9 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
     private User user;
+
+    public void setTitle (String title) {
+
+    }
 
 }

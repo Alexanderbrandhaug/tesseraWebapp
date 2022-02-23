@@ -25,6 +25,8 @@ import java.util.List;
 @Data
 
 public class User {
+  private Validations validate = new Validations();
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
   private Integer id;
@@ -54,6 +56,24 @@ public class User {
   @JsonProperty("admin")
   public boolean getRole() {
     return isAdmin;
+  }
+  
+  public void setPassword(String password) {
+    if (validate.isValidPassword(password)) {
+      this.password = password;
+    }
+  }
+
+  public void setUsername(String username) {
+    if (validate.isValidUsername(username)){
+      this.username = username;
+    }
+  }
+
+  public void setDescription(String description) {
+    if (validate.isValidDescription(description)) {
+      this.description = description;
+    }
   }
 
 }
