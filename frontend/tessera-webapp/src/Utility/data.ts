@@ -82,6 +82,6 @@ export async function getUser(userName: string) {
   if(response.data){
       return response
     }
-    return false
+  return false
 }
 

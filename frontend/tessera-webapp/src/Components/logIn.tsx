@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getUser } from "../Utility/data";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Box } from "@mui/material";
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import React, { useState } from "react";
+import { getUser } from "../Utility/data";
 
 interface logInProps{
   setToken: (token:string) => void
@@ -35,8 +34,6 @@ export default function NameForm(props:logInProps) {
           }
         };
       };
-
-      const navigate = useNavigate();
 
     const { value:name, bind:bindName, reset:resetName } = useInput('');
     const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
@@ -67,7 +64,7 @@ export default function NameForm(props:logInProps) {
     }
 
     return (
-      
+
       <Card sx={{ maxWidth: 500 , minHeight: 500, margin: 'auto' }}>
         <CardContent >
         <Typography variant="h4" component="div">
