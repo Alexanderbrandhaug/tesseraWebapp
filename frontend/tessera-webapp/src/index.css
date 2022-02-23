@@ -50,6 +50,22 @@ code {
   background-color: black;
 }
 
+
+/* NEW POST PAGE */
+.newPostPage {
+  
+}
+
+.newPostForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.newPostForm textarea {
+  resize: none;
+}
+
+
 /* LOGGIN SITE */
 
 .userName {

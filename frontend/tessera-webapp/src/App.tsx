@@ -6,9 +6,9 @@ import LogInPage from "./Pages/logInPage";
 function App() {
   const [token, setToken] = useState("");
 
-  if (!token) {
-    return <LogInPage setToken={setToken} />
-  }
+  //if (!token) {
+  //   return <LogInPage setToken={setToken} />
+  //}
 
   return (
     <div>
