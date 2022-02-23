@@ -14,22 +14,19 @@ code {
 
 
 /* FEEDPAGE */
-
 .threeColumnFlex {
   background-color: lightblue;
   display: flex;
   flex-direction: row;
-  
 }
 
 .sidebar {
-  background-color: lightgray;
   display: flex;
   flex-direction: column;
 }
 
 .sidebarColumn {
-  background-color: red;
+  background-color: lightgray;
 }
 
 .feedColumn {

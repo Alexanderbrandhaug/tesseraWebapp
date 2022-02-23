@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
-import Post from "../Components/PostComponent";
-import { getPosts } from "../Utility/data";
-import PostPage from "./postpage";
+import { Post } from "../DataTypes/Post";
+import { retrievePosts } from "../Utility/data";
 
 export default function FeedPage() {
-
-  let posts = getPosts();
+  const [posts, setPosts] = useState<Post[]>([])
+  
+  //Retrieve posts from backend
+  useEffect(() => {
+    retrievePosts.then((res: Post[]) => {
+      setPosts(res)
+    }).catch(message => {
+      console.log("Error: " + message);
+    })
+  }, [])
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -18,12 +25,23 @@ export default function FeedPage() {
           <Sidebar />
         </div>
         <div className="feedColumn">
-          {posts.map((post) => (
-            <PostComponent post={post}/>
-          ))}
+          {
+            posts.length !== 0 ? 
+            
+            posts.map((post: Post) => (
+              <PostComponent key={post.id} post={post}/>
+            ))
+            
+            : 
+            
+            <>
+              Ingen innlegg
+            </>
+          }
+          
         </div>
         <div className="column-3">
-          <Outlet />
+          <Outlet context={posts} />
         </div>
       </div>
     </main>
