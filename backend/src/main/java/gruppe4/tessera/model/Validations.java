@@ -1,10 +1,15 @@
 package gruppe4.tessera.model;
 
 import java.util.regex.Pattern;
+
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
+
+@Component
 public class Validations {
 
   private List<String> postTypes = Arrays.asList("Sell", "Buy");

@@ -1,19 +1,15 @@
 package gruppe4.tessera.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.val;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,7 +22,7 @@ import javax.persistence.ManyToOne;
 @Data
 public class Post {
 
-    private Validations validate = new Validations();
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // ID will be used as primarykey and will be autoincremented
@@ -42,6 +38,9 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
     private User user;
+
+    @Transient
+    private Validations validate = new Validations();
 
     public void setTitle (String title) {
         if (validate.isValidTitle(title)) {
