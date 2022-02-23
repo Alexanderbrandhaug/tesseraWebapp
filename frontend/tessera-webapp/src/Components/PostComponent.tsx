@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 interface PostProps {
   post: Post
-  
 }
 
 export default function PostComponent(props: PostProps){

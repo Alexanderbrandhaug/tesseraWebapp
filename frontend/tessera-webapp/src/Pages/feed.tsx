@@ -7,7 +7,6 @@ import { retrievePosts } from "../Utility/data";
 export default function FeedPage() {
   const [posts, setPosts] = useState<Post[]>([])
   
-
   //Retrieve posts from backend
   useEffect(() => {
     retrievePosts.then((res: Post[]) => {

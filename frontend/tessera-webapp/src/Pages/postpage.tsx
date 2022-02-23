@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
-import { getPosts, posts } from "../Utility/data";
+import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
 
 export default function PostPage() {
@@ -18,7 +18,7 @@ export default function PostPage() {
       const postID = location.pathname.split('/')[2];
 
       let id: number = +postID
-      let thisPost = getPosts().find((p: Post) => p.id === id )
+      let thisPost = getLoadedPosts().find((p: Post) => p.id === id )
       
       if(thisPost){
         setPost(thisPost)

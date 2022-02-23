@@ -31,7 +31,6 @@ export let posts: any = [
   },
 ];
 
-
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
   console.log("Retrieving posts!")
   Axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
@@ -45,7 +44,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
   })
 })
 
-export function getPosts() {
+export function getLoadedPosts() {
   return posts;
 }
 
