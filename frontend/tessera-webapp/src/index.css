@@ -81,6 +81,8 @@ code {
 }
 .userName {
   width: 250px;
+  font-size: large;
+  font-weight: bold;
   height: 5px;
   display: flex;
   margin-bottom: 20px;
@@ -97,6 +99,8 @@ code {
 
 
 .passwordButton {
+  font-size: large;
+  font-weight: bold;
   display: flex;
   width: 250px;
   flex-direction: column-reverse;
@@ -114,6 +118,8 @@ code {
 }
 
 .submit {
+  font-size: large;
+  font-weight: bold;
   position: absolute;
   border-style: none;
   border-radius: 20px;
@@ -133,6 +139,8 @@ code {
    height:40px;
 }
 .showPwButton{
+  font-size: large;
+  font-weight: bold;
   position: relative;
   border-style: none;
   border-radius: 20px;
@@ -157,10 +165,6 @@ code {
   margin-left: 60%;
   margin-top: 10%;
  
-}
-
-.error {
-  color: red;
 }
 
 .loginLogo{
@@ -206,5 +210,9 @@ code {
  font-weight: lighter;
  margin-left: 50px;
  
+}
+.error {
+  color: red;
+  
 }
 
