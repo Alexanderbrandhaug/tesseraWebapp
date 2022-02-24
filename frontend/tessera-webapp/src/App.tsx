@@ -6,6 +6,7 @@ import LogInPage from "./Pages/logInPage";
 function App() {
   const [token, setToken] = useState("");
 
+  //EMPTY COMMIT!
   //if (!token) {
   //   return <LogInPage setToken={setToken} />
   //}
