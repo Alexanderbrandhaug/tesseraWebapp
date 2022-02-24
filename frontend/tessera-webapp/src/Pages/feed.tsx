@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import PostComponent from "../Components/PostComponent";
 import { Post } from "../DataTypes/Post";
 import { retrievePosts } from "../Utility/data";
-import { useNavigate } from "react-router-dom";
 
 export default function FeedPage() {
   const [posts, setPosts] = useState<Post[]>([])
-  
+
   //Retrieve posts from backend
   useEffect(() => {
     retrievePosts.then((res: Post[]) => {
@@ -27,19 +26,19 @@ export default function FeedPage() {
         </div>
         <div className="feedColumn">
           {
-            posts.length !== 0 ? 
-            
+            posts.length !== 0 ?
+
             posts.map((post: Post) => (
               <PostComponent key={post.id} post={post}/>
             ))
-            
-            : 
-            
+
+            :
+
             <>
               Ingen innlegg
             </>
           }
-          
+
         </div>
         <div className="column-3">
           <Outlet context={posts} />
@@ -57,7 +56,7 @@ function Sidebar() {
   function redirect() {
     navigate("/newpost")
 }
-  
+
 
   return (
     <div className="sidebar" >
@@ -66,7 +65,7 @@ function Sidebar() {
       <label><input type="checkbox" defaultChecked={true} /> Selling</label>
       <label><input type="checkbox" defaultChecked={true} /> Buying</label>
     </div>
-    
-    
+
+
   )
 }

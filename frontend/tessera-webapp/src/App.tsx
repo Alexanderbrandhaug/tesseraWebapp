@@ -1,15 +1,18 @@
 import { Link, Outlet } from "react-router-dom";
-import {useState} from 'react';
 import './App.css';
 import LogInPage from "./Pages/logInPage";
 
 function App() {
-  const [token, setToken] = useState("");
+  const token = localStorage.getItem('user');
 
-  //EMPTY COMMIT!
-  //if (!token) {
-  //   return <LogInPage setToken={setToken} />
-  //}
+  function handleLogOut() {
+    localStorage.removeItem('user');
+    window.location.reload();
+  }
+
+  if (!token) {
+    return <LogInPage />
+  }
 
   return (
     <div>
@@ -22,6 +25,9 @@ function App() {
       >
         <Link to="/feed">Feed</Link> |{" "}
         <Link to="/profile">Profile</Link>|{" "}
+        <button type="button" onClick={handleLogOut}>
+          Log Out
+        </button>
       </nav>
       <Outlet />
     </div>
