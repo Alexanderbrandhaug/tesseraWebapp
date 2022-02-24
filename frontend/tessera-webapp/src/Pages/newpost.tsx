@@ -13,16 +13,18 @@ export default function NewPostPage() {
   const [description, setDescription] = useState("");
   const [isSelling, setIsSelling] = useState<boolean>(false);
 
+  const [loadingPost, setLoadingPost] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   function redirect() {
     navigate("/feed")
-}
+  }
 
   function submitPost(e: any){
     e.preventDefault()
-    const fake_id = 1234
-    const fake_username = "tesseraAdmin"
+    const postID = 1234
+    const username = "tesseraAdmin"
     const createdAt = "0"
     const active = "True"
     let postType = "Buy";
@@ -30,21 +32,31 @@ export default function NewPostPage() {
       postType = "Sell";
     }
 
-    
-
-    const post = new Post(fake_id, fake_username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
+    const post = new Post(postID, username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
     createPosts(post).then( () => {
         redirect()
     }).catch( (response) => {
         console.log(response)
+    }).finally(() => {
+      setLoadingPost(false)
     })
+
+    setLoadingPost(true);
   }
 
 
   return (
     <main className="newPostPage">
       <h2>New Post</h2>
-      <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
+
+      {
+        loadingPost ? 
+        <div>
+          Loading
+        </div> 
+        :
+        <div>
+          <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
         <label>
           Title:
           <input
@@ -118,6 +130,10 @@ export default function NewPostPage() {
           <input type="submit" value="Submit" />
         </label>
       </form>
-    </main>
+
+        </div>
+      }
+
+          </main>
   );
 }
