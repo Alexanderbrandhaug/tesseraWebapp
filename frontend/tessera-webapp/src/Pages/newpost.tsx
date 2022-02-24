@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { Post } from "../DataTypes/Post";
+import { createPosts } from "../Utility/data";
 
 export default function NewPostPage() {
 
@@ -11,9 +13,31 @@ export default function NewPostPage() {
   const [description, setDescription] = useState("");
   const [isSelling, setIsSelling] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
+  function redirect() {
+    navigate("/feed")
+}
 
   function submitPost(e: any){
-    //const post = new Post()
+    e.preventDefault()
+    const fake_id = 1234
+    const fake_userID = 12345
+    const createdAt = "0"
+    const active = "True"
+    let postType = "Buy";
+    if(isSelling) {
+      postType = "Sell";
+    }
+
+    
+
+    const post = new Post(fake_id, fake_userID, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
+    createPosts(post).then( () => {
+        redirect()
+    }).catch( (response) => {
+        console.log(response)
+    })
   }
 
 
