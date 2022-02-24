@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getUser } from "../Utility/data";
 
-interface logInProps{
-  setToken: (token:string) => void
-}
 
-
-export default function NameForm(props:logInProps) {
+export default function NameForm() {
 
     function useInput(initialValue: string){
         const [value, setValue] = useState(initialValue);
@@ -24,7 +19,6 @@ export default function NameForm(props:logInProps) {
         };
       };
 
-      const navigate = useNavigate();
 
     const { value:name, bind:bindName, reset:resetName } = useInput('');
     const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
@@ -45,8 +39,9 @@ export default function NameForm(props:logInProps) {
         evt.preventDefault();
         getUser(name).then((result) => {
           if (result && result.data.password === password) {
-            props.setToken(result.data.id);
+            localStorage.setItem('user', result.data.id);
             resetName();
+            window.location.reload();
           }
           else {
             setErrorMessage("Wrong username or password");
