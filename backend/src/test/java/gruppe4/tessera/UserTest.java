@@ -15,7 +15,7 @@ public class UserTest {
   }
 
   @Test
-  public void isValidNameTest() {
+  public void isValidUsernameTest() {
     Assertions.assertTrue(validator.isValidUsername("username1"), "username1 should be a valid username. ");
     Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidUsername(""));
     Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidUsername("ole"));
@@ -34,7 +34,5 @@ public class UserTest {
     Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription("Not"));
     Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription(""));
   }
-
-
   
 }
