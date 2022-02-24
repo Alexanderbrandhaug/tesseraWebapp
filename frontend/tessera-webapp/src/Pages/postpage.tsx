@@ -27,7 +27,7 @@ export default function PostPage() {
   }, [location.pathname, posts])
 
   function redirect() {
-    navigate("/profile/" + post?.userID)
+    navigate("/profile/" + post?.username)
   }
 
   return (

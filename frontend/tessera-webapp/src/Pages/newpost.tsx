@@ -22,7 +22,7 @@ export default function NewPostPage() {
   function submitPost(e: any){
     e.preventDefault()
     const fake_id = 1234
-    const fake_userID = 12345
+    const fake_username = "tesseraAdmin"
     const createdAt = "0"
     const active = "True"
     let postType = "Buy";
@@ -32,7 +32,7 @@ export default function NewPostPage() {
 
     
 
-    const post = new Post(fake_id, fake_userID, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
+    const post = new Post(fake_id, fake_username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
     createPosts(post).then( () => {
         redirect()
     }).catch( (response) => {
