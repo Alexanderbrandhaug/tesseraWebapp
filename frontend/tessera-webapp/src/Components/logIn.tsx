@@ -51,11 +51,12 @@ export default function NameForm() {
     }
 
     return (
-      <div>
+      <div className = "loginFormComplete">
         <div className="error">
           {errorMessage && <div>{errorMessage}</div>}
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className = "loginForm">
+        <div className="loginTitle"> Login</div>
           <label>
             Username:
             <input className="userName" type="text" {...bindName} />
@@ -64,7 +65,7 @@ export default function NameForm() {
             Password:
             <input className="passwordButton" type="password" {...bindPassword} id="password"/>
           </label>
-          <button type="button" onClick={passwordVisibility}>Show password</button>
+          <button type="button"className ="showPwButton" onClick={passwordVisibility}>Show password</button>
           <input className="submit" type="submit" value="Submit" />
         </form>
       </div>
