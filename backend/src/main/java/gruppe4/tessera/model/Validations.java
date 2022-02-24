@@ -48,14 +48,8 @@ public class Validations {
   }
 
   public boolean isValidDescription(String description) {
-    if (description == null) {
+    if (description.length() < 4) {
       throw new IllegalArgumentException("Description cannot be null. ");
-    }
-
-    String words[] = description.split("\\s");
-    int length = words.length;
-    if (length > 3) {
-      throw new IllegalArgumentException("Descriprion must be longer. ");
     }
 
     return true;

@@ -1,11 +1,8 @@
 package gruppe4.tessera;
 
-import javax.xml.bind.Validator;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import gruppe4.tessera.model.Validations;
 
 public class UserTest {
@@ -34,10 +31,10 @@ public class UserTest {
   @Test
   public void isValidDescriptionTest() {
     Assertions.assertTrue(validator.isValidDescription("This is a valid description."));
-    Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription("Not valid."));
-    Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription(null));
+    Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription("Not"));
+    Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidDescription(""));
   }
 
-  
+
   
 }
