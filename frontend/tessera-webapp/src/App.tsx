@@ -2,9 +2,11 @@ import { Link, Outlet } from "react-router-dom";
 import './App.css';
 import LogInPage from "./Pages/logInPage";
 
+
 function App() {
   const token = localStorage.getItem('user');
-
+  
+  
   function handleLogOut() {
     localStorage.removeItem('user');
     window.location.reload();

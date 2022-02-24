@@ -130,6 +130,7 @@ code {
    font-weight: 700;
    width: 150px;
    margin-top:5%;
+   height:40px;
 }
 .showPwButton{
   position: relative;
@@ -149,14 +150,61 @@ code {
    transition: 0.5s;
    font-weight: 700;
    width: 150px;
+   height:40px;
 }
 .loginFormComplete{
   position: absolute;
-  margin-left: 20%;
+  margin-left: 60%;
   margin-top: 10%;
+ 
 }
 
 .error {
   color: red;
+}
+
+.loginLogo{
+  position: absolute;
+  height: 250px;
+  margin-left: 10%;
+  margin-top: 0;
+  
+}
+.loginText{
+  position: absolute;
+  margin-top:17%;
+  margin-left: 12%;
+  font-size: xx-large;
+  font-style: oblique;
+}
+.loginText2{
+  position: absolute;
+  margin-top:20%;
+  margin-left: 12%;
+  font-size: large;
+  font-style: oblique;
+}
+
+.ticketIcon{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin-left: 27%;
+  margin-top: 15%;
+}
+.footer{
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #24cfaa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.footerText{
+ color: white;
+ font-weight: lighter;
+ margin-left: 50px;
+ 
 }
 
