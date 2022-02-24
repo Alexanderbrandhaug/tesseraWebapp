@@ -60,10 +60,8 @@ public class Validations {
       throw new IllegalArgumentException("Title cannot be null. ");
     }
 
-    String words[] = title.split("\\s");
-    int length = words.length;
-    if (length > 2) {
-      throw new IllegalArgumentException("Title must be longer. ");
+    if (! (title.length() > 5)) {
+      throw new IllegalArgumentException("Must be a longer title. ");
     }
 
     return true;
@@ -75,13 +73,13 @@ public class Validations {
     }
 
     String regexNumber = "^[1-9][0-9]*$";
-    String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+   // String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
     Pattern p1 = Pattern.compile(regexNumber);
-    Pattern p2 = Pattern.compile(regexEmail);
+    //Pattern p2 = Pattern.compile(regexEmail);
     Matcher m1 = p1.matcher(contactPoint);
-    Matcher m2 = p2.matcher(contactPoint);
+    //Matcher m2 = p2.matcher(contactPoint);
 
-    if (!(m1.matches() || m2.matches())) {
+    if (!(m1.matches())) {
       throw new IllegalArgumentException("Contactpoint not set. ");
     }
 
