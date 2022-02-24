@@ -38,7 +38,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     }
 
     posts = response.data.map((post: any) => {
-      return new Post(post.id, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+      return new Post(post.id, post.username, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
 
     console.log("Done retrieving posts.");
@@ -53,7 +53,7 @@ export function getLoadedPosts() {
 export function createPosts(post: Post) {
 
   return new Promise( (resolve, reject) => {
-    axios.post("http://localhost:8080/tessera/api/post/", post.getPostData()).then( (response) => {
+    axios.post("http://localhost:8080/tessera/api/post/",{}, {params: post.getPostData()}).then( (response) => {
       if(response.status !== 200){
         reject("Invalid status-code: " + response.status)
       }

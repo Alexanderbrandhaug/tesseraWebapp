@@ -3,7 +3,7 @@ export {Post}
 
 class Post {
     id: number;
-    userID: number;
+    username: string;
     title: string;
     location: string;
     description: string;
@@ -14,9 +14,9 @@ class Post {
     postType: string;
     eventType: string;
     
-    constructor(id: number, userID: number, title: string, location: string, description: string, createdAt: string, price: number,  contactPoint: string, active: string, postType: string, eventType: string){
+    constructor(id: number, username: string, title: string, location: string, description: string, createdAt: string, price: number,  contactPoint: string, active: string, postType: string, eventType: string){
         this.id = id;
-        this.userID = userID;
+        this.username = username;
         this.title = title;
         this.location = location;
         this.description = description
@@ -30,16 +30,14 @@ class Post {
 
     getPostData() {
         return {
-            userID: this.userID,
             title: this.title,
-            location: this.location,
             description: this.description,
-            price: this.price,
             contactPoint: this.contactPoint,
-            active: this.active,
+            location: this.location,
             postType: this.postType,
-            eventType: this.eventType
-
+            eventType: this.eventType,
+            price: this.price,
+            username: this.username
         }
     }
 }
