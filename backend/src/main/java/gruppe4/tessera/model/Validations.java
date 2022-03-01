@@ -73,11 +73,8 @@ public class Validations {
     }
 
     String regexNumber = "^[1-9][0-9]*$";
-   // String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
     Pattern p1 = Pattern.compile(regexNumber);
-    //Pattern p2 = Pattern.compile(regexEmail);
     Matcher m1 = p1.matcher(contactPoint);
-    //Matcher m2 = p2.matcher(contactPoint);
 
     if (!(m1.matches())) {
       throw new IllegalArgumentException("Contactpoint not set. ");
