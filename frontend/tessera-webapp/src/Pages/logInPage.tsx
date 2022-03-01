@@ -10,9 +10,11 @@ export default function LogInPage() {
   return (
     <main style={{ padding: "1rem 0" }}>
       <div>
-      <img alt='logo' src={image} className="loginLogo"/>
+      <header className="header">
+        <h1>Tessera</h1>
+      </header>
       <h2 className="loginText">Just a ticket away</h2>
-      <img alt='ticketlogo' src={icon} className="ticketIcon"/>
+      {/*<img alt='ticketlogo' src={icon} className="ticketIcon"/>*/}
       <h5 className="loginText2">The Marketplace for trading tickets near you!</h5>
         <nav>
         <LogIn />

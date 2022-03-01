@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: large;
@@ -80,6 +79,19 @@ code {
 
 
 /* LOGGIN SITE */
+* {
+  margin: 0;
+  padding: 0;
+} 
+
+.header {
+  color: var(--main-bg-color);
+  position: absolute;
+  margin-left: 8%;
+  font-size: 80px;
+  font-style: oblique;
+    
+}
 
 .loginForm{
   position: absolute;
@@ -202,10 +214,10 @@ code {
 
 .ticketIcon{
   position: absolute;
-  width: 100px;
-  height: 100px;
-  margin-left: 27%;
-  margin-top: 15%;
+  width: 200px;
+  height: 200px;
+  margin-left: 48%;
+  margin-top: 1%;
 }
 .footer{
   margin-top: 1rem;
