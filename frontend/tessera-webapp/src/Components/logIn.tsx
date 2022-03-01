@@ -39,7 +39,7 @@ export default function NameForm() {
         evt.preventDefault();
         getUser(name).then((result) => {
           if (result && result.data.password === password) {
-            localStorage.setItem('user', result.data.id);
+            localStorage.setItem('user', result.data.username);
             resetName();
             window.location.reload();
           }
