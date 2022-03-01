@@ -14,17 +14,28 @@ code {
     monospace;
 }
 
+/* Main colors */
+
+:root {
+  --main-bg-color: #5899AD;
+}
+
 
 /* FEEDPAGE */
 .threeColumnFlex {
-  background-color: lightblue;
+  background-color: white;
   display: flex;
   flex-direction: row;
+}
+
+.newPost {
+  background-color: #a6e1f3;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
+  
 }
 
 .sidebarColumn {
@@ -129,7 +140,7 @@ code {
   outline:none;
   color: #fff;
   cursor: pointer;
-  background: #24cfaa;
+  background: var(--main-bg-color);
    box-shadow: 3px 3px 8px #b1b1b1,
                -3px -3px 8px #ffffff;
    transition: 0.5s;
@@ -152,7 +163,7 @@ code {
   margin-right: 10px;
   color: #fff;
   cursor: pointer;
-  background: #24cfaa;
+  background: var(--main-bg-color);
    box-shadow: 3px 3px 8px #b1b1b1,
                -3px -3px 8px #ffffff;
    transition: 0.5s;
@@ -199,7 +210,7 @@ code {
 .footer{
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #24cfaa;
+  background-color: var(--main-bg-color);
   position: fixed;
   bottom: 0;
   left: 0;

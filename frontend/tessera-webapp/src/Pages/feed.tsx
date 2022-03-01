@@ -60,7 +60,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar" >
-      <button onClick={redirect} type="button">Nytt innlegg</button >
+      <button onClick={redirect} className="newPost" type="button">Nytt innlegg</button >
       <input type="text" name="Search" placeholder="Search titles!"/>
       <label><input type="checkbox" defaultChecked={true} /> Selling</label>
       <label><input type="checkbox" defaultChecked={true} /> Buying</label>
