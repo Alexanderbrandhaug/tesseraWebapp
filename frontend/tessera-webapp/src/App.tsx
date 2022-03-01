@@ -1,19 +1,40 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import './App.css';
 import LogInPage from "./Pages/logInPage";
+import RegisterPage from "./Pages/registerPage";
 
 
 function App() {
   const token = localStorage.getItem('user');
-  
-  
+  const [register, setRegister] = useState(false);
+
+  function handleRegister() {
+    setRegister(true);
+  }
+
   function handleLogOut() {
     localStorage.removeItem('user');
     window.location.reload();
   }
 
   if (!token) {
-    return <LogInPage />
+    if (!register){
+
+      return (
+      <div>
+        <LogInPage />
+        <nav>
+        <button type="button" onClick={handleRegister}>
+          Register
+        </button>
+        </nav>
+      </div>
+        )
+      }
+    else{
+      return <RegisterPage/>;
+    }
   }
 
   return (
@@ -30,6 +51,7 @@ function App() {
         <button type="button" onClick={handleLogOut}>
           Log Out
         </button>
+  
       </nav>
       <Outlet />
     </div>

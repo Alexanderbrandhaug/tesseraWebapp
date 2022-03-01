@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Post } from "../DataTypes/Post";
+import { Register } from "../DataTypes/Register";
 
 export let posts: any = [
   {
@@ -51,7 +52,6 @@ export function getLoadedPosts() {
 }
 
 export function createPosts(post: Post) {
-
   return new Promise( (resolve, reject) => {
     axios.post("http://localhost:8080/tessera/api/post/",{}, {params: post.getPostData()}).then( (response) => {
       if(response.status !== 200){
@@ -73,7 +73,7 @@ export async function getUser(userName: string) {
   if (user.data) {
     return user;
   }
-  return false
+  return false;
 }
 */
 
@@ -81,7 +81,20 @@ export async function getUser(userName: string) {
   const response = await axios.get("http://localhost:8080/tessera/api/user/" + userName)
   if(response.data){
       return response
-    }
+  }
     return false
 }
+
+export function createUser(register: Register) {
+  return new Promise((resolve, reject)  => {
+  axios.post("http://localhost:8080/tessera/api/user/",{}, {params: register.getRegisterData()}).then((response) => {
+    if(response.status !== 200){
+      reject ("Invalid status-code: " + response.status)
+    }
+    resolve("Success: " + response.statusText)
+  })
+  })
+}
+
+
 
