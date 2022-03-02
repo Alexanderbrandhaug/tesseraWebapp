@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 @Component
 public class Validations {
 
-  private List<String> postTypes = Arrays.asList("Sell", "Buy");
+  private List<String> postTypes = Arrays.asList("Selling", "Buying");
   private List<String> eventTypes = Arrays.asList("Concert", "Festival", "Sports", "Theater", "Conferences");
 
   public boolean isValidUsername(String username) {
