@@ -3,6 +3,7 @@ import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
+import { usePosts } from "../App";
 
 export default function PostPage() {
   const navigate = useNavigate();

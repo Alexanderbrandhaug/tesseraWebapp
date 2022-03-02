@@ -70,24 +70,10 @@ export default function LogIn(props: LogInProps) {
           </label>
           <button type="button"className ="showPwButton" onClick={passwordVisibility}>Show password</button>
           <input className="submit" type="submit" value="Submit" />
-        </form>
-      </div>
-      <form onSubmit={handleSubmit} className = "loginForm">
-      <div className="loginTitle"> Login</div>
-        <label>
-          Username:
-          <input className="userName" type="text" {...bindName} />
-        </label>
-        <label className="whole">
-          Password:
-          <input className="passwordButton" type="password" {...bindPassword} id="password"/>
-        </label>
-        <button type="button"className ="showPwButton" onClick={passwordVisibility}>Show password</button>
-        <input className="submit" type="submit" value="Submit" />
-        <button className = "registerclass" type="button" onClick={props.handleRegister}>
+          <button className="registerclass" type="button" onClick={props.handleRegister}>
           Register
         </button>
-      </form>
+        </form>
     </div>
     );
   }

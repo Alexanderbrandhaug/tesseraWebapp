@@ -1,6 +1,4 @@
 import React from "react";
-import image from '../assets/images/logo3.png';
-import icon from '../assets/images/ticket.png';
 import Footer from '../Components/footer';
 import LogIn from "../Components/logIn";
 
@@ -26,11 +24,11 @@ export default function LogInPage(props: LogInPageProps) {
 
         <div className = "loginRightColumn">
           <div className="loginBox">
-            <LogIn />
+            <LogIn handleRegister={props.handleRegister}/>
           </div>
         </div>
     </div>
-    
+
     <Footer />
     </main>
   );
