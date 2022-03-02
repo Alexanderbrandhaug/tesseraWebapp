@@ -96,7 +96,6 @@ export function createUser(register: Register) {
       }).catch(err => {
         reject(err)
       })
-
   })
 }
 

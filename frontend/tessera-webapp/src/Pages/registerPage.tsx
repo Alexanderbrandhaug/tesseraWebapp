@@ -1,6 +1,6 @@
 import React from "react";
-import Register from "../Components/RegisterUser";
 import Footer from '../Components/footer';
+import RegisterForm from "../Components/RegisterUser";
 
 
 export default function RegisterPage() {
@@ -10,7 +10,7 @@ export default function RegisterPage() {
         <div>
         <h2>Register</h2>
             <nav>
-            <Register />
+            <RegisterForm />
             </nav>
         </div>
         <Footer></Footer>

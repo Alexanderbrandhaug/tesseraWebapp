@@ -13,23 +13,20 @@ export default function RegisterForm() {
     function handleSubmit(evt: any){
       evt.preventDefault();
       const register = new Register(username, password, description);
-      try {  
-        createUser(register).then(result => {
-        if (result) {
-          console.log("lavrans");
-          localStorage.setItem("user", username);
-          setUserName("");
-          setPassword("");
-          setDescription("");
-          window.location.reload();
-        }
-        else{
-          setErrorMessage("Something went wrong, please try again");
-        }
+      createUser(register).then(result => {
+      if (result) {
+        localStorage.setItem("user", username);
+        setUserName("");
+        setPassword("");
+        setDescription("");
+        window.location.reload();
+      }
+      else{
+        setErrorMessage("Something went wrong, please try again");
+      }
       }).catch(err => {
         setErrorMessage("Something went wrong, please try again");
       })
-
     }
     return (
       <div>
@@ -53,6 +50,5 @@ export default function RegisterForm() {
         </form>
       </div>
     );
-  }
 
-
+}
