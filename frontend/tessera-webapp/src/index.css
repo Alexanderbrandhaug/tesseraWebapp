@@ -16,7 +16,7 @@ code {
 /* Main colors */
 
 :root {
-  --main-bg-color: #5899AD;
+  --main-bg-color: #4b595e;
 }
 
 
@@ -28,19 +28,20 @@ code {
 }
 
 .newPost {
-  background-color: #a6e1f3;
+  background-color: #6f8e97;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  
+  margin-left: 50px;
 }
 
 .sidebarColumn {
   background-color: white;
   overflow: hidden;
   flex-direction: column;
+  margin-left: 50px;
 }
 
 .feedColumn {
@@ -48,7 +49,10 @@ code {
   flex-direction: column;
   overflow-y: auto;
   height: 550px;
-
+  color: rgb(17, 17, 17);
+  width: 500px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .userprofile-image {
@@ -60,30 +64,39 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .profileInfo {
   display: flex;
   align-items: center;
-
 }
 
 .column-3 {
-  width: 100%;
+  width: 350px;
   height: 100%;
   overflow: hidden;
-  
+  background-color: #b1b1b1;
+  border-style: initial;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
 }
 
 .postComponent {
-  background-color:white;
-  border-style: solid;
+  background-color: #b1b1b1;
+  border-style: initial;
   border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
 }
 
 .postComponent:hover {
   box-shadow: 5px 5px 5px;
+  cursor: pointer;
+}
+
+.seeUserButton {
+  cursor: pointer;
 }
 
 .postComponent:active {
@@ -104,7 +117,6 @@ code {
 .newPostForm textarea {
   resize: none;
 }
-
 
 
 .passwordButton {

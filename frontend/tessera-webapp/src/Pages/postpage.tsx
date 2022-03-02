@@ -57,7 +57,7 @@ export default function PostPage() {
 
           <p>Beskrivelse</p>
           <p>{post.description}</p>
-          <button onClick={redirect}>See user</button>
+          <button className = "seeUserButton"onClick={redirect}>See user</button>
         </body>
       </div>
       :
