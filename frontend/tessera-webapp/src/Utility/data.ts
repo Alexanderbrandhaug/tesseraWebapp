@@ -87,12 +87,16 @@ export async function getUser(userName: string) {
 
 export function createUser(register: Register) {
   return new Promise((resolve, reject)  => {
-  axios.post("http://localhost:8080/tessera/api/user/",{}, {params: register.getRegisterData()}).then((response) => {
-    if(response.status !== 200){
-      reject ("Invalid status-code: " + response.status)
-    }
-    resolve("Success: " + response.statusText)
-  })
+      const data = {params: register.getRegisterData(), headers: {"Content-Type": "application/json"}}
+      axios.post("http://localhost:8080/tessera/api/user/",{}, data).then((response) => {
+        if(response.status !== 200){
+          reject ("Invalid status-code: " + response.status)
+        }
+        resolve("Success: " + response.statusText)
+      }).catch(err => {
+        reject(err)
+      })
+
   })
 }
 

@@ -10,12 +10,13 @@ export default function RegisterForm() {
     const [description, setDescription] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-
     function handleSubmit(evt: any){
       evt.preventDefault();
       const register = new Register(username, password, description);
-      createUser(register).then(result => {
+      try {  
+        createUser(register).then(result => {
         if (result) {
+          console.log("lavrans");
           localStorage.setItem("user", username);
           setUserName("");
           setPassword("");
@@ -25,6 +26,8 @@ export default function RegisterForm() {
         else{
           setErrorMessage("Something went wrong, please try again");
         }
+      }).catch(err => {
+        setErrorMessage("Something went wrong, please try again");
       })
 
     }
@@ -40,7 +43,7 @@ export default function RegisterForm() {
           </label>
           <label className="whole">
             Password:
-            <input className="passwordButton" type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <input className="userName" type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
           </label>
           <label>
             Description:

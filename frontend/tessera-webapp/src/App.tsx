@@ -23,12 +23,7 @@ function App() {
 
       return (
       <div>
-        <LogInPage />
-        <nav>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-        </nav>
+        <LogInPage handleRegister={handleRegister} />
       </div>
         )
       }
@@ -51,7 +46,7 @@ function App() {
         <button type="button" onClick={handleLogOut}>
           Log Out
         </button>
-  
+
       </nav>
       <Outlet />
     </div>
