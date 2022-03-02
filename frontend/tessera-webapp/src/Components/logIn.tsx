@@ -51,7 +51,7 @@ export default function NameForm() {
     }
 
     return (
-      <div className = "loginFormComplete">
+      <div>
         <div className="error">
           {errorMessage && <div>{errorMessage}</div>}
         </div>
