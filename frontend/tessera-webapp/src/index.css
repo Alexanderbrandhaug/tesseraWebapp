@@ -64,9 +64,6 @@ code {
 
 
 /* NEW POST PAGE */
-.newPostPage {
-  
-}
 
 .newPostForm {
   display: flex;
@@ -235,3 +232,32 @@ code {
   
 }
 
+.registerclass{
+  font-size: large;
+  font-weight: bold;
+  position: column;
+  border-style: none;
+  border-radius: 20px;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  outline:none;
+  color: #fff;
+  cursor: pointer;
+  background: #24cfaa;
+   box-shadow: 3px 3px 8px #b1b1b1,
+               -3px -3px 8px #ffffff;
+   transition: 0.5s;
+   font-weight: 700;
+   width: 300px;
+   margin-top:5%;
+   height:40px;
+
+}
+
+.registercenter{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
