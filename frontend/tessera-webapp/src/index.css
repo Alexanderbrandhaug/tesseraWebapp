@@ -16,7 +16,8 @@ code {
 /* Main colors */
 
 :root {
-  --main-bg-color: #4b595e;
+  --main-bg-color: #5899ad;
+  --colour--two: #d3e0e4;
 }
 
 
@@ -49,7 +50,7 @@ code {
   flex-direction: column;
   overflow-y: auto;
   height: 550px;
-  color: rgb(17, 17, 17);
+  color: rgb(0, 0, 0);
   width: 500px;
   margin-left: 50px;
   margin-right: 50px;
@@ -75,7 +76,7 @@ code {
   width: 350px;
   height: 100%;
   overflow: hidden;
-  background-color: #b1b1b1;
+  background-color: var(--colour--two);
   border-style: initial;
   border-radius: 10px;
   margin: 20px;
@@ -83,7 +84,7 @@ code {
 }
 
 .postComponent {
-  background-color: #b1b1b1;
+  background-color: var(--colour--two);
   border-style: initial;
   border-radius: 10px;
   margin: 5px;
