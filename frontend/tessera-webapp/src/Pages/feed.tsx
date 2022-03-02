@@ -31,9 +31,7 @@ export default function FeedPage() {
             posts.map((post: Post) => (
               <PostComponent key={post.id} post={post}/>
             ))
-
             :
-
             <>
               Ingen innlegg
             </>
