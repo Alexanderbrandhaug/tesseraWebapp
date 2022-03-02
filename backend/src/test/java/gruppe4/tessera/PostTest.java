@@ -9,15 +9,18 @@ import org.junit.jupiter.api.Test;
 
 import gruppe4.tessera.model.Post;
 import gruppe4.tessera.model.User;
+import gruppe4.tessera.model.Validations;
 
 public class PostTest {
 
     private Post post;
     private Post emptyPost;
     private User user;
+    private Validations validator;
 
     @BeforeEach
     public void setup() {
+        validator = new Validations(); // need to use setters in tests, i.e setTitle, setDescription etc
         // verdier for Post-objektet
         Integer postId = 369;
         String title = "Selger the Strokes-biletter!! (BILLIG)";
