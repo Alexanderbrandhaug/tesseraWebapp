@@ -4,8 +4,12 @@ import icon from '../assets/images/ticket.png';
 import Footer from '../Components/footer';
 import LogIn from "../Components/logIn";
 
+interface LogInPageProps {
+  handleRegister: (params: any) => void;
 
-export default function LogInPage() {
+}
+
+export default function LogInPage(props: LogInPageProps) {
 
   return (
     <main>

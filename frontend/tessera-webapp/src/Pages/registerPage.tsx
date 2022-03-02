@@ -1,17 +1,19 @@
 import React from "react";
 import Register from "../Components/RegisterUser";
+import Footer from '../Components/footer';
 
 
 export default function RegisterPage() {
 
     return (
-      <main style={{ padding: "1rem 0" }}>
-        <h2>Register</h2>
+      <main className="registercenter">
         <div>
-          <nav>
-          <Register />
-          </nav>
+        <h2>Register</h2>
+            <nav>
+            <Register />
+            </nav>
         </div>
-      </main>
+        <Footer></Footer>
+    </main>
     );
   }

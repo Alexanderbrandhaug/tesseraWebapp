@@ -23,12 +23,7 @@ function App() {
 
       return (
       <div>
-        <LogInPage />
-        <nav>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-        </nav>
+        <LogInPage handleRegister={handleRegister} />
       </div>
         )
       }
