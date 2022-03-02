@@ -1,11 +1,13 @@
-import { Link, Outlet } from "react-router-dom";
+import { ContextType, useState } from "react";
+import { Link, Outlet, useOutletContext } from "react-router-dom";
 import './App.css';
+import { Post } from "./DataTypes/Post";
 import LogInPage from "./Pages/logInPage";
 
 
 function App() {
+  const [posts, setPosts] = useState<Post[]>([])
   const token = localStorage.getItem('user');
-  
   
   function handleLogOut() {
     localStorage.removeItem('user');
@@ -31,9 +33,18 @@ function App() {
           Log Out
         </button>
       </nav>
-      <Outlet />
+      <Outlet context={{posts, setPosts}}/>
     </div>
   );
+}
+
+type postsContextType = {
+  posts: Post[],
+  setPosts: (postsArr: Post[]) => void
+}
+
+export function usePosts() {
+  return useOutletContext<postsContextType>();
 }
 
 export default App;

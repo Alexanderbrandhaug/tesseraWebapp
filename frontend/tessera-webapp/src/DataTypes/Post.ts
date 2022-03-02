@@ -28,6 +28,9 @@ class Post {
         this.eventType = eventType
     }
 
+    /**
+     * @returns object with post-attributes stripped to only those needed by backend
+     */
     getPostData() {
         return {
             title: this.title,

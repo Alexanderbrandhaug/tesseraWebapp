@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
+import { usePosts } from "../App";
 import PostComponent from "../Components/PostComponent";
 import { Post } from "../DataTypes/Post";
 import { retrievePosts } from "../Utility/data";
 
 export default function FeedPage() {
-  const [posts, setPosts] = useState<Post[]>([])
+  const {posts, setPosts} = usePosts();
 
   //Retrieve posts from backend
   useEffect(() => {
+    console.log("RUNNING USEEFFECT IN FEED")
     retrievePosts.then((res: Post[]) => {
+      console.log("Post-page has been updated!")
+      console.log(res.length)
       setPosts(res)
     }).catch(message => {
       console.log("Error: " + message);
@@ -31,11 +35,9 @@ export default function FeedPage() {
             posts.map((post: Post) => (
               <PostComponent key={post.id} post={post}/>
             ))
-
             :
-
             <>
-              Ingen innlegg
+              No posts found
             </>
           }
 
@@ -60,7 +62,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar" >
-      <button onClick={redirect} type="button">Nytt innlegg</button >
+      <button onClick={redirect} type="button">New Post</button >
       <input type="text" name="Search" placeholder="Search titles!"/>
       <label><input type="checkbox" defaultChecked={true} /> Selling</label>
       <label><input type="checkbox" defaultChecked={true} /> Buying</label>
