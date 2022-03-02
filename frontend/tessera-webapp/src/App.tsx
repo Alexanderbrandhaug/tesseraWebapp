@@ -51,7 +51,7 @@ function App() {
         <button type="button" onClick={handleLogOut}>
           Log Out
         </button>
-  
+
       </nav>
       <Outlet />
     </div>

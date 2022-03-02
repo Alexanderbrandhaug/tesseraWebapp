@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import LogIn from "../Components/logIn";
+import React from "react";
 import Register from "../Components/RegisterUser";
 
 
