@@ -74,7 +74,7 @@ code {
     font-size: large;
     font-weight: bold;
     display: flex;
-    width: 250px;
+    width: 270px;
     flex-direction: column-reverse;
     display: flex;
     height: 5px;
@@ -153,7 +153,7 @@ code {
 }
 
 .userName {
-    width: 250px;
+    width: 270px;
     font-size: large;
     font-weight: bold;
     height: 5px;
@@ -234,7 +234,7 @@ code {
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     transition: 0.5s;
     font-weight: 700;
-    width: 300px;
+    width: 310px;
     margin-top: 5%;
     height: 40px;
 }
