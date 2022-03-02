@@ -9,6 +9,7 @@ import UnknownURLPage from './Pages/unknownurl';
 import ProfilePage from './Pages/profile';
 import FeedPage from './Pages/feed';
 import PostPage from './Pages/postpage';
+import RegisterPage from './Pages/registerPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path="profile" element={<ProfilePage />} />
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
+          <Route path="register" element={<RegisterPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

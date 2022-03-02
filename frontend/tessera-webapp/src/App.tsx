@@ -3,19 +3,35 @@ import { Link, Outlet, useOutletContext } from "react-router-dom";
 import './App.css';
 import { Post } from "./DataTypes/Post";
 import LogInPage from "./Pages/logInPage";
+import RegisterPage from "./Pages/registerPage";
 
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([])
   const token = localStorage.getItem('user');
-  
+  const [register, setRegister] = useState(false);
+
+  function handleRegister() {
+    setRegister(true);
+  }
+
   function handleLogOut() {
     localStorage.removeItem('user');
     window.location.reload();
   }
 
   if (!token) {
-    return <LogInPage />
+    if (!register){
+
+      return (
+      <div>
+        <LogInPage handleRegister={handleRegister} />
+      </div>
+        )
+      }
+    else{
+      return <RegisterPage/>;
+    }
   }
 
   return (
@@ -32,6 +48,7 @@ function App() {
         <button type="button" onClick={handleLogOut}>
           Log Out
         </button>
+
       </nav>
       <Outlet context={{posts, setPosts}}/>
     </div>

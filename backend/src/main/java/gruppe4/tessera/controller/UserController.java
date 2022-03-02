@@ -1,6 +1,7 @@
 package gruppe4.tessera.controller;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,12 @@ public class UserController {
     public @ResponseBody User getUserByUsername(@Parameter(description = "username of the user to be found")
     @PathVariable String username) {
         return userService.getUserByUsername(username);
+    }
+
+    @GetMapping(path ="/user")
+    public @ResponseBody Optional<User> getUserById(@Parameter(description = "username of the user to be found")
+    @RequestParam Integer id) {
+        return userService.getUserById(id);
     }
 
     @PostMapping(path = "/user")

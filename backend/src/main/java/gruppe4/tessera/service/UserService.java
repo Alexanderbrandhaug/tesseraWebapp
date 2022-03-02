@@ -1,5 +1,7 @@
 package gruppe4.tessera.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import gruppe4.tessera.model.User;
 import gruppe4.tessera.repository.UserRepository;
@@ -25,5 +27,8 @@ public class UserService {
     public boolean saveUser(User user) {
         userRepository.save(user);
         return true;
+    }
+    public Optional<User> getUserById(Integer id){
+        return userRepository.findById(id);
     }
 }

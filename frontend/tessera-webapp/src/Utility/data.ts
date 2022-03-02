@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Post } from "../DataTypes/Post";
+import { Register } from "../DataTypes/Register";
 
 export let posts: any = [
   {
@@ -81,7 +82,24 @@ export async function getUser(userName: string) {
   const response = await axios.get("http://localhost:8080/tessera/api/user/" + userName)
   if(response.data){
       return response
-    }
+  }
     return false
 }
+
+export function createUser(register: Register) {
+  return new Promise((resolve, reject)  => {
+      const data = {params: register.getRegisterData(), headers: {"Content-Type": "application/json"}}
+      axios.post("http://localhost:8080/tessera/api/user/",{}, data).then((response) => {
+        if(response.status !== 200){
+          reject ("Invalid status-code: " + response.status)
+        }
+        resolve("Success: " + response.statusText)
+      }).catch(err => {
+        reject(err)
+      })
+
+  })
+}
+
+
 
