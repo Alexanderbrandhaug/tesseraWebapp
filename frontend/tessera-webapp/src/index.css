@@ -18,6 +18,12 @@ code {
 :root {
   --main-bg-color: #5899ad;
   --colour--two: #d3e0e4;
+  --colour--three: #8badb8;
+}
+
+.button {
+  background-color: var(--colour--three);
+  border-radius: 10px;
 }
 
 
@@ -29,7 +35,10 @@ code {
 }
 
 .newPost {
-  background-color: #6f8e97;
+  background-color: var(--colour--three);
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .sidebar {
@@ -52,8 +61,7 @@ code {
   height: 550px;
   color: rgb(0, 0, 0);
   width: 500px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: auto;
 }
 
 .userprofile-image {
@@ -79,7 +87,7 @@ code {
   background-color: var(--colour--two);
   border-style: initial;
   border-radius: 10px;
-  margin: 20px;
+  margin-right: 100px;
   padding: 10px;
 }
 
@@ -98,6 +106,8 @@ code {
 
 .seeUserButton {
   cursor: pointer;
+  background-color: var(--colour--three);
+  border-radius: 10px;
 }
 
 .postComponent:active {
@@ -113,6 +123,11 @@ code {
 .newPostForm {
   display: flex;
   flex-direction: column;
+  background-color: var(--colour--two);
+  border-radius: 10px;
+  width: 400px;
+  padding: 10px;
+  margin: auto;
 }
 
 .newPostForm textarea {
