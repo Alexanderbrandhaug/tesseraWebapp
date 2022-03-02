@@ -25,6 +25,8 @@ export default function RegisterForm() {
         else{
           setErrorMessage("Something went wrong, please try again");
         }
+      }).catch(err => {
+        setErrorMessage("Something went wrong, please try again");
       })
 
     }
