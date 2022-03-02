@@ -19,6 +19,7 @@ export default function LogInPage(props: LogInPageProps) {
           <div className="infoBox">
             <h2 className="loginText">Just a ticket away</h2>
             <h5 className="loginText2">The Marketplace for trading tickets near you!</h5>
+            <h5 className="loginText2">Here you can buy and sell any ticket you want. You are garanteed to find an event to suit your likes! When you buy a ticket at Tessera, you can always trust that it is genuine and that you get the best available seat that is available at this time. </h5>
           </div>
         </div>
 
