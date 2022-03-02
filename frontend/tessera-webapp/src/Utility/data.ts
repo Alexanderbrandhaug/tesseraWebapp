@@ -31,9 +31,16 @@ export let posts: any = [
   },
 ];
 
+/**
+ * @requires: backend running
+ * @returns: Promise returning loaded posts from backend on resolve. 
+ * Rejects if status-code from backend is not 200.
+ */
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
   console.log("Retrieving posts!")
   axios.get("http://localhost:8080/tessera/api/posts/").then((response) => {
+    console.log("Response from backend:")
+    console.log(response)
     if(response.status !== 200){
       reject("Invalid status-code: " + response.status);
     }
@@ -51,31 +58,25 @@ export function getLoadedPosts() {
   return posts;
 }
 
+/**
+ * @requires: post - the input post to be posted to backend.
+ * @returns promise that posts post to backend. Rejects if code is not 200.
+ * Post id and created-at fields are ignored as these are created in backend.
+ * (See Post.getPostData())
+*/
 export function createPosts(post: Post) {
-  return new Promise( (resolve, reject) => {
-    axios.post("http://localhost:8080/tessera/api/post/",{}, {params: post.getPostData()}).then( (response) => {
+  return new Promise<Post[] | string>( (resolve, reject) => {
+    const data = {params: post.getPostData(), headers:{"Content-type": "application/json"}}
+    axios.post("http://localhost:8080/tessera/api/post/",{}, data).then( (response) => {
       if(response.status !== 200){
         reject("Invalid status-code: " + response.status)
       }
       resolve("Success: " + response.statusText)
+    }).catch(err => {
+      reject(err);
     })
   })
 }
-
-/*
-Gammel metode
-export async function getUser(userName: string) {
-  const config = {
-    method: 'get',
-    url: 'http://localhost:8080/tessera/api/user/' + userName
-  }
-  let user = await axios(config)
-  if (user.data) {
-    return user;
-  }
-  return false;
-}
-*/
 
 export async function getUser(userName: string) {
   const response = await axios.get("http://localhost:8080/tessera/api/user/" + userName)
