@@ -1,3 +1,5 @@
+package gruppe4.tessera;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
