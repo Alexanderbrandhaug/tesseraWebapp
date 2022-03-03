@@ -30,13 +30,13 @@ export default function NewPostPage() {
     const username = "tesseraAdmin"
     const createdAt = "0"
     const active = "True"
-    let postType = isSelling ? "Selling" : "Buying";
+    let postType = isSelling ? "sell" : "buy";
 
     const post = new Post(postID, username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
     createPosts(post).then( (res: Post[] | string) => {
         redirect("/feed")
     }).catch( (res) => {
-        setErrorOcurred(res);
+        setErrorOcurred("Error: Could not post.");
         console.log(res)
     }).finally(() => {
       setLoadingPost(false)
@@ -129,7 +129,7 @@ export default function NewPostPage() {
             <input type="submit" value="Submit" />
           </label>
         </form>
-        {errorOcurred === "" ? 
+        {errorOcurred === "" ?
         <></>
         : 
         <label className="error">{errorOcurred}</label> 
