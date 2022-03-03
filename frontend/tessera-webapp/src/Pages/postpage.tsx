@@ -3,12 +3,9 @@ import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { usePosts } from "../App";
-=======
 import userprofile from "../assets/images/user-profile.png";
 import { isPropertySignature } from "typescript";
->>>>>>> css-styling-for-feedpage
 
 export default function PostPage() {
   const navigate = useNavigate();
