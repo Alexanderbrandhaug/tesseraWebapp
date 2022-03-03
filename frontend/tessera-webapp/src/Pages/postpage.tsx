@@ -52,10 +52,9 @@ export default function PostPage() {
         </header>
         <body>
           <p>Location: {post.location}</p>
-          <p>Date: {post.createdAt}</p>
           <p>Price: {post.price}</p>
           <p>Contact {post.contactPoint}</p>
-
+          <p>Created at: {post.createdAt}</p>
           <p>Beskrivelse</p>
           <p>{post.description}</p>
           <button className = "seeUserButton"onClick={redirect}>See user</button>

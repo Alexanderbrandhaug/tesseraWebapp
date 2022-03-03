@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUser } from "../Utility/data";
 
 interface LogInProps {
@@ -11,6 +12,8 @@ export default function LogIn(props: LogInProps) {
   const { value:name, bind:bindName, reset:resetName } = useInput('');
   const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
   const [errorMessage, setErrorMessage] = React.useState("");
+
+  const navigate = useNavigate();
 
   function useInput(initialValue: string){
       const [value, setValue] = useState(initialValue);
@@ -44,6 +47,7 @@ export default function LogIn(props: LogInProps) {
         if (result && result.data.password === password) {
           localStorage.setItem('user', result.data.username);
           resetName();
+          navigate("/feed");
           window.location.reload();
         }
         else {
@@ -55,9 +59,6 @@ export default function LogIn(props: LogInProps) {
 
     return (
       <div>
-        <div className="error">
-          {errorMessage && <div>{errorMessage}</div>}
-        </div>
         <form onSubmit={handleSubmit} className = "loginForm">
         <div className="loginTitle"> Login</div>
           <label>
@@ -71,8 +72,11 @@ export default function LogIn(props: LogInProps) {
           <button type="button"className ="showPwButton" onClick={passwordVisibility}>Show password</button>
           <input className="submit" type="submit" value="Submit" />
           <button className="registerclass" type="button" onClick={props.handleRegister}>
-          Register
-        </button>
+            Register
+          </button>
+          <div className="error">
+            {errorMessage && <div>{errorMessage}</div>}
+          </div>
         </form>
     </div>
     );
