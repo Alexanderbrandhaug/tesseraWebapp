@@ -3,7 +3,12 @@ import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { usePosts } from "../App";
+=======
+import userprofile from "../assets/images/user-profile.png";
+import { isPropertySignature } from "typescript";
+>>>>>>> css-styling-for-feedpage
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -31,14 +36,22 @@ export default function PostPage() {
     navigate("/profile/" + post?.username)
   }
 
+  console.log("Posted by user: " + post?.username)
+
   return (
     <main style={{ padding: "1rem 0" }}>
       {
       post !== null ? 
 
       <div>
-        <header>
+          
+        <header className="postHeader">
           <h1> {post.title}</h1>
+          <div className="profileInfo"> 
+            <img alt='user-profile' src={userprofile} className='userprofile-image'/>
+            <p> {post.username}</p>
+            
+          </div>
         </header>
         <body>
           <p>Location: {post.location}</p>
@@ -48,7 +61,7 @@ export default function PostPage() {
 
           <p>Beskrivelse</p>
           <p>{post.description}</p>
-          <button onClick={redirect}>See user</button>
+          <button className = "seeUserButton"onClick={redirect}>See user</button>
         </body>
       </div>
       :

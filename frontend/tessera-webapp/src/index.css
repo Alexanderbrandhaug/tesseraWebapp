@@ -17,6 +17,14 @@ code {
 
 :root {
     --main-bg-color: #5899ad;
+  --main-bg-color: #5899ad;
+  --colour--two: #d3e0e4;
+  --colour--three: #8badb8;
+}
+
+.button {
+  background-color: var(--colour--three);
+  border-radius: 10px;
 }
 
 /* FEEDPAGE */
@@ -53,6 +61,79 @@ code {
 
 .postComponent:hover {
     box-shadow: 5px 5px 5px;
+  background-color: var(--colour--three);
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.sidebarColumn {
+  background-color: white;
+  overflow: hidden;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.feedColumn {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 550px;
+  color: rgb(0, 0, 0);
+  width: 500px;
+  margin: auto;
+}
+
+.userprofile-image {
+  height: 50px;
+  margin-top: 30%;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+}
+
+.column-3 {
+  width: 350px;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--colour--two);
+  border-style: initial;
+  border-radius: 10px;
+  margin-right: 100px;
+  padding: 10px;
+}
+
+.postComponent {
+  background-color: var(--colour--two);
+  border-style: initial;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.postComponent:hover {
+  box-shadow: 5px 5px 5px;
+  cursor: pointer;
+}
+
+.seeUserButton {
+  cursor: pointer;
+  background-color: var(--colour--three);
+  border-radius: 10px;
 }
 
 .postComponent:active {
@@ -64,6 +145,13 @@ code {
 .newPostForm {
     display: flex;
     flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--colour--two);
+  border-radius: 10px;
+  width: 400px;
+  padding: 10px;
+  margin: auto;
 }
 
 .newPostForm textarea {
