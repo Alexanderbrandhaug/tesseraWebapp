@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import { usePosts } from "../App";
 import PostComponent from "../Components/PostComponent";
 import { Post } from "../DataTypes/Post";

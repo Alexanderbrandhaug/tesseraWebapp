@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Register } from "../DataTypes/Register";
-import { createUser } from "../Utility/data";
+import { createUser, getUser } from "../Utility/data";
 
 
 export default function RegisterForm() {
@@ -15,7 +15,13 @@ export default function RegisterForm() {
       const register = new Register(username, password, description);
       createUser(register).then(result => {
       if (result) {
-        localStorage.setItem("user", username);
+        getUser(username).then(response => {
+          if (response) {
+            localStorage.setItem('username', response.data.username);
+            localStorage.setItem('userid', response.data.userid);
+            localStorage.setItem('isadmin', response.data.isadmin);
+          }
+        })
         setUserName("");
         setPassword("");
         setDescription("");
