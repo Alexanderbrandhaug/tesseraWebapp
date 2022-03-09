@@ -1,4 +1,4 @@
-import { ContextType, useState } from "react";
+import { useState } from "react";
 import { Link, Outlet, useOutletContext } from "react-router-dom";
 import './App.css';
 import { Post } from "./DataTypes/Post";
@@ -8,7 +8,7 @@ import RegisterPage from "./Pages/registerPage";
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([])
-  const token = localStorage.getItem('user');
+  const token = localStorage.getItem('username');
   const [register, setRegister] = useState(false);
 
   function handleRegister() {
@@ -16,7 +16,9 @@ function App() {
   }
 
   function handleLogOut() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userid')
+    localStorage.removeItem('isadmin')
     window.location.reload();
   }
 
