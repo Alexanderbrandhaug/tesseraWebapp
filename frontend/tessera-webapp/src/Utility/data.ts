@@ -1,6 +1,9 @@
+import { rejects } from "assert";
 import axios from "axios";
+import { resolve } from "path";
 import { Post } from "../DataTypes/Post";
 import { Register } from "../DataTypes/Register";
+import { Transaction } from "../DataTypes/Transaction";
 
 export let posts: any = [
   {
@@ -98,6 +101,21 @@ export function createUser(register: Register) {
         reject(err)
       })
   })
+}
+
+export function createTransaction(transaction: Transaction) {
+  return new Promise((resolve, reject) => {
+    const data = {params: transaction.getTransactionData(), headers: {"Content-Type": "application/json"}}
+    axios.post("http://localhost:8080/tessera/api/transaction/",{}, data).then((response) => {
+      if(response.status !== 200){
+        reject ("Invalid status-code: " + response.status)
+      }
+      resolve("Success: " + response.statusText)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+  
 }
 
 

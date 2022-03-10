@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
 import { Post } from "../DataTypes/Post";
-import { getLoadedPosts, getUser } from "../Utility/data";
+import { Transaction } from "../DataTypes/Transaction";
+import { createTransaction, getLoadedPosts, getUser } from "../Utility/data";
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -12,16 +13,20 @@ export default function PostPage() {
   const posts = useOutletContext()
   const [isCreator, setIsCreator] = useState<boolean>(false);
   const [partner, setPartner] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
+
 
   function closePost(){
     let sellerID = 0;
     let buyerID = 0;
     let partnerID = 0;
-    const postID = post?.id;
+    const postID = post ? post.id : 0;
     const creatorID = +(localStorage.getItem("userID") ?? 0)
     getUser(partner).then((result) => {
       if (result) {
         partnerID = result.data.id
+      } else {
+        setErrorMessage("Could not find user, username does not exist. Please try again. ");
       }
     })
     if (post?.postType === "sell") {
@@ -31,6 +36,14 @@ export default function PostPage() {
       sellerID = partnerID
       buyerID = creatorID
     }
+    const payload = new Transaction(sellerID, buyerID, postID)
+    createTransaction(payload).then((result) => {
+      if (result) {
+        console.log("Success")
+      }
+    }).catch(err => {
+      setErrorMessage("Something went wrong, please try again. ");
+    })
     console.log(sellerID)
   }
 
