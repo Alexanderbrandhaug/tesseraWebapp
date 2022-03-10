@@ -1,6 +1,8 @@
 package gruppe4.tessera.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
@@ -33,7 +35,8 @@ public class Post {
     private String title, description, contactPoint, location, postType, eventType;
     private int price;
     private boolean showPost;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime eventDate;
     @Column(name = "user_id", insertable = false, updatable = false)
     private Integer userId;
 
@@ -86,5 +89,9 @@ public class Post {
         //if (validate.isValidPrice(price)) {
         this.price = price;
         //}
+    }
+    public static void main(String[] args) {
+        LocalDateTime test = LocalDateTime.now();
+        System.out.println(test);
     }
 }
