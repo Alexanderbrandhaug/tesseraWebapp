@@ -34,8 +34,11 @@ public class PostService {
         return true;
     }
 
-    public void disablePost(Integer postId){
-        postRepository.updateShowPost(postId);
+    public boolean disablePost(Integer postId){
+        if(postRepository.updateShowPost(postId) != 0){
+            return true;
+        }
+        return false;
        
     }
 }

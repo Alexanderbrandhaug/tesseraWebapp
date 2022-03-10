@@ -25,7 +25,7 @@ public class TransactionController {
 
     
     @GetMapping(path = "/transactions")
-    public @ResponseBody Iterable<Transaction> getAllPosts() {
+    public @ResponseBody Iterable<Transaction> getAllTransactions() {
         return transactionService.getAllTransactions();
     }
 
@@ -36,8 +36,7 @@ public class TransactionController {
         newTransaction.setSellerId(sellerId);
         newTransaction.setBuyerId(buyerId);
 
-        if(transactionService.saveTransaction(newTransaction)){  
-            postService.disablePost(postId);
+        if(transactionService.saveTransaction(newTransaction) && postService.disablePost(postId)){   
             return "Transaction saved";
         }
         return "Transaction was not saved";
