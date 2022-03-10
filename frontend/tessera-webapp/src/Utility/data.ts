@@ -2,6 +2,18 @@ import axios from "axios";
 import { Post } from "../DataTypes/Post";
 import { Register } from "../DataTypes/Register";
 
+export const eventTypes: string[] = [
+  "Concert",
+  "Conference",
+  "Circus",
+  "Festival",
+  "Party",
+  "Theatre",
+  "Sport",
+  "Movie",
+  "Other"
+]
+
 export let posts: any = [
   {
     title: "Hendrick Lamar ",

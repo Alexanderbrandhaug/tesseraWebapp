@@ -1,14 +1,19 @@
+import { MenuItem, Select, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Post } from "../DataTypes/Post";
-import { createPosts } from "../Utility/data";
+import { createPosts, eventTypes } from "../Utility/data";
+
+type eventTypesType = typeof eventTypes[number]
 
 export default function NewPostPage() {
 
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState(0);
-  const [eventType, setEventType] = useState("");
+  const [eventType, setEventType] = useState<eventTypesType>(eventTypes[0]);
+  const [date, setDate] = useState<string>("")
+  const [dateError, setDateError] = useState<boolean>(false)
   const [contactPoint, setContactPoint] = useState("");
   const [description, setDescription] = useState("");
   const [isSelling, setIsSelling] = useState<boolean>(false);
@@ -32,17 +37,38 @@ export default function NewPostPage() {
     const active = "True"
     let postType = isSelling ? "sell" : "buy";
 
-    const post = new Post(postID, username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
-    createPosts(post).then( (res: Post[] | string) => {
-        redirect("/feed")
-    }).catch( (res) => {
-        setErrorOcurred("Error: Could not post.");
-        console.log(res)
-    }).finally(() => {
-      setLoadingPost(false)
-    })
+    if(dateError){
+      setErrorOcurred("Error: Date has invalid format. Should be dd/mm/yyyy")
+    }else{
+      const post = new Post(postID, username, title, location, description, createdAt, price, contactPoint, active,  postType, eventType)
+      createPosts(post).then( (res: Post[] | string) => {
+          redirect("/feed")
+      }).catch( (res) => {
+          setErrorOcurred("Error: Could not post.");
+          console.log(res)
+      }).finally(() => {
+        setLoadingPost(false)
+      })
 
-    setLoadingPost(true);
+      setLoadingPost(true);
+    }
+  }
+
+  /**
+   * @effects Checks whether input text has format dd/mm/yyyy
+   * @param e - holds event data
+   */
+  function onDatePickerChanged(e: any){
+    let regex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/
+    let input = e.target.value
+    //If correct day/month/year format we accept the input
+    if(regex.test(input)){
+      setDateError(false)
+      setDate(input)
+    }else{
+      setDateError(true)
+    }
+    
   }
 
   return (
@@ -88,13 +114,14 @@ export default function NewPostPage() {
 
           <label>
             Event type:
-            <input
-              type="text"
-              name="eventType"
-              value={eventType}
-              onChange={(e) => setEventType(e.target.value)}
-              placeholder="Event type"
-            ></input>
+            <Select variant="standard" value={eventType} label="Location" onChange={(e) => setEventType(e.target.value)}>
+              {eventTypes.map((type) => <MenuItem value={type}>{type}</MenuItem>)}
+            </Select>
+          </label>
+
+          <label>
+            Date:
+            <TextField error={dateError} placeholder="dd/mm/yyyy" onChange ={(e) => onDatePickerChanged(e)}/>
           </label>
 
           <label>
