@@ -52,6 +52,7 @@ public class User {
   private List<Post> posts;
 
   @Transient
+  @JsonIgnore
   private Validations validate = new Validations();
 
   @JsonProperty("admin")
