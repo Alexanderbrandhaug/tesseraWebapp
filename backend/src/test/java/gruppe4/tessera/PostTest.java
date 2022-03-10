@@ -32,16 +32,14 @@ public class PostTest {
         String eventType = "concert";
         Integer price = 500;
         boolean showPost = true;
-      //  LocalDateTime creationDate = LocalDate.of(2021, 11, 12, 0,0,0);
+       LocalDate creationDate = LocalDate.of(2021, 11, 12);
         Integer userId = 107;
 
         // User-objekt
-        user = new User(userId, "kulegutten99", "glad i konserter", LocalDate.now().minusDays(50), "img.jpg", false,
-                "passord123", false, null, null);
+        user = new User(userId, "kulegutten99", "glad i konserter", LocalDate.now().minusDays(50), "img.jpg", false, "passord123", false, null, null);
 
         // post-objekt
-      //  post = new Post(postId, title, description, contactPoint, location, postType, eventType, price, showPost,
-        //        creationDate, userId, user, null);
+       post = new Post(postId, title, description, contactPoint, location, postType, eventType, price, showPost, creationDate, userId, userId, user, null);
 
         emptyPost = new Post();
 
