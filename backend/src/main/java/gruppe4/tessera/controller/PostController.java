@@ -1,9 +1,11 @@
 package gruppe4.tessera.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,10 +47,10 @@ public class PostController {
 
     @PostMapping(path = "/post")
     public @ResponseBody String createPost(@RequestParam String title, String description, String contactPoint,
-            String location, String postType, String eventType, int price, String username) {
+            String location, String postType, String eventType, int price, String username, @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")LocalDateTime eventDate) {
        
         Post newPost = new Post();
-        LocalDate localdate = LocalDate.now();
+        LocalDateTime localdate = LocalDateTime.now();  
         newPost.setTitle(title);
         newPost.setDescription(description);
         newPost.setContactPoint(contactPoint);
@@ -58,6 +60,7 @@ public class PostController {
         newPost.setPrice(price);
         newPost.setCreationDate(localdate);
         newPost.setShowPost(true);
+        newPost.setEventDate(eventDate);
         newPost.setUser(userService.getUserByUsername(username));
 
         if (postService.savePost(newPost)) {
