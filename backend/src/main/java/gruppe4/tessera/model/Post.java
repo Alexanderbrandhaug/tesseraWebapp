@@ -43,6 +43,7 @@ public class Post {
     private User user;
 
     @Transient
+    @JsonIgnore
     private Validations validate = new Validations();
 
     public void setTitle (String title) {
