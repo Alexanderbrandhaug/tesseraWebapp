@@ -33,7 +33,7 @@ export let posts: any = [
 
 /**
  * @requires: backend running
- * @returns: Promise returning loaded posts from backend on resolve. 
+ * @returns: Promise returning loaded posts from backend on resolve.
  * Rejects if status-code from backend is not 200.
  */
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
@@ -46,7 +46,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     }
 
     posts = response.data.map((post: any) => {
-      return new Post(post.id, post.username, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+      return new Post(post.id, post.username, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
 
     console.log("Done retrieving posts.");
