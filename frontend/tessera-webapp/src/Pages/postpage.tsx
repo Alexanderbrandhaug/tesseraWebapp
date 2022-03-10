@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
 import { Post } from "../DataTypes/Post";
-import { Transaction } from "../DataTypes/Transaction";
-import { createTransaction, getLoadedPosts, getUser } from "../Utility/data";
+import { getLoadedPosts, getUser, updatePost } from "../Utility/data";
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -12,39 +11,31 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const posts = useOutletContext()
   const [isCreator, setIsCreator] = useState<boolean>(false);
-  const [partner, setPartner] = useState("")
+  const [closer, setCloser] = useState("")
   const [errorMessage, setErrorMessage] = useState("");
 
 
-  function closePost(){
-    let sellerID = 0;
-    let buyerID = 0;
-    let partnerID = 0;
+  async function closePost(){
+    let closerID = 0;
     const postID = post ? post.id : 0;
-    const creatorID = +(localStorage.getItem("userID") ?? 0)
-    getUser(partner).then((result) => {
+    await getUser(closer).then((result) => {
       if (result) {
-        partnerID = result.data.id
+        closerID = result.data.id
       } else {
         setErrorMessage("Could not find user, username does not exist. Please try again. ");
+
       }
     })
-    if (post?.postType === "sell") {
-      sellerID = creatorID
-      buyerID = partnerID
-    } else {
-      sellerID = partnerID
-      buyerID = creatorID
-    }
-    const payload = new Transaction(sellerID, buyerID, postID)
-    createTransaction(payload).then((result) => {
-      if (result) {
-        console.log("Success")
-      }
-    }).catch(err => {
-      setErrorMessage("Something went wrong, please try again. ");
-    })
-    console.log(sellerID)
+    if (closerID != 0 && postID != 0){
+      updatePost(postID, closerID).then((result) => {
+        if (result) {
+          console.log("Success")
+          setErrorMessage("")
+          setCloser("")
+        }
+      }).catch(err => {
+        setErrorMessage("Something went wrong, please try again. ");
+      })}
   }
 
   useEffect(() => {
@@ -96,10 +87,13 @@ export default function PostPage() {
           <p>{post.description}</p>
           <button className = "seeUserButton"onClick={redirect}>See user</button>
           {
-            isCreator ?
+            isCreator && post.active ?
             <div>
               <button className="seeUserButton" onClick={closePost}>Close post</button>
-              <TextField type="text" value={partner} onChange={(e) => setPartner(e.target.value)}></TextField>
+              <TextField type="text" value={closer} onChange={(e) => setCloser(e.target.value)}></TextField>
+              <div className="error">
+              {errorMessage && <div>{errorMessage}</div>}
+              </div>
             </div>
             :
             <>

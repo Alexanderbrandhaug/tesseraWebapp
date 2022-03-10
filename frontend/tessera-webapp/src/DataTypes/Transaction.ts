@@ -13,9 +13,9 @@ class Transaction {
 
   getTransactionData() {
     return {
-      sellerID: this.sellerID,
-      buyerID: this.buyerID,
-      postID: this.postID
+      sellerId: this.sellerID,
+      buyerId: this.buyerID,
+      postId: this.postID
     }
   }
 }
