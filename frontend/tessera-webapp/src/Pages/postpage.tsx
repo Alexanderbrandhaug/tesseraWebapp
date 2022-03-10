@@ -13,7 +13,6 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const posts = useOutletContext()
 
-
   useEffect(() => {
     const pathArr = location.pathname.split('/');
 
