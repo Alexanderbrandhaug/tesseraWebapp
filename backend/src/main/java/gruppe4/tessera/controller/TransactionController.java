@@ -29,17 +29,6 @@ public class TransactionController {
         return transactionService.getAllTransactions();
     }
 
-    @PostMapping(path = "/transaction")
-    public @ResponseBody String sellTransaction(@RequestParam Integer postId, Integer sellerId, Integer buyerId){
-        Transaction newTransaction = new Transaction();
-        newTransaction.setPostId(postId);
-        newTransaction.setSellerId(sellerId);
-        newTransaction.setBuyerId(buyerId);
-
-        if(transactionService.saveTransaction(newTransaction) && postService.disablePost(postId)){   
-            return "Transaction saved";
-        }
-        return "Transaction was not saved";
-    }
+   
 
 }

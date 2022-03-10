@@ -34,6 +34,7 @@ public class Post {
     private int price;
     private boolean showPost;
     private LocalDate creationDate;
+    private Integer closerId;
     @Column(name = "user_id", insertable = false, updatable = false)
     private Integer userId;
 

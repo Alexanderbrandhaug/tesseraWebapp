@@ -19,8 +19,8 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE posts set show_post = false WHERE id = ?1", nativeQuery = true)
-    public Integer updateShowPost(Integer id);
+    @Query(value = "UPDATE posts set show_post = false, closer_id = ?1 WHERE id = ?2 ", nativeQuery = true)
+    public Integer updateShowPost(Integer closer_id, Integer id);
 
 
     

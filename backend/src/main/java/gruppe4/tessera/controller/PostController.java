@@ -66,4 +66,9 @@ public class PostController {
         return "Not created";
     }
 
+    @PostMapping(path = "/posts/")
+    public @ResponseBody String closePost(@RequestParam Integer postId, Integer closerId){
+       postService.disablePost(closerId, postId);
+       return "Post updated";
+    }
 }
