@@ -1,6 +1,8 @@
 package gruppe4.tessera.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
@@ -42,6 +44,7 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
     private User user;
+    private LocalDateTime eventDate;
 
     @Transient
     @JsonIgnore
