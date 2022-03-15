@@ -16,8 +16,8 @@ export default function PostPage() {
 
 
   async function closePost(){
-    let closerID = 0;
-    const postID = post ? post.id : 0;
+    let closerID = null;
+    const postID = post ? post.id : null;
     await getUser(closer).then((result) => {
       if (result) {
         closerID = result.data.id
@@ -26,7 +26,7 @@ export default function PostPage() {
 
       }
     })
-    if (closerID != 0 && postID != 0){
+    if (closerID != null && postID != null){
       updatePost(postID, closerID).then((result) => {
         if (result) {
           console.log("Success")
