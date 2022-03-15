@@ -22,7 +22,7 @@ export default function FeedPage() {
 
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>Feed</h2>
+      {/*<h2>Feed</h2>*/}
 
       <div className="threeColumnFlex">
         <div className="sidebarColumn">
