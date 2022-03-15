@@ -29,7 +29,6 @@ public class UserController {
     @GetMapping(path = "/users")
     @Operation(summary = "Get all registered users")
     public @ResponseBody Iterable<User> getAllUsers() {
-        System.out.println("test");
         return userService.getAllUsers();
     }
 
