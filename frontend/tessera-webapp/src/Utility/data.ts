@@ -2,6 +2,18 @@ import axios from "axios";
 import { Post } from "../DataTypes/Post";
 import { Register } from "../DataTypes/Register";
 
+export const eventTypes: string[] = [
+  "Concert",
+  "Conference",
+  "Circus",
+  "Festival",
+  "Party",
+  "Theatre",
+  "Sport",
+  "Movie",
+  "Other"
+]
+
 export let posts: any = [
   {
     title: "Hendrick Lamar ",
@@ -46,7 +58,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     }
 
     posts = response.data.map((post: any) => {
-      return new Post(post.id, post.username, post.userId, post.title, post.location, post.description, post.creationDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+      return new Post(post.id, post.username, post.userId, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
 
     console.log("Done retrieving posts.");

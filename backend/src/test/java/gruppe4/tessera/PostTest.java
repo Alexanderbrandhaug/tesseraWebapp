@@ -3,6 +3,7 @@ package gruppe4.tessera;
 /* import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,16 +32,14 @@ public class PostTest {
         String eventType = "concert";
         Integer price = 500;
         boolean showPost = true;
-        LocalDate creationDate = LocalDate.of(2021, 11, 12);
+       LocalDate creationDate = LocalDate.of(2021, 11, 12);
         Integer userId = 107;
 
         // User-objekt
-        user = new User(userId, "kulegutten99", "glad i konserter", LocalDate.now().minusDays(50), "img.jpg", false,
-                "passord123", false, null, null);
+        user = new User(userId, "kulegutten99", "glad i konserter", LocalDate.now().minusDays(50), "img.jpg", false, "passord123", false, null, null);
 
         // post-objekt
-        post = new Post(postId, title, description, contactPoint, location, postType, eventType, price, showPost,
-                creationDate, userId, user, null);
+       post = new Post(postId, title, description, contactPoint, location, postType, eventType, price, showPost, creationDate, userId, userId, user, null,null);
 
         emptyPost = new Post();
 
@@ -179,7 +178,7 @@ public class PostTest {
 
    /* @Test
     public void setCreationDate() {
-        LocalDate creationDate = LocalDate.of(2022, 22, 2);
+        LocalDate creationDate = LocalDate.now();
         post.setCreationDate(creationDate);
         assertEquals(post.getCreationDate(), creationDate);
     } */
