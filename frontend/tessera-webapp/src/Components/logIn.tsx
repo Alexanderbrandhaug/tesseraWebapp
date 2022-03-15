@@ -45,7 +45,9 @@ export default function LogIn(props: LogInProps) {
       evt.preventDefault();
       getUser(name).then((result) => {
         if (result && result.data.password === password) {
-          localStorage.setItem('user', result.data.username);
+          localStorage.setItem('username', result.data.username);
+          localStorage.setItem('userID', result.data.id);
+          localStorage.setItem('isAdmin', result.data.admin);
           resetName();
           navigate("/feed");
           window.location.reload();
