@@ -81,9 +81,9 @@ public class PostController {
        return "Post updated";
     }
 
-    @GetMapping(path = "/posts/disabled/{closerID}")
-    @Operation(summary = "Get all closed post where the user ID has been the buying part of the deal")
-    public @ResponseBody Iterable<Post> getAllDisabledPostsFromUser(@PathVariable Integer closerID){
-        return postService.getAllDisabledPostByUserID(closerID);
+    @GetMapping(path = "/posts/transactions/{userID}")
+    @Operation(summary = "Get all closed post where the user ID has been the buying or selling part of the deal")
+    public @ResponseBody Iterable<Post> getAllDisabledPostsFromUser(@PathVariable Integer userID){
+        return postService.getAllDisabledPostByUserID(userID);
     }
 }
