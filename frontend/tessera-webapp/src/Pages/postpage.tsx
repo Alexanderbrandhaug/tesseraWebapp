@@ -23,8 +23,9 @@ export default function PostPage() {
         closerID = result.data.id
       } else {
         setErrorMessage("Could not find user, username does not exist. Please try again. ");
-
       }
+    }).catch(reason => {
+      setErrorMessage("Could not get user: " + reason);
     })
     if (closerID != null && postID != null){
       updatePost(postID, closerID).then((result) => {
