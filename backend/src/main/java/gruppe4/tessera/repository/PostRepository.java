@@ -22,6 +22,11 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
     @Query(value = "UPDATE posts set show_post = false, closer_id = ?1 WHERE id = ?2 ", nativeQuery = true)
     public Integer updateShowPost(Integer closer_id, Integer id);
 
+    @Transactional
+    @Modifying
+    @Query(value = "SELECT * FROM posts WHERE closer_id = ?1 ", nativeQuery = true)
+    public Iterable<Post> getAllDisabledPostByUserID(Integer closer_ID);
+
 
     
 
