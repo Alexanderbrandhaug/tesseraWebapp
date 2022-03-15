@@ -2,8 +2,6 @@ package gruppe4.tessera.service;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import gruppe4.tessera.model.Post;
@@ -34,11 +32,14 @@ public class PostService {
         return true;
     }
 
-    public boolean disablePost(Integer closerId, Integer postId){
-        if(postRepository.updateShowPost(closerId,postId) != 0){
+    public boolean disablePost(Integer closerID, Integer postID){
+        if(postRepository.updateShowPost(closerID,postID) != 0){
             return true;
         }
         return false;
        
+    }
+    public Iterable<Post> getAllDisabledPostByUserID(Integer closerID){
+        return postRepository.getAllDisabledPostByUserID(closerID);
     }
 }

@@ -36,9 +36,10 @@ public class Post {
     private int price;
     private boolean showPost;
     private LocalDate creationDate;
-    private Integer closerId;
+    @Column(name = "closer_id")
+    private Integer closerID;
     @Column(name = "user_id", insertable = false, updatable = false)
-    private Integer userId;
+    private Integer userID;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

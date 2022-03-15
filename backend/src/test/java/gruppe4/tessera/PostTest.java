@@ -102,7 +102,7 @@ public class PostTest {
 
     @Test
     public void getUserId() {
-        assertEquals(post.getUserId(), 107);
+        assertEquals(post.getUserID(), 107);
     }
 
     // @Test
@@ -113,7 +113,7 @@ public class PostTest {
 
     // SETTERS -----
     @Test
-    public void setId() {
+    public void setID() {
         Integer postId = 124325;
         post.setId(postId);
         assertEquals(post.getId(), postId);
@@ -186,8 +186,8 @@ public class PostTest {
     @Test
     public void setUserId() {
         Integer userId = 70;
-        post.setUserId(userId);
-        assertEquals(post.getUserId(), userId);
+        post.setUserID(userId);
+        assertEquals(post.getUserID(), userId);
     }
 
     // @Test

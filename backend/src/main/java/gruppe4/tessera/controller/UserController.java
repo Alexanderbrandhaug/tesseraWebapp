@@ -41,6 +41,7 @@ public class UserController {
     }
 
     @GetMapping(path ="/user")
+    @Operation(summary = "Fetch a user by the user ID")
     public @ResponseBody Optional<User> getUserById(@Parameter(description = "username of the user to be found")
     @RequestParam Integer id) {
         return userService.getUserById(id);
