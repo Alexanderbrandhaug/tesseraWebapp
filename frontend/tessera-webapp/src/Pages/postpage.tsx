@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
@@ -87,11 +87,11 @@ export default function PostPage() {
           <p>Created at: {post.createdAt}</p>
           <p>Beskrivelse</p>
           <p>{post.description}</p>
-          <button className = "seeUserButton"onClick={redirect}>See user</button>
+          <Button variant="contained" onClick={redirect} >See user</Button>
           {
             isCreator && post.active ?
-            <div>
-              <button className="seeUserButton" onClick={closePost}>Close post</button>
+            <div className="closePostContainer">
+              <Button className="closePostButton" variant="outlined" onClick={closePost}>Close post</Button>
               <TextField type="text" value={closer} onChange={(e) => setCloser(e.target.value)}></TextField>
               <div className="error">
               {errorMessage && <div>{errorMessage}</div>}
@@ -101,6 +101,10 @@ export default function PostPage() {
             <>
             </>
           }
+          { !post.active ?
+          <div>
+            Post has been closed
+          </div> : <></>}
         </body>
       </div>
       :

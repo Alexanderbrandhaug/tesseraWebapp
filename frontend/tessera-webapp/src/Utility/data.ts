@@ -115,7 +115,7 @@ export function createUser(register: Register) {
 export function updatePost(postID: number, closerID: number) {
   return new Promise((resolve, reject) => {
     const data = {params: {postId: postID, closerId: closerID}, headers: {"Content-Type": "application/json"}}
-    axios.post("http://localhost:8080/tessera/api/transaction/",{}, data).then((response) => {
+    axios.post("http://localhost:8080/tessera/api/posts/",{}, data).then((response) => {
       if(response.status !== 200){
         reject ("Invalid status-code: " + response.status)
       }
