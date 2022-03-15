@@ -13,7 +13,6 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const posts = useOutletContext()
 
-
   useEffect(() => {
     const pathArr = location.pathname.split('/');
 
@@ -34,6 +33,7 @@ export default function PostPage() {
   }
 
   console.log("Posted by user: " + post?.username)
+  console.log(post);
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -53,7 +53,8 @@ export default function PostPage() {
         <body>
           <p>Location: {post.location}</p>
           <p>Price: {post.price}</p>
-          <p>Contact {post.contactPoint}</p>
+          <p>Date: {post.eventDate}</p>
+          <p>Contact: {post.contactPoint}</p>
           <p>Created at: {post.createdAt}</p>
           <p>Beskrivelse</p>
           <p>{post.description}</p>

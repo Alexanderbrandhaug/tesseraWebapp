@@ -50,7 +50,7 @@ public class PostController {
             String location, String postType, String eventType, int price, String username,@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime eventDate) {
        
         Post newPost = new Post();
-        LocalDate localdate = LocalDate.now();
+        LocalDate localdate = LocalDate.now();  
         newPost.setTitle(title);
         newPost.setDescription(description);
         newPost.setContactPoint(contactPoint);
