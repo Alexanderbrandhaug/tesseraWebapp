@@ -28,6 +28,9 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
     public Iterable<Post> getAllDisabledPostByUserID(Integer closer_ID);
 
 
-    
+    @Transactional
+    @Modifying
+    @Query(value = "SELECT * FROM posts WHERE (user_id = ?1 OR closer_id = ?1) AND show_post = false", nativeQuery = true)
+    public Iterable<Post> getTransactionnumberByUserID(Integer user_ID);
 
 }
