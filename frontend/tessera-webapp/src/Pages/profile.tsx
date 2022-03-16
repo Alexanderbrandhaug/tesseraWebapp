@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Tally from "../Components/Tally";
 import UserTransactionList from "./ProfileComponents/UserTransactionList";
+import { useSearchParams } from "react-router-dom";
+import { getUser } from "../Utility/data";
 
 export default function ProfilePage() {
   const [userID, setUserID] = useState<number>(0)
@@ -17,6 +18,20 @@ export default function ProfilePage() {
       setUserID(id)
     }
   }, [])
+
+  const [username, setUsername] = useState(localStorage.getItem("username") ?? "");
+  const [description, setDescription] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function getDescription() {
+    getUser(username).then(response => {
+      if (response) {
+        setDescription(response.data.description)
+      } else {
+        setErrorMessage("Cannot find user. ")
+      }
+    })
+  } 
 
   return (
     <div>
