@@ -20,14 +20,11 @@ export default function ProfilePage() {
 
   const [username, setUsername] = useState(localStorage.getItem("username") ?? "");
   const [description, setDescription] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getUser(username).then(response => {
       if (response) {
         setDescription(response.data.description)
-      } else {
-        setErrorMessage("Cannot find user. ")
       }
     })
   }, [])
@@ -35,11 +32,13 @@ export default function ProfilePage() {
   return (
     <main>
     <div>
+      <div className="profileName">
       <h2>Username: {username}</h2>
       <h2>ID: {userID} </h2>
       <header >
         {description}
       </header>
+      </div>
       <UserTransactionList userID={userID}/>
     </div>
     </main>

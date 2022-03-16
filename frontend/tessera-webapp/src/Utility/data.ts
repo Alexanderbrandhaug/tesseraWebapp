@@ -126,5 +126,6 @@ export function updatePost(postID: number, closerID: number) {
   })
 }
 
+export function retrieveUserPosts(userID: number) {
 
-
+}
