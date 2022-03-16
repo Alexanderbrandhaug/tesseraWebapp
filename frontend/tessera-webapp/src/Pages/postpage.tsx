@@ -14,7 +14,6 @@ export default function PostPage() {
   const [closer, setCloser] = useState("")
   const [errorMessage, setErrorMessage] = useState("");
 
-
   async function closePost(){
     let closerID = null;
     const postID = post ? post.id : null;
