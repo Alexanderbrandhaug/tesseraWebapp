@@ -46,7 +46,7 @@ function App() {
         }}
       >
         <Link to="/feed">Feed</Link> |{" "}
-        <Link to="/profile">Profile</Link>|{" "}
+        <Link to={"/profile/" + localStorage.getItem("userID")}>Profile</Link>|{" "}
         <button type="button" onClick={handleLogOut}>
           Log Out
         </button>
