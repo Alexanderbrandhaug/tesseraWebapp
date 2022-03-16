@@ -42,4 +42,13 @@ public class PostService {
     public Iterable<Post> getAllDisabledPostByUserID(Integer closerID){
         return postRepository.getAllDisabledPostByUserID(closerID);
     }
+
+    public Integer getNumberOfTransactionsByUserID (Integer user_ID) {
+        Iterable<Post> iterable = postRepository.getTransactionnumberByUserID(user_ID);
+        Integer count = 0;
+        for (Post post : iterable) {
+            count++;
+        }
+        return count;
+    }
 }
