@@ -28,7 +28,15 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
-    public Optional<User> getUserById(Integer id){
-        return userRepository.findById(id);
+    public User getUserById(Integer id){
+        return userRepository.findUserById(id);
+    }
+
+    public Boolean editUserByID(Integer userID, String username, String password) {
+        User user = getUserById(userID);
+        user.setUsername(username);
+        user.setPassword(password);
+        userRepository.save(user);
+        return true;
     }
 }

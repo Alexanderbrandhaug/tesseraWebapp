@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,7 +42,7 @@ public class UserController {
 
     @GetMapping(path ="/user")
     @Operation(summary = "Fetch a user by the user ID")
-    public @ResponseBody Optional<User> getUserById(@Parameter(description = "username of the user to be found")
+    public @ResponseBody User getUserById(@Parameter(description = "username of the user to be found")
     @RequestParam Integer id) {
         return userService.getUserById(id);
     }
@@ -65,4 +66,14 @@ public class UserController {
         }
         return "Not created";
     }
+
+    @PutMapping(path = "/user")
+    @Operation(summary = "update user's username and/or password")
+    public @ResponseBody boolean editUserByID(@RequestParam Integer userID, String username, String password) {
+        if (userService.editUserByID(userID, username, password)) {
+            return true;
+        }
+        return false;
+    }
+
 }
