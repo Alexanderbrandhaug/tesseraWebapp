@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import UserTransactionList from "./ProfileComponents/UserTransactionList";
-import { useSearchParams } from "react-router-dom";
 import { getUser } from "../Utility/data";
+import UserTransactionList from "./ProfileComponents/UserTransactionList";
 
 export default function ProfilePage() {
   const [userID, setUserID] = useState<number>(0)
@@ -23,7 +22,7 @@ export default function ProfilePage() {
   const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function getDescription() {
+  useEffect(() => {
     getUser(username).then(response => {
       if (response) {
         setDescription(response.data.description)
@@ -31,14 +30,18 @@ export default function ProfilePage() {
         setErrorMessage("Cannot find user. ")
       }
     })
-  } 
+  }, [])
 
   return (
+    <main>
     <div>
-      <h2>Profile</h2>
+      <h2>Username: {username}</h2>
       <h2>ID: {userID} </h2>
-
+      <header >
+        {description}
+      </header>
       <UserTransactionList userID={userID}/>
     </div>
+    </main>
   );
 }
