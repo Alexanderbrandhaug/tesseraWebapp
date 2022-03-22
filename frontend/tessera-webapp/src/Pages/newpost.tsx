@@ -97,6 +97,7 @@ export default function NewPostPage() {
 
   return (
     <main className="newPostPage">
+      
       <h2>New Post</h2>
       {
         loadingPost ? 
@@ -105,7 +106,7 @@ export default function NewPostPage() {
         </div> 
         :
         <div>
-          <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
+           <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
           <label>
             Selling (checked)/Buying (unchecked)
             <input
