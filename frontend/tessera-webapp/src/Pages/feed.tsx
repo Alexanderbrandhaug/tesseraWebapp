@@ -10,10 +10,8 @@ export default function FeedPage() {
 
   //Retrieve posts from backend
   useEffect(() => {
-    console.log("RUNNING USEEFFECT IN FEED")
     retrievePosts.then((res: Post[]) => {
-      console.log("Post-page has been updated!")
-      console.log(res.length)
+      console.log("Loaded " + res.length + " posts.")
       setPosts(res)
     }).catch(message => {
       console.log("Error: " + message);
@@ -57,7 +55,7 @@ function Sidebar() {
 
   function redirect() {
     navigate("/newpost")
-}
+  }
 
 
   return (
@@ -67,7 +65,5 @@ function Sidebar() {
       <label><input type="checkbox" defaultChecked={true} /> Selling</label>
       <label><input type="checkbox" defaultChecked={true} /> Buying</label>
     </div>
-
-
   )
 }

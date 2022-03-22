@@ -15,9 +15,11 @@ class Post {
     active: string;
     postType: string;
     eventType: string;
+    closerID: number | null;
+    showPost: boolean;
 
 
-    constructor(id: number, username: string, userID: number, title: string, location: string, description: string, createdAt: string, eventDate: string, price: number,  contactPoint: string, active: string, postType: string, eventType: string){
+    constructor(id: number, username: string, userID: number, title: string, location: string, description: string, createdAt: string, eventDate: string, price: number,  contactPoint: string, active: string, postType: string, eventType: string, closerID: number | null, showPost: boolean){
         this.id = id;
         this.username = username;
         this.userID = userID;
@@ -31,6 +33,8 @@ class Post {
         this.active = active;
         this.postType = postType;
         this.eventType = eventType;
+        this.closerID = closerID;
+        this.showPost = showPost;
     }
 
     /**

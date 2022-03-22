@@ -20,12 +20,16 @@ code {
     --main-bg-color: #5899ad;
     --colour--two: #d3e0e4;
     --colour--three: #8badb8;
+    --buying-color: #648FFF;
+    --selling-color: #FE6100;
+    --deactivated-color:  #a1a1a1;
 }
 
 .button {
     background-color: var(--colour--three);
     border-radius: 10px;
 }
+
 
 /* FEEDPAGE */
 .threeColumnFlex {
@@ -154,6 +158,26 @@ code {
 }
 
 /* PROFILE PAGE */
+
+.profileContainer {
+    margin: auto;
+    margin-bottom: 60px;
+    width: 500px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.profileContent {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.subHeader {
+    color:rgb(117, 117, 117);
+    margin-bottom: 0px;
+}
 
 .profileName {
     margin: flex;
@@ -366,4 +390,50 @@ code {
     flex-direction: column;
     justify-items: center;
     align-items: center;
+}
+
+
+
+
+/* TRANSACTION LISTS */
+#userTransactionList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.postListElement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 300px;
+    width: 100%;
+}
+
+.postListElement:hover {
+    cursor: pointer;
+}
+
+.buyingMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--buying-color);
+    margin-right: 8px;
+}
+
+.sellingMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--selling-color);
+    margin-right: 8px;
+}
+
+.deactivatedMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--deactivated-color);
+    margin-right: 8px;
 }

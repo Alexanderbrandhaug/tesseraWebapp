@@ -51,12 +51,14 @@ export default function NewPostPage() {
 
     const createdAt = "0"
     const active = "True"
-    let postType = isSelling ? "sell" : "buy";
+    let postType = isSelling ? "Selling" : "Buying";
+    let closerID = null;
+    let showPost = true
 
     if(dateError || timeError){
       setErrorOcurred("Error: Time or Date has invalid format. Should be yyyy-mm-dd and HH:MM")
     }else{
-      const post = new Post(postID, username, userID, title, location, description, createdAt, date + "T" + time, price, contactPoint, active,  postType, eventType)
+      const post = new Post(postID, username, userID, title, location, description, createdAt, date + "T" + time, price, contactPoint, active,  postType, eventType, closerID, showPost)
       createPosts(post).then( (res: Post[] | string) => {
           redirect("/feed")
       }).catch( (res) => {

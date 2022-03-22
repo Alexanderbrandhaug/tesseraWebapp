@@ -32,17 +32,15 @@ export default function ProfilePage() {
   }, [])
 
   return (
-    <main>
-    <div>
-      <div className="profileName">
-      <h2>Username: {username}</h2>
-      <h2>ID: {userID} </h2>
-      <header >
-        {description}
-      </header>
-      </div>
-      <UserTransactionList userID={userID} username={"username"}/>
-    </div>
-    </main>
+    <>
+      <div className="profileContainer">
+        <div className="profileContent">
+          <h1>{username} (ID: {userID})</h1>
+          <p className="subHeader">Description</p>
+          <p>{description}</p>
+        </div>
+      </div> 
+      <UserTransactionList userID={userID} />
+    </>
   );
 }
