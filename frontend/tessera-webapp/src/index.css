@@ -90,9 +90,10 @@ code {
 }
 
 .postHeader {
-  display: flex;
+  
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 .profileInfo {
@@ -109,6 +110,12 @@ code {
   border-radius: 0px;
   margin-right: 100px;
   padding: 10px;
+  text-align: center;
+}
+
+.desc {
+    width: auto;
+    background-color: var(--colour--three);
 }
 
 .postComponent {

@@ -43,21 +43,24 @@ export default function PostPage() {
       <div>
           
         <header className="postHeader">
-          <h1> {post.title}</h1>
+          <h1 className="title"> {post.title}</h1>
           <div className="profileInfo"> 
             <img alt='user-profile' src={userprofile} className='userprofile-image'/>
             <p> {post.username}</p>
             
           </div>
         </header>
-        <body>
+        <body> 
+          
           <p>Location: {post.location}</p>
           <p>Price: {post.price}</p>
           <p>Date: {post.eventDate}</p>
           <p>Contact: {post.contactPoint}</p>
           <p>Created at: {post.createdAt}</p>
-          <p>Beskrivelse</p>
+         
+          <p className="description">Beskrivelse</p>
           <p>{post.description}</p>
+    
           <button className = "seeUserButton"onClick={redirect}>See user</button>
         </body>
       </div>
