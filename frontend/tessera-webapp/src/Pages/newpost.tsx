@@ -39,7 +39,7 @@ export default function NewPostPage() {
   function redirect(path: string) {
     navigate(path)
   }
-
+  
   /**
    * @requires date and time fields correctly formatted and connection to backend
    * @effects
@@ -59,7 +59,7 @@ export default function NewPostPage() {
 
     const createdAt = "0"
     const active = "True"
-    let postType = isSelling ? "sell" : "buy";
+    let postType = isSelling ? "Selling" : "Buying";
 
     if(dateError || timeError){
       setErrorOcurred("Error: Time or Date has invalid format. Should be yyyy-mm-dd and HH:MM")

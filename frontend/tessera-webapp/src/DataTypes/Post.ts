@@ -16,7 +16,6 @@ class Post {
     postType: string;
     eventType: string;
 
-
     constructor(id: number, username: string, userID: number, title: string, location: string, description: string, createdAt: string, eventDate: string, price: number,  contactPoint: string, active: string, postType: string, eventType: string){
         this.id = id;
         this.username = username;
