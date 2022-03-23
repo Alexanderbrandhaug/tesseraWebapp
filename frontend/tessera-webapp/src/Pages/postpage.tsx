@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
@@ -14,6 +14,7 @@ export default function PostPage() {
   const [closer, setCloser] = useState("")
   const [errorMessage, setErrorMessage] = useState("");
 
+
   async function closePost(){
     let closerID = null;
     const postID = post ? post.id : null;
@@ -23,8 +24,8 @@ export default function PostPage() {
       } else {
         setErrorMessage("Could not find user, username does not exist. Please try again. ");
       }
-    }).catch(reason => {
-      setErrorMessage("Could not get user: " + reason);
+    }).catch(() => {
+      setErrorMessage("Could not find user, username does not exist. Pleasy try again.");
     })
     if (closerID != null && postID != null){
       updatePost(postID, closerID).then((result) => {
@@ -32,6 +33,7 @@ export default function PostPage() {
           console.log("Success")
           setErrorMessage("")
           setCloser("")
+          window.location.reload();
         }
       }).catch(err => {
         setErrorMessage("Something went wrong, please try again. ");
@@ -71,41 +73,46 @@ export default function PostPage() {
       <div>
 
         <header className="postHeader">
-          <h1> {post.title}</h1>
-          <div className="profileInfo">
-            <img alt='user-profile' src={userprofile} className='userprofile-image'/>
-            <p> {post.username}</p>
 
+          <div className="profileInfo">
+
+            <h1 className="title"> {post.title}</h1>
+            <p> {post.username}</p>
           </div>
         </header>
         <body>
-          <p>Location: {post.location}</p>
-          <p>Price: {post.price}</p>
-          <p>Date: {post.eventDate}</p>
-          <p>Contact: {post.contactPoint}</p>
-          <p>Created at: {post.createdAt}</p>
-          <p>Beskrivelse</p>
-          <p>{post.description}</p>
-          <Button variant="contained" onClick={redirect} >See user</Button>
-          {
-            isCreator && post.active ?
-            <div className="closePostContainer">
-              <Button className="closePostButton" variant="outlined" onClick={closePost}>Close post</Button>
-              <TextField type="text" value={closer} onChange={(e) => setCloser(e.target.value)}></TextField>
-              <div className="error">
-              {errorMessage && <div>{errorMessage}</div>}
-              </div>
+          <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+          <p className="created">Created {post.createdAt}</p>
+          <p> {post.price} kr</p>
+          <p className="contact">{post.contactPoint}</p>
+            <div className="description">
+          <p>[{post.description}]</p>
+            </div>
+            <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+            {isCreator && post?.active ?
+            <div>
+            <Button variant="contained" onClick={closePost} > Close Post</Button >
+            <label>
+            Title:
+            <input
+              type="text"
+              name="closer"
+              value={closer}
+              onChange={(e) => setCloser(e.target.value)}
+              placeholder="Username"
+            />
+          </label>
+          <div className="error">
+            {errorMessage && <div>{errorMessage}</div>}
+          </div>
             </div>
             :
-            <>
-            </>
+            <></>
           }
-          { !post.active ?
-          <div>
-            Post has been closed
-          </div> : <></>}
+          {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
         </body>
       </div>
+
       :
       <div>
         No post found at path {location.pathname} :(

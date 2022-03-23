@@ -17,10 +17,12 @@ export default function PostComponent(props: PostProps){
 
   return (
     <div className="postComponent" onClick = {redirect}>
-      <p>{props.post.createdAt}</p>
-      <p>{props.post.postType}</p>
-      <p>{props.post.title}, {props.post.location}</p>
-      <p>{props.post.price} kr</p>
-    </div>
-  );
-}
+
+      <p className="title"> {props.post.title}, {props.post.location}</p>
+      <p className="created"> {props.post.createdAt}  &emsp;  {props.post.postType}</p>
+      <p className="price"> {props.post.price} kr</p>
+      
+    </div> 
+  ); 
+
+} 
