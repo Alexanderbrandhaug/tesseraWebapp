@@ -396,6 +396,11 @@ code {
 
 
 /* TRANSACTION LISTS */
+#userTransactionContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 #userTransactionList {
     display: flex;
     flex-direction: row;

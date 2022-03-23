@@ -7,6 +7,8 @@ export default function ProfilePage() {
   const location = useLocation();
   const [userID, setUserID] = useState<number>(0)
 
+  const isLoggedInUser: boolean = +(localStorage.getItem("userID") ?? 0) === userID;
+
   /**
    * Retrieves userID from URL
    */
@@ -40,7 +42,7 @@ export default function ProfilePage() {
           <p>{description}</p>
         </div>
       </div> 
-      <UserTransactionList userID={userID} />
+      <UserTransactionList userID={userID} hideTransactions={!isLoggedInUser}/>
     </>
   );
 }

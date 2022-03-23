@@ -7,6 +7,7 @@ import { posts, retrievePostsClosedWithUser, retrieveUserPosts } from "../../Uti
 
 interface UserTransactionListProps {
     userID: number, 
+    hideTransactions: boolean
 }
 
 /**
@@ -21,8 +22,6 @@ export default function UserTransactionList(props: UserTransactionListProps){
     const [activePosts, setActivePosts] = useState<Post[]>([]);
     const [closedPosts, setClosedPosts] = useState<Post[]>([]);
    
-    const isLoggedInUser: boolean = +(localStorage.getItem("userID") ?? 0) === props.userID;
-
     const navigate = useNavigate();
 
     function redirect(postID: number) {
@@ -57,31 +56,31 @@ export default function UserTransactionList(props: UserTransactionListProps){
     }
 
     return (
-        <div id="userTransactionList">
-            {errorMessage !== "" ? <h1 color="red">{errorMessage}</h1> : <></>}
-            <div>
-                <h3>Active Posts: {activePosts.length}</h3>
-                {isLoggedInUser ? 
-                <List sx={{ width: '100%', maxWidth: 400 }}>
-                    {activePosts.map((post: Post) => <PostListElement key={post.id} post={post} userID={props.userID} redirect={redirect} />)}
-                </List>
-                :
-                <></>
-                }
-                
-                
-            </div>
+        <div id="userTransactionContainer">
+            <div id="userTransactionList">
+                <div>
+                    <h3>Active Posts: {activePosts.length}</h3>
+                    {!props.hideTransactions ? 
+                    <List sx={{ width: '100%', maxWidth: 400 }}>
+                        {activePosts.map((post: Post) => <PostListElement key={post.id} post={post} userID={props.userID} redirect={redirect} />)}
+                    </List>
+                    :
+                    <></>
+                    } 
+                </div>
 
-            <div>
-                <h3>Closed Transactions: {closedPosts.length}</h3>
-                {isLoggedInUser ?
-                <List sx={{ width: '100%', maxWidth: 400 }} >
-                    {closedPosts.map((post: Post) => <ClosedPostListElement key={post.id} post={post} userID={props.userID} redirect={redirect} />)}
-                </List>
-                : 
-                <></>
-                }                
+                <div>
+                    <h3>Closed Transactions: {closedPosts.length}</h3>
+                    {!props.hideTransactions ?
+                    <List sx={{ width: '100%', maxWidth: 400 }} >
+                        {closedPosts.map((post: Post) => <ClosedPostListElement key={post.id} post={post} userID={props.userID} redirect={redirect} />)}
+                    </List>
+                    : 
+                    <></>
+                    }                
+                </div>
             </div>
+            {errorMessage !== "" ? <h1 className="error">{errorMessage}</h1> : <></>}
         </div>
     )
 
