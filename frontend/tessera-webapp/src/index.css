@@ -20,6 +20,7 @@ code {
   --main-bg-color: #5899ad;
   --colour--two: #d3e0e4;
   --colour--three: #8badb8;
+  --title-colour: rgb(60, 76, 97);
 }
 
 .button {
@@ -85,21 +86,38 @@ code {
 }
 
 .userprofile-image {
-  height: 50px;
-  margin-top: 30%;
+  height: 40px;
+  margin-left: 45%;
+}
+
+.userprofile-image:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+}
+
+.location {
+    font-style: italic;
+}
+
+.contact {
+    text-decoration: underline;
+    color: var(--title-colour);
+}
+
+.contact:hover{
+    cursor:default;
 }
 
 .postHeader {
-  
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
 
-.profileInfo {
+/*.profileInfo {
   display: flex;
   align-items: center;
-}
+} */
 
 .column-3 {
   width: 350px;
@@ -118,6 +136,15 @@ code {
     background-color: var(--colour--three);
 }
 
+.description {
+    margin: auto;
+}
+
+.postInfo {
+    border-style: solid;
+    border-color: #cbced1;
+}
+
 .postComponent {
   background-color: var(--colour--two);
   border-style: initial;
@@ -130,6 +157,7 @@ code {
 .postComponent:hover {
   cursor: pointer;
   background-color: var(--colour--three);
+  transform: scale(1.05);
 } 
 
 /*POST COMPONENTS */

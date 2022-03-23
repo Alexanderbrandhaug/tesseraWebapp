@@ -3,9 +3,8 @@ import { useLocation, useOutletContext,  } from "react-router-dom";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, posts } from "../Utility/data";
 import { useNavigate } from "react-router-dom";
-import { usePosts } from "../App";
 import userprofile from "../assets/images/user-profile.png";
-import { isPropertySignature } from "typescript";
+import { Avatar, Popover, Typography } from "@mui/material";
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -43,27 +42,26 @@ export default function PostPage() {
       <div>
           
         <header className="postHeader">
-          <h1 className="title"> {post.title}</h1>
+         
           <div className="profileInfo"> 
-            <img alt='user-profile' src={userprofile} className='userprofile-image'/>
-            <p> {post.username}</p>
             
+            <h1 className="title"> {post.title}</h1>
+            <p> {post.username}</p>
           </div>
         </header>
         <body> 
-          
-          <p>Location: {post.location}</p>
-          <p>Price: {post.price}</p>
-          <p>Date: {post.eventDate}</p>
-          <p>Contact: {post.contactPoint}</p>
-          <p>Created at: {post.createdAt}</p>
-         
-          <p className="description">Beskrivelse</p>
-          <p>{post.description}</p>
-    
-          <button className = "seeUserButton"onClick={redirect}>See user</button>
+          <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+          <p className="created">Created {post.createdAt}</p>  
+          <p> {post.price} kr</p>  
+          <p className="contact">{post.contactPoint}</p>
+            <div className="description">
+          <p>[{post.description}]</p>
+            </div>
+            <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+          {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
         </body>
       </div>
+
       :
       <div>
         No post found at path {location.pathname} :(
