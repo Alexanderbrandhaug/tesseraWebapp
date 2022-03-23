@@ -20,6 +20,7 @@ code {
   --main-bg-color: #5899ad;
   --colour--two: #d3e0e4;
   --colour--three: #8badb8;
+  --title-colour: rgb(60, 76, 97);
 }
 
 .button {
@@ -53,19 +54,13 @@ code {
     overflow: hidden;
 }
 
-.postComponent {
-    background-color: white;
-    border-style: solid;
-    border-radius: 10px;
-}
-
-.postComponent:hover {
+/*.postComponent:hover {
     box-shadow: 5px 5px 5px;
   background-color: var(--colour--three);
   cursor: pointer;
   border-radius: 10px;
   margin: 5px;
-}
+} */
 
 .sidebar {
   display: flex;
@@ -91,20 +86,38 @@ code {
 }
 
 .userprofile-image {
-  height: 50px;
-  margin-top: 30%;
+  height: 40px;
+  margin-left: 45%;
+}
+
+.userprofile-image:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+}
+
+.location {
+    font-style: italic;
+}
+
+.contact {
+    text-decoration: underline;
+    color: var(--title-colour);
+}
+
+.contact:hover{
+    cursor:default;
 }
 
 .postHeader {
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
-.profileInfo {
+/*.profileInfo {
   display: flex;
   align-items: center;
-}
+} */
 
 .column-3 {
   width: 350px;
@@ -112,22 +125,59 @@ code {
   overflow: hidden;
   background-color: var(--colour--two);
   border-style: initial;
-  border-radius: 10px;
+  border-radius: 0px;
   margin-right: 100px;
   padding: 10px;
+  text-align: center;
+}
+
+.desc {
+    width: auto;
+    background-color: var(--colour--three);
+}
+
+.description {
+    margin: auto;
+}
+
+.postInfo {
+    border-style: solid;
+    border-color: #cbced1;
 }
 
 .postComponent {
   background-color: var(--colour--two);
   border-style: initial;
-  border-radius: 10px;
+  border-radius: 0px;
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
+  
 }
 
 .postComponent:hover {
-  box-shadow: 5px 5px 5px;
   cursor: pointer;
+  background-color: var(--colour--three);
+  transform: scale(1.05);
+} 
+
+/*POST COMPONENTS */
+.title {
+    font-style: initial;
+    font-size: larger;
+    color: rgb(60, 76, 97);
+    text-align: center;
+}
+
+.created {
+    font-style: italic;
+    text-align: center;
+    font-size: smaller;
+    padding: 0%;
+}
+
+.price {
+    font-style:initial;
+    text-align: center;
 }
 
 .seeUserButton {
@@ -137,18 +187,18 @@ code {
 }
 
 .postComponent:active {
-    background-color: black;
+    background-color: var(--main-bg-color);
 }
 
 /* NEW POST PAGE */
 
 .newPostForm {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   display: flex;
   flex-direction: column;
   background-color: var(--colour--two);
-  border-radius: 10px;
+  border-radius: 0px;
   width: 400px;
   padding: 10px;
   margin: auto;
