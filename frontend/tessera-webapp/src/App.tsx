@@ -1,9 +1,21 @@
 import { useState } from "react";
-import { Link, Outlet, useOutletContext } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import './App.css';
 import { Post } from "./DataTypes/Post";
 import LogInPage from "./Pages/logInPage";
 import RegisterPage from "./Pages/registerPage";
+import Button from '@mui/material/Button';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@material-ui/core/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+
+
+
+
 
 
 function App() {
@@ -37,22 +49,30 @@ function App() {
   }
 
   return (
+    
     <div>
-      <h1>Tessera</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/feed">Feed</Link> |{" "}
-        <Link to="/profile">Profile</Link>|{" "}
-        <button type="button" onClick={handleLogOut}>
-          Log Out
-        </button>
-
-      </nav>
-      <Outlet context={{posts, setPosts}}/>
+      <AppBar position="static" style={{ background: '#5899ad' , paddingTop:'25px'}}>
+      <Typography
+            variant="h2"
+            noWrap
+            component="div"
+            sx={{ mr: 2, mb:-10, paddingBottom:2, ml:10, display: { xs: 'none', md: 'flex' } }}
+          >
+            Tessera
+          </Typography>
+          <Box ml={70} mb={7}>
+            <Link href="/feed"  style={{ color: 'white' , fontSize: '43px' }} underline="none">Marketplace </Link>
+            </Box>
+            <Box ml={120} mt={-14}>
+            <Link href="/profile" style={{ color: 'white', fontSize: '43px' }} underline="none"  >Profile </Link>
+            </Box>
+          <Box ml={220} mt={-8}>
+          <div>Log out</div>
+          <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }} fontSize="large" onClick={handleLogOut}>
+          </LogoutIcon>
+          </Box>     
+    </AppBar>
+    <Outlet context={{posts, setPosts}}/>
     </div>
   );
 }
