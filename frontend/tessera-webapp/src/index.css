@@ -149,9 +149,11 @@ code {
   flex-direction: column;
   background-color: var(--colour--two);
   border-radius: 10px;
-  width: 400px;
+  width: 500px;
   padding: 10px;
   margin: auto;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .newPostForm textarea {
@@ -333,3 +335,10 @@ code {
     justify-items: center;
     align-items: center;
 }
+.createPostTitle{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+

@@ -3,6 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Post } from "../DataTypes/Post";
 import { createPosts, eventTypes } from "../Utility/data";
+import Checkbox from '@mui/material/Checkbox';
+import Radio from '@mui/material/Radio';
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+
+
 
 type eventTypesType = typeof eventTypes[number]
 
@@ -97,7 +105,6 @@ export default function NewPostPage() {
 
   return (
     <main className="newPostPage">
-      <h2>New Post</h2>
       {
         loadingPost ? 
         <div>
@@ -107,83 +114,79 @@ export default function NewPostPage() {
         <div>
           <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
           <label>
-            Selling (checked)/Buying (unchecked)
-            <input
-              type="checkbox"
+            Selling (checked)   |   Buying (unchecked)
+            <Checkbox
               checked={isSelling}
               onChange={() => setIsSelling(!isSelling)}
             />
           </label>
-          <label>
-            Title:
-            <input
+          
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
               type="text"
               name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Title"
             />
-          </label>
+         
 
-          <label>
-            Location (city):
-            <input
+          
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
               type="text"
               name="location"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="Location"
-            ></input>
-          </label>
-
-          <label>
-            Event type:
-            <Select variant="standard" value={eventType} label="Location" onChange={(e) => setEventType(e.target.value)}>
+            ></TextField>
+         
+         <FormControl size="medium"  >
+            <Select  style={{color: "#2196f3", fontWeight:"bold"}} size= "medium"  value={eventType}  onChange={(e) => setEventType(e.target.value)}>
               {eventTypes.map((type) => <MenuItem value={type}>{type}</MenuItem>)}
             </Select>
-          </label>
+            </FormControl>
 
-          <label>
-            Date:
-            <TextField error={dateError} placeholder="yyyy-mm-dd" onChange ={(e) => onDatePickerChanged(e)}/>
-          </label>
+          
+            
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} error={dateError} placeholder="yyyy-mm-dd" onChange ={(e) => onDatePickerChanged(e)}/>
+         
 
-          <label>
-            Time:
-            <TextField error={timeError} placeholder="HH:MM" onChange ={(e) => onTimePickerChanged(e)}/>
-          </label>
+          
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} error={timeError} placeholder="HH:MM" onChange ={(e) => onTimePickerChanged(e)}/>
+         
 
-          <label>
-            Contactpoint:
-            <input
+          
+            <TextField inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
               type="text"
               value={contactPoint}
               placeholder="Contact point"
               onChange={(e) => setContactPoint(e.target.value)}
             />
-          </label>
+          
 
-          <label>
-            Price:
-            <input
+         
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
               type="number"
               value={price}
               onChange={(e) => setPrice(+e.target.value)}
-              placeholder="Price"
+              placeholder="NOK"
             />
-          </label>
+         
 
-          <label>
-            Description:
-            <textarea
+         <Box mt={4}>
+            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} style={{ width: 400 }}
+            multiline={true}
+           minRows={5}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description"
-            ></textarea>
-          </label>
+            ></TextField>
+            </Box>
+          <Box mt={4}>
           <label>
-            <input type="submit" value="Submit" />
+            <Button variant="contained" type="submit" value="Submit">Create Post</Button>
+            
           </label>
+          </Box>
         </form>
         {errorOcurred === "" ?
         <></>
