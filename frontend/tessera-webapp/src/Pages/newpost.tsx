@@ -1,5 +1,5 @@
 import { MenuItem, Select, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Post } from "../DataTypes/Post";
 import { createPosts, eventTypes } from "../Utility/data";
@@ -34,14 +34,21 @@ export default function NewPostPage() {
 
   /**
    * @requires date and time fields correctly formatted and connection to backend
-   * @effects  
+   * @effects
    * @param e - event type. Used to prevent default form behaviour.
    */
   function submitPost(e: any){
     e.preventDefault()
     const postID = 1234
     /**@todo get username from localstorage */
-    const username = localStorage.getItem("username") ?? "undefined_"
+    const username: string = localStorage.getItem("username") ?? "undefined_";
+
+    let userID: number = 0
+    let ls_userID = localStorage.getItem("userID");
+    if(typeof ls_userID === "string"){
+      userID = +ls_userID
+    }
+
     const createdAt = "0"
     const active = "True"
     let postType = isSelling ? "sell" : "buy";
@@ -49,9 +56,10 @@ export default function NewPostPage() {
     if(dateError || timeError){
       setErrorOcurred("Error: Time or Date has invalid format. Should be yyyy-mm-dd and HH:MM")
     }else{
-      const post = new Post(postID, username, title, location, description, createdAt, date + "T" + time, price, contactPoint, active,  postType, eventType)
+      const post = new Post(postID, username, userID, title, location, description, createdAt, date + "T" + time, price, contactPoint, active,  postType, eventType)
       createPosts(post).then( (res: Post[] | string) => {
           redirect("/feed")
+          window.location.reload();
       }).catch( (res) => {
           setErrorOcurred("Error: Could not post.");
           console.log(res)
@@ -100,10 +108,10 @@ export default function NewPostPage() {
       
       <h2>New Post</h2>
       {
-        loadingPost ? 
+        loadingPost ?
         <div>
           Loading
-        </div> 
+        </div>
         :
         <div>
            <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
@@ -188,8 +196,8 @@ export default function NewPostPage() {
         </form>
         {errorOcurred === "" ?
         <></>
-        : 
-        <label className="error">{errorOcurred}</label> 
+        :
+        <label className="error">{errorOcurred}</label>
         }
         </div>
       }

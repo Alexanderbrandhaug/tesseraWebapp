@@ -1,16 +1,44 @@
+import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useLocation, useOutletContext,  } from "react-router-dom";
-import { Post } from "../DataTypes/Post";
-import { getLoadedPosts, posts } from "../Utility/data";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
-import { Avatar, Popover, Typography } from "@mui/material";
+import { Post } from "../DataTypes/Post";
+import { getLoadedPosts, getUser, updatePost } from "../Utility/data";
 
 export default function PostPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [post, setPost] = useState<Post | null>(null);
   const posts = useOutletContext()
+  const [isCreator, setIsCreator] = useState<boolean>(false);
+  const [closer, setCloser] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
+
+
+  async function closePost(){
+    let closerID = null;
+    const postID = post ? post.id : null;
+    await getUser(closer).then((result) => {
+      if (result) {
+        closerID = result.data.id
+      } else {
+        setErrorMessage("Could not find user, username does not exist. Please try again. ");
+      }
+    }).catch(() => {
+      setErrorMessage("Could not find user, username does not exist. Pleasy try again.");
+    })
+    if (closerID != null && postID != null){
+      updatePost(postID, closerID).then((result) => {
+        if (result) {
+          console.log("Success")
+          setErrorMessage("")
+          setCloser("")
+          window.location.reload();
+        }
+      }).catch(err => {
+        setErrorMessage("Something went wrong, please try again. ");
+      })}
+  }
 
   useEffect(() => {
     const pathArr = location.pathname.split('/');
@@ -20,39 +48,42 @@ export default function PostPage() {
 
       let id: number = +postID
       let thisPost = getLoadedPosts().find((p: Post) => p.id === id )
-      
+
       if(thisPost){
         setPost(thisPost)
       }
     }
   }, [location.pathname, posts])
 
+  useEffect(() => {
+    setIsCreator(+(localStorage.getItem("userID") ?? 0)  === post?.userID)
+  }, [post])
+
   function redirect() {
-    navigate("/profile/" + post?.username)
+    navigate("/profile/" + post?.id)
   }
 
-  console.log("Posted by user: " + post?.username)
-  console.log(post);
+  console.log("Posted by user: " + post?.userID)
 
   return (
     <main style={{ padding: "1rem 0" }}>
       {
-      post !== null ? 
+      post !== null ?
 
       <div>
-          
+
         <header className="postHeader">
-         
-          <div className="profileInfo"> 
-            
+
+          <div className="profileInfo">
+
             <h1 className="title"> {post.title}</h1>
             <p> {post.username}</p>
           </div>
         </header>
-        <body> 
+        <body>
           <p className="location"> {post.location} &emsp; {post.eventDate} </p>
-          <p className="created">Created {post.createdAt}</p>  
-          <p> {post.price} kr</p>  
+          <p className="created">Created {post.createdAt}</p>
+          <p> {post.price} kr</p>
           <p className="contact">{post.contactPoint}</p>
             <div className="description">
           <p>[{post.description}]</p>
