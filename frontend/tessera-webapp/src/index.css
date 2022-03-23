@@ -102,32 +102,8 @@ code {
 }
 
 /* POSTPAGE */
+/* POSTPAGE */
 .userprofile-image {
-    height: 50px;
-    margin-top: 30%;
-}
-
-.postHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.profileInfo {
-    display: flex;
-    align-items: center;
-}
-
-.closePostContainer {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.closePostButton {
-    margin-right: 5px;
-    background-color: white;
     height: 40px;
     margin-left: 45%;
 }
@@ -172,6 +148,49 @@ code {
     padding: 10px;
     text-align: center;
 }
+
+.closePostContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.closePostButton {
+    margin-right: 5px;
+    background-color: white;
+    height: 40px;
+    margin-left: 45%;
+}
+
+.userprofile-image:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+}
+
+.location {
+    font-style: italic;
+}
+
+.contact {
+    text-decoration: underline;
+    color: var(--title-colour);
+}
+
+.contact:hover {
+    cursor: default;
+}
+
+.postHeader {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/*.profileInfo {
+  display: flex;
+  align-items: center;
+} */
 
 .desc {
     width: auto;
