@@ -15,6 +15,9 @@ interface UserTransactionListProps {
  * @returns Full transaction history and active posts if displaying profile page
  * of the user who is currently logged in. If not logged in user display a count
  * of the user's closed transactions.
+ * @param userID
+ * @param hideTransactions - if true, hides the full transaction history. This is used
+ * when you are viewing someone else's profile page.
  */
 export default function UserTransactionList(props: UserTransactionListProps){
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -24,12 +27,16 @@ export default function UserTransactionList(props: UserTransactionListProps){
    
     const navigate = useNavigate();
 
+    /**
+     * @effects Redirects to input page of post with given postID
+     * @param postID 
+     */
     function redirect(postID: number) {
         navigate("/feed/" + postID)
     }
 
     /**
-     * Load user posts on userID (or url) changes.
+     * Load user posts on userID (or url) changes (i.e. when the page loads)
      */
     useEffect(() => {
         loadUserPosts()
@@ -42,14 +49,16 @@ export default function UserTransactionList(props: UserTransactionListProps){
      */
     function loadUserPosts(){
         retrieveUserPosts(props.userID).then( (res: Post[]) => {
-            const activePosts: Post[] = res.filter( (post: Post) => post.closerID === null || post.showPost === true);
+            const activePosts: Post[] = res.filter( (post: Post) => (post.closerID === null && post.showPost === true) || post.showPost === true);
             setActivePosts(activePosts)
         }).catch( err => {
             setErrorMessage("Error ocurred loading user's posts. (" + err + ")")
         })
 
         retrievePostsClosedWithUser(props.userID).then( (res: Post[]) => {
-            setClosedPosts(res)    
+            setClosedPosts(res)
+            console.log("Closed posts:")
+            console.log(res)
         }).catch( err => {
             setErrorMessage("Error ocurred loading user's closed transactions. (" + err + ")")
         })
@@ -92,6 +101,13 @@ interface PostListElementProps {
     redirect: (postID: number) => void
 }
 
+/**
+ * @param post the post to display
+ * @param userID
+ * @param redirect See redirect function comment in top of file
+ * @returns ListItem component to be displayed in a MUI-List (See above).
+ * The component lists post Title, and whether the issuer wishes to buy or sell.
+ */
 function PostListElement(props: PostListElementProps) {
 
     const isSelling: boolean = props.post.postType === "Selling";
@@ -113,10 +129,18 @@ function PostListElement(props: PostListElementProps) {
     )
 }
 
+/**
+ * @param post the post to display
+ * @param userID
+ * @param redirect See redirect function comment in top of file
+ * @returns ListItem component to be displayed in a MUI-List (See UserTransactionList return).
+ * The component intends to show closed posts so displays Title and whether the user whose
+ * profile we are viewing bought or sold a ticket (including a color indication)
+ */
 function ClosedPostListElement(props: PostListElementProps) {
     // Whether the logged in user bought a ticket or sold a ticket in a transaction
-    const closedByBuying: boolean = ((props.post.closerID === props.userID && props.post.eventType === "Selling") ||
-                                                          (props.post.closerID !== props.userID && props.post.eventType === "Buying"))
+    const closedByBuying: boolean = ((props.post.closerID === props.userID && props.post.postType === "Selling") ||
+                                     (props.post.userID === props.userID && props.post.postType === "Buying"))
 
     const deactivated: boolean = props.post.showPost === false && props.post.closerID === null;
 
