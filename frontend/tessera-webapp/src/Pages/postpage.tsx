@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
@@ -89,6 +89,26 @@ export default function PostPage() {
           <p>[{post.description}]</p>
             </div>
             <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+            {isCreator && post?.active ?
+            <div>
+            <Button variant="contained" onClick={closePost} > Close Post</Button >
+            <label>
+            Title:
+            <input
+              type="text"
+              name="closer"
+              value={closer}
+              onChange={(e) => setCloser(e.target.value)}
+              placeholder="Username"
+            />
+          </label>
+          <div className="error">
+            {errorMessage && <div>{errorMessage}</div>}
+          </div>
+            </div>
+            :
+            <></>
+          }
           {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
         </body>
       </div>
