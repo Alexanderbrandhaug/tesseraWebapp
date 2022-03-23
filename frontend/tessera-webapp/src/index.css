@@ -17,15 +17,15 @@ code {
 
 :root {
     --main-bg-color: #5899ad;
-  --main-bg-color: #5899ad;
-  --colour--two: #d3e0e4;
-  --colour--three: #8badb8;
-  --title-colour: rgb(60, 76, 97);
+    --main-bg-color: #5899ad;
+    --colour--two: #d3e0e4;
+    --colour--three: #8badb8;
+    --title-colour: rgb(60, 76, 97);
 }
 
 .button {
-  background-color: var(--colour--three);
-  border-radius: 10px;
+    background-color: var(--colour--three);
+    border-radius: 10px;
 }
 
 /* FEEDPAGE */
@@ -63,31 +63,32 @@ code {
 } */
 
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
 }
 
 .sidebarColumn {
-  background-color: white;
-  overflow: hidden;
-  flex-direction: column;
-  margin-left: 50px;
+    background-color: white;
+    overflow: hidden;
+    flex-direction: column;
+    margin-left: 50px;
 }
 
 .feedColumn {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 550px;
-  color: rgb(0, 0, 0);
-  width: 500px;
-  margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 550px;
+    color: rgb(0, 0, 0);
+    width: 500px;
+    margin: auto;
 }
 
+/* POSTPAGE */
 .userprofile-image {
-  height: 40px;
-  margin-left: 45%;
+    height: 40px;
+    margin-left: 45%;
 }
 
 .userprofile-image:hover {
@@ -104,14 +105,14 @@ code {
     color: var(--title-colour);
 }
 
-.contact:hover{
-    cursor:default;
+.contact:hover {
+    cursor: default;
 }
 
 .postHeader {
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
 /*.profileInfo {
@@ -120,15 +121,15 @@ code {
 } */
 
 .column-3 {
-  width: 350px;
-  height: 100%;
-  overflow: hidden;
-  background-color: var(--colour--two);
-  border-style: initial;
-  border-radius: 0px;
-  margin-right: 100px;
-  padding: 10px;
-  text-align: center;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--colour--two);
+    border-style: initial;
+    border-radius: 0px;
+    margin-right: 100px;
+    padding: 10px;
+    text-align: center;
 }
 
 .desc {
@@ -146,19 +147,18 @@ code {
 }
 
 .postComponent {
-  background-color: var(--colour--two);
-  border-style: initial;
-  border-radius: 0px;
-  margin: 5px;
-  padding: 5px;
-  
+    background-color: var(--colour--two);
+    border-style: initial;
+    border-radius: 0px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .postComponent:hover {
-  cursor: pointer;
-  background-color: var(--colour--three);
-  transform: scale(1.05);
-} 
+    cursor: pointer;
+    background-color: var(--colour--three);
+    transform: scale(1.05);
+}
 
 /*POST COMPONENTS */
 .title {
@@ -176,14 +176,14 @@ code {
 }
 
 .price {
-    font-style:initial;
+    font-style: initial;
     text-align: center;
 }
 
 .seeUserButton {
-  cursor: pointer;
-  background-color: var(--colour--three);
-  border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--colour--three);
+    border-radius: 10px;
 }
 
 .postComponent:active {
@@ -193,15 +193,15 @@ code {
 /* NEW POST PAGE */
 
 .newPostForm {
-  display: flex;
-  flex-direction: column;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--colour--two);
-  border-radius: 0px;
-  width: 400px;
-  padding: 10px;
-  margin: auto;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colour--two);
+    border-radius: 0px;
+    width: 400px;
+    padding: 10px;
+    margin: auto;
 }
 
 .newPostForm textarea {

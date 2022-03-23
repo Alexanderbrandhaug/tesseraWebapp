@@ -45,7 +45,7 @@ export let posts: any = [
 
 /**
  * @requires: backend running
- * @returns: Promise returning loaded posts from backend on resolve. 
+ * @returns: Promise returning loaded posts from backend on resolve.
  * Rejects if status-code from backend is not 200.
  */
 export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
@@ -58,7 +58,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     }
 
     posts = response.data.map((post: any) => {
-      return new Post(post.id, post.username, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+      return new Post(post.id, post.username, post.userId, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
     });
 
     console.log("Done retrieving posts.");
@@ -109,6 +109,20 @@ export function createUser(register: Register) {
       }).catch(err => {
         reject(err)
       })
+  })
+}
+
+export function updatePost(postID: number, closerID: number) {
+  return new Promise((resolve, reject) => {
+    const data = {params: {postId: postID, closerId: closerID}, headers: {"Content-Type": "application/json"}}
+    axios.post("http://localhost:8080/tessera/api/posts/",{}, data).then((response) => {
+      if(response.status !== 200){
+        reject ("Invalid status-code: " + response.status)
+      }
+      resolve("Success: " + response.statusText)
+    }).catch(err => {
+      reject(err)
+    })
   })
 }
 
