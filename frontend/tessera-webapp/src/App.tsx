@@ -56,17 +56,17 @@ function App() {
             variant="h2"
             noWrap
             component="div"
-            sx={{ mr: 2, mb:-10, paddingBottom:2, ml:10, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, mb:-8, paddingBottom:2, ml:10, display: { xs: 'none', md: 'flex' } }}
           >
             Tessera
           </Typography>
-          <Box ml={70} mb={7}>
-            <Link href="/feed"  style={{ color: 'white' , fontSize: '43px' }} underline="none">Marketplace </Link>
+          <Box ml={70} mb={9}>
+            <Link href="/feed"  style={{ color: 'white' , fontSize: '33px' }} underline="none">Marketplace </Link>
             </Box>
-            <Box ml={120} mt={-14}>
-            <Link href="/profile" style={{ color: 'white', fontSize: '43px' }} underline="none"  >Profile </Link>
+            <Box ml={120} mt={-15}>
+            <Link href="/profile" style={{ color: 'white', fontSize: '33px' }} underline="none"  >Profile </Link>
             </Box>
-          <Box ml={220} mt={-8}>
+          <Box ml={180} mt={-8}>
           <div>Log out</div>
           <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }} fontSize="large" onClick={handleLogOut}>
           </LogoutIcon>
