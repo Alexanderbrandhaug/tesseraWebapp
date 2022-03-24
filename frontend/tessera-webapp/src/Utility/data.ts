@@ -58,7 +58,7 @@ export const retrievePosts = new Promise<Post[]>( (resolve, reject) => {
     }
 
     posts = response.data.map((post: any) => {
-      return new Post(post.id, post.username, post.userId, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType)
+      return new Post(post.id, post.username, post.userID, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType, post.closerID, post.showPost)
     });
 
     console.log("Done retrieving posts.");
@@ -114,7 +114,7 @@ export function createUser(register: Register) {
 
 export function updatePost(postID: number, closerID: number) {
   return new Promise((resolve, reject) => {
-    const data = {params: {postId: postID, closerId: closerID}, headers: {"Content-Type": "application/json"}}
+    const data = {params: {postID: postID, closerID: closerID}, headers: {"Content-Type": "application/json"}}
     axios.post("http://localhost:8080/tessera/api/posts/",{}, data).then((response) => {
       if(response.status !== 200){
         reject ("Invalid status-code: " + response.status)
@@ -127,4 +127,46 @@ export function updatePost(postID: number, closerID: number) {
 }
 
 
+/**
+ * @param userID - id of the user we wish posts from
+ * @returns Promise retrieving posts that the user has been on either side of a closed transaction.
+ */
+export function retrievePostsClosedWithUser(userID: number) {
+  return new Promise<Post[]>((resolve, reject) => {
+    axios.get("http://localhost:8080/tessera/api/posts/transactions/" + userID).then((response) => {
+      if(response.status !== 200){
+        reject("Invalid status-code: " + response.status);
+      }
+  
+      const user_posts: Post[] = response.data.map((post: any) => {
+        return new Post(post.id, post.username, post.userID, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType, post.closerID, post.showPost)
+      });
+  
+      resolve(user_posts)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
 
+/**
+ * @param userID - id of whose users posts we want
+ * @returns Promise retrieving all posts that a user has created
+ */
+export function retrieveUserPosts(userID: number) {
+  return new Promise<Post[]>((resolve, reject) => {
+    axios.get("http://localhost:8080/tessera/api/posts/" + userID).then((response) => {
+      if(response.status !== 200){
+        reject("Invalid status-code: " + response.status);
+      }
+  
+      const user_posts: Post[] = response.data.map((post: any) => {
+        return new Post(post.id, post.username, post.userID, post.title, post.location, post.description, post.creationDate, post.eventDate, post.price, post.contactPoint, post.showPost, post.postType, post.eventType, post.closerID, post.showPost)
+      });
+  
+      resolve(user_posts)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}

@@ -20,6 +20,9 @@ code {
     --main-bg-color: #5899ad;
     --colour--two: #d3e0e4;
     --colour--three: #8badb8;
+    --buying-color: #648FFF;
+    --selling-color: #FE6100;
+    --deactivated-color:  #a1a1a1;
     --title-colour: rgb(60, 76, 97);
 }
 
@@ -27,6 +30,7 @@ code {
     background-color: var(--colour--three);
     border-radius: 10px;
 }
+
 
 /* FEEDPAGE */
 .threeColumnFlex {
@@ -57,6 +61,16 @@ code {
 
 /*.postComponent:hover {
     box-shadow: 5px 5px 5px;
+    background-color: var(--colour--three);
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
   background-color: var(--colour--three);
   cursor: pointer;
   border-radius: 10px;
@@ -87,6 +101,7 @@ code {
     margin: auto;
 }
 
+/* POSTPAGE */
 /* POSTPAGE */
 .userprofile-image {
     height: 40px;
@@ -153,6 +168,49 @@ code {
     color: red;
 }
 
+.closePostContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.closePostButton {
+    margin-right: 5px;
+    background-color: white;
+    height: 40px;
+    margin-left: 45%;
+}
+
+.userprofile-image:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+}
+
+.location {
+    font-style: italic;
+}
+
+.contact {
+    text-decoration: underline;
+    color: var(--title-colour);
+}
+
+.contact:hover {
+    cursor: default;
+}
+
+.postHeader {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/*.profileInfo {
+  display: flex;
+  align-items: center;
+} */
+
 .desc {
     width: auto;
     background-color: var(--colour--three);
@@ -211,20 +269,62 @@ code {
     background-color: var(--main-bg-color);
 }
 
+/* PROFILE PAGE */
+
+.profileContainer {
+    margin: auto;
+    margin-bottom: 60px;
+    width: 500px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.profileContent {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.subHeader {
+    color:rgb(117, 117, 117);
+    margin-bottom: 0px;
+}
+
+.profileName {
+    margin: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 500px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--colour--three);
+}
+
+.profileDescription {
+    margin: auto;
+    text-align: center;
+    border-style: solid;
+    border-radius: 10px;
+}
+
 /* NEW POST PAGE */
 
 .newPostForm {
     display: flex;
     flex-direction: column;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--colour--two);
-  border-radius: 10px;
-  width: 500px;
-  padding: 10px;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colour--two);
+    border-radius: 10px;
+    width: 500px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: #2196f3;
 }
 
 .newPostForm textarea {
@@ -273,7 +373,7 @@ code {
     transition: 0.5s;
     font-weight: 700;
     width: 150px;
-    margin-top: 1%;
+    margin-top: 0.7%;
     height: 40px;
 }
 .showPwButton {
@@ -413,6 +513,57 @@ code {
     justify-items: center;
     align-items: center;
 }
+
+
+
+
+/* TRANSACTION LISTS */
+#userTransactionContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#userTransactionList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.postListElement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 300px;
+    width: 100%;
+}
+
+.postListElement:hover {
+    cursor: pointer;
+}
+
+.buyingMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--buying-color);
+    margin-right: 8px;
+}
+
+.sellingMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--selling-color);
+    margin-right: 8px;
+}
+
+.deactivatedMarker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--deactivated-color);
+    margin-right: 8px;
+}
 .createPostTitle{
     display: flex;
     flex-direction: column;
@@ -420,3 +571,29 @@ code {
     align-items: center;
 }
 
+.flex-navbar{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+    margin-left: 5%;
+    font-size: 24px;
+    padding-bottom: 1%;
+}
+
+.logOutBtnAndTextNavbar{
+    margin-right: 5%;
+    cursor: pointer;
+    
+}
+.marketPlaceIcon{
+    flex:1;
+}
+.profileTextNavbar{
+    flex:1;
+}
+.navbarProfileTextWrapper{
+    display: flex;
+    justify-items: auto;
+    flex-direction: left;
+    margin-right: 40%;
+}

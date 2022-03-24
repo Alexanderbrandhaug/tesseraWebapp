@@ -15,8 +15,7 @@ export default function FeedPage() {
   //Retrieve posts from backend
   useEffect(() => {
     retrievePosts.then((res: Post[]) => {
-      console.log("Post-page has been updated!")
-      console.log(res.length)
+      console.log("Loaded " + res.length + " posts.")
       setPosts(res)
     }).catch(message => {
       console.log("Error: " + message);

@@ -60,7 +60,7 @@ export default function PostPage() {
   }, [post])
 
   function redirect() {
-    navigate("/profile/" + post?.id)
+    navigate("/profile/" + post?.userID)
   }
 
   console.log("Posted by user: " + post?.userID)

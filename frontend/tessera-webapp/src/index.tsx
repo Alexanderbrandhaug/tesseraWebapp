@@ -19,7 +19,8 @@ ReactDOM.render(
           <Route path="feed" element={<FeedPage />}>
             <Route path=":id" element={<PostPage />} />
           </Route>
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile/:id" element={<ProfilePage />} />
+
           <Route path="newpost" element={<NewPostPage />} />
           <Route path="*" element={<UnknownURLPage />} />
           <Route path="register" element={<RegisterPage />} />
