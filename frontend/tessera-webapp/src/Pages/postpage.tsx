@@ -71,46 +71,73 @@ export default function PostPage() {
       post !== null ?
 
       <div>
+          {"" + post.active === "true" ?
+        <div>
 
-        <header className="postHeader">
+          <header className="postHeader">
 
-          <div className="profileInfo">
+            <div className="profileInfo">
 
-            <h1 className="title"> {post.title}</h1>
-            <p> {post.username}</p>
-          </div>
-        </header>
-        <body>
-          <p className="location"> {post.location} &emsp; {post.eventDate} </p>
-          <p className="created">Created {post.createdAt}</p>
-          <p> {post.price} kr</p>
-          <p className="contact">{post.contactPoint}</p>
-            <div className="description">
-          <p>[{post.description}]</p>
+              <h1 className="title"> {post.title}</h1>
+              <p> {post.username}</p>
             </div>
-            <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
-            {isCreator && post?.active ?
-            <div>
-            <Button variant="contained" onClick={closePost} > Close Post</Button >
-            <label>
-            Title:
-            <input
-              type="text"
-              name="closer"
-              value={closer}
-              onChange={(e) => setCloser(e.target.value)}
-              placeholder="Username"
-            />
-          </label>
-          <div className="error">
-            {errorMessage && <div>{errorMessage}</div>}
-          </div>
+          </header>
+          <body>
+            <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+            <p className="created">Created {post.createdAt}</p>
+            <p> {post.price} kr</p>
+            <p className="contact">{post.contactPoint}</p>
+              <div className="description">
+            <p>[{post.description}]</p>
+              </div>
+              <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+              {isCreator && post?.active ?
+              <div>
+              <Button variant="contained" onClick={closePost} > Close Post</Button >
+              <label>
+              Title:
+              <input
+                type="text"
+                name="closer"
+                value={closer}
+                onChange={(e) => setCloser(e.target.value)}
+                placeholder="Username"
+              />
+            </label>
+            <div className="error">
+              {errorMessage && <div>{errorMessage}</div>}
             </div>
-            :
-            <></>
-          }
-          {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
-        </body>
+              </div>
+              :
+              <></>
+            }
+            {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
+          </body>
+        </div>
+        :
+        <div>
+
+            <header className="postHeader">
+
+              <div className="profileInfo">
+
+                <h1 className="title"> {post.title}</h1>
+                <p> {post.username}</p>
+              </div>
+            </header>
+            <body>
+              <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+              <p className="created">Created {post.createdAt}</p>
+              <p> {post.price} kr</p>
+              <p className="contact">{post.contactPoint}</p>
+                <div className="description">
+              <p>[{post.description}]</p>
+                </div>
+                <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+            </body>
+            </div>
+        }
+
       </div>
 
       :
