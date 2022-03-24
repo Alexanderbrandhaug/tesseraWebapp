@@ -49,6 +49,7 @@ export default function FeedPage() {
           }
 
         </div>
+
         <div className="column-3">
           <Outlet context={posts} />
         </div>
