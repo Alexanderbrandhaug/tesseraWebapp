@@ -55,6 +55,8 @@ export default function LogIn(props: LogInProps) {
         else {
           setErrorMessage("Wrong username or password");
         }
+      }).catch((err) => {
+        setErrorMessage("Error loging in " + err.message)
       })
       resetPassword();
   }
