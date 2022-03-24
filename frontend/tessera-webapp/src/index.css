@@ -132,6 +132,19 @@ code {
     text-align: center;
 }
 
+
+.postContainer{
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--colour--two);
+    border-style: solid;
+    border-radius: 0px;
+    margin-right: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
 /*.profileInfo {
   display: flex;
   align-items: center;
@@ -140,13 +153,19 @@ code {
 .column-3 {
     width: 350px;
     height: 100%;
-    overflow: hidden;
-    background-color: var(--colour--two);
-    border-style: initial;
-    border-radius: 0px;
+    /*background-color: var(--colour--two); */
     margin-right: 100px;
     padding: 10px;
+    /*text-align: center;*/
+}
+
+.redBorder {
+    border: 1px solid rgb(255, 37, 37);
+}
+
+.closedPost {
     text-align: center;
+    color: red;
 }
 
 .closePostContainer {
