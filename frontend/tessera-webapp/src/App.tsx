@@ -56,7 +56,7 @@ function App() {
       <AppBar position="static" style={{ background: '#5899ad' }}>
         <div className="flex-navbar">
          <div className="marketPlaceNavbar">
-         <Link href="/feed"  style={{ color: 'white' }} underline="none">Marketplace </Link>
+         <Link href="/feed"  style={{ color: 'white' }} underline="hover">Marketplace </Link>
          </div>
          <div className="marketPlaceIcon">
            <LocalActivityOutlinedIcon datatest-id="LocalActivityOutlinedIcon" style={{color: "white", marginRight:"5px"}} fontSize="large">
@@ -64,14 +64,14 @@ function App() {
            </div>
            <div className="navbarProfileTextWrapper">
             <div className = "profileTextNavbar">
-            <Link href={"/profile/" + localStorage.getItem("userID")} style={{ color: 'white' }} underline="none"  >Profile </Link>
+            <Link href={"/profile/" + localStorage.getItem("userID")} style={{ color: 'white' }} underline="hover"  >Profile </Link>
             </div>  
             <div className="profileNavBarIcon">
             <PermIdentityOutlinedIcon dataset-id="PermIdentityOutlinedIcon" style={{color: "white"}} fontSize="large"></PermIdentityOutlinedIcon>       
           </div>
           </div>
-          <div className="logOutBtnAndTextNavbar">Log out
-          <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }}  onClick={handleLogOut}>
+          <div className="logOutBtnAndTextNavbar">
+          <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }} fontSize="large"  onClick={handleLogOut}>
           </LogoutIcon>
           </div>
           </div>
