@@ -551,3 +551,28 @@ code {
     align-items: center;
 }
 
+.flex-navbar{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+    margin-left: 5%;
+    font-size: 24px;
+    padding-bottom: 1%;
+}
+
+.logOutBtnAndTextNavbar{
+    margin-right: 5%;
+    
+}
+.marketPlaceIcon{
+    flex:1;
+}
+.profileTextNavbar{
+    flex:1;
+}
+.navbarProfileTextWrapper{
+    display: flex;
+    justify-items: auto;
+    flex-direction: left;
+    margin-right: 40%;
+}
