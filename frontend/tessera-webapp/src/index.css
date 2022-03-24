@@ -251,7 +251,6 @@ code {
 }
 
 /* PROFILE PAGE */
-
 .profileContainer {
     margin: auto;
     margin-bottom: 60px;
@@ -265,6 +264,7 @@ code {
     margin-right: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding: 20px;
 }
 
 .subHeader {
