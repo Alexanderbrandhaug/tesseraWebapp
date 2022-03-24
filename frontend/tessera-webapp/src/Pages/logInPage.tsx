@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from '../Components/footer';
 import LogIn from "../Components/logIn";
 
 interface LogInPageProps {
@@ -10,7 +9,7 @@ interface LogInPageProps {
 export default function LogInPage(props: LogInPageProps) {
 
   return (
-    <main>
+    <div>
       <div className="loginPage">
         <div className="loginLeftColumn">
           <header className="header">
@@ -24,13 +23,12 @@ export default function LogInPage(props: LogInPageProps) {
         </div>
 
         <div className = "loginRightColumn">
-          <div className="loginBox">
             <LogIn handleRegister={props.handleRegister}/>
-          </div>
         </div>
     </div>
-
-    <Footer />
-    </main>
+    <footer className="footer">
+        <p className="footerText">© 2022</p>
+      </footer>
+    </div>
   );
 }
