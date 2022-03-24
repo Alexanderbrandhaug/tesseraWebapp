@@ -125,7 +125,9 @@ export default function NewPostPage() {
            <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
           <label>
             Selling (checked)   |   Buying (unchecked)
-            <Checkbox
+            <Checkbox  sx={{ color:"white", '&.Mui-checked': {
+                      color: "#2196f3",
+                       }, }}
               checked={isSelling}
               onChange={() => setIsSelling(!isSelling)}
             />
@@ -193,7 +195,7 @@ export default function NewPostPage() {
             </Box>
           <Box mt={4}>
           <label>
-            <Button variant="contained" type="submit" value="Submit">Create Post</Button>
+            <Button variant="contained" type="submit" value="Submit" size="large" style={{fontWeight: "bold"}}>Create Post</Button>
             
           </label>
           </Box>
