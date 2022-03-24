@@ -12,6 +12,8 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import LocalActivityOutlinedIcon from '@mui/icons-material/LocalActivityOutlined';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 
 
 
@@ -50,27 +52,29 @@ function App() {
 
   return (
     
-    <div>
-      <AppBar position="static" style={{ background: '#5899ad' , paddingTop:'25px'}}>
-      <Typography
-            variant="h2"
-            noWrap
-            component="div"
-            sx={{ mr: 2, mb:-8, paddingBottom:2, ml:10, display: { xs: 'none', md: 'flex' } }}
-          >
-            Tessera
-          </Typography>
-          <Box ml={70} mb={9}>
-            <Link href="/feed"  style={{ color: 'white' , fontSize: '33px' }} underline="none">Marketplace </Link>
-            </Box>
-            <Box ml={120} mt={-15}>
-            <Link href={"/profile/" + localStorage.getItem("userID")} style={{ color: 'white', fontSize: '33px' }} underline="none"  >Profile </Link>
-            </Box>
-          <Box ml={180} mt={-8}>
-          <div>Log out</div>
-          <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }} fontSize="large" onClick={handleLogOut}>
+    <div >
+      <AppBar position="static" style={{ background: '#5899ad' }}>
+        <div className="flex-navbar">
+         <div className="marketPlaceNavbar">
+         <Link href="/feed"  style={{ color: 'white' }} underline="hover">Marketplace </Link>
+         </div>
+         <div className="marketPlaceIcon">
+           <LocalActivityOutlinedIcon datatest-id="LocalActivityOutlinedIcon" style={{color: "white", marginRight:"5px"}} fontSize="large">
+           </LocalActivityOutlinedIcon>
+           </div>
+           <div className="navbarProfileTextWrapper">
+            <div className = "profileTextNavbar">
+            <Link href={"/profile/" + localStorage.getItem("userID")} style={{ color: 'white' }} underline="hover"  >Profile </Link>
+            </div>  
+            <div className="profileNavBarIcon">
+            <PermIdentityOutlinedIcon dataset-id="PermIdentityOutlinedIcon" style={{color: "white"}} fontSize="large"></PermIdentityOutlinedIcon>       
+          </div>
+          </div>
+          <div className="logOutBtnAndTextNavbar">
+          <LogoutIcon datatest-id="LogoutOutlinedIcon" style={{ color: 'white' }} fontSize="large"  onClick={handleLogOut}>
           </LogoutIcon>
-          </Box>     
+          </div>
+          </div>
     </AppBar>
     <Outlet context={{posts, setPosts}}/>
     </div>

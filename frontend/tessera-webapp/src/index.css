@@ -305,6 +305,7 @@ code {
     margin: auto;
     margin-top: 50px;
     margin-bottom: 40px;
+    color: #2196f3;
 }
 
 .newPostForm textarea {
@@ -551,3 +552,29 @@ code {
     align-items: center;
 }
 
+.flex-navbar{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+    margin-left: 5%;
+    font-size: 24px;
+    padding-bottom: 1%;
+}
+
+.logOutBtnAndTextNavbar{
+    margin-right: 5%;
+    cursor: pointer;
+    
+}
+.marketPlaceIcon{
+    flex:1;
+}
+.profileTextNavbar{
+    flex:1;
+}
+.navbarProfileTextWrapper{
+    display: flex;
+    justify-items: auto;
+    flex-direction: left;
+    margin-right: 40%;
+}
