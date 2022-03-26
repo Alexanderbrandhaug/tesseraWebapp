@@ -149,8 +149,8 @@ code {
 } */
 
 .column-3 {
-    width: 350px;
-    height: 100%;
+    width: 450px;
+    height: 500px;
     /*background-color: var(--colour--two); */
     margin-right: 100px;
     padding: 10px;
@@ -611,3 +611,4 @@ code {
     flex-direction: left;
     margin-right: 40%;
 }
+
