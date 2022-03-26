@@ -39,7 +39,7 @@ code {
 }
 
 .newPost {
-    background-color: #a6e1f3;
+    background-color: #5899ad;
 }
 
 .sidebar {
@@ -315,14 +315,14 @@ code {
     flex-direction: column;
     display: flex;
     flex-direction: column;
-    background-color: var(--colour--two);
+    background-color: var(--main-bg-color);
     border-radius: 10px;
     width: 500px;
     padding: 10px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 40px;
-    color: #2196f3;
+    color: white;
 }
 
 .newPostForm textarea {
@@ -416,7 +416,7 @@ code {
 .loginForm {
     display: flex;
     flex-direction: column;
-    background-color: var(--colour--two);
+    background-color: white;
     border-radius: 10px;
     width: 300px;
     padding: 10px;
@@ -428,6 +428,7 @@ code {
 .loginTitle {
     margin-bottom: 10%;
     font-size: x-large;
+    color: var(--main-bg-color);
 }
 
 .userName {
