@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Post } from "../DataTypes/Post";
 import { Register } from "../DataTypes/Register";
+import { User } from "../DataTypes/User";
 
 export const eventTypes: string[] = [
   "Concert",
@@ -90,13 +91,36 @@ export function createPosts(post: Post) {
   })
 }
 
-export async function getUser(userName: string) {
-  const response = await axios.get("http://localhost:8080/tessera/api/user/" + userName)
+export async function getUser(username: string) {
+  const response = await axios.get("http://localhost:8080/tessera/api/user/" + username)
   if(response.data){
       return response
   }
     return false
 }
+
+/**
+ * @param userID - id of whose users posts we want
+ * @returns Promise retrieving all posts that a user has created
+ */
+ export function getUserByID(userID: number) {
+  const data = {params: {id: userID}, headers:{"Content-type": "application/json"}}
+  return new Promise<User>((resolve, reject) => {
+    axios.get("http://localhost:8080/tessera/api/user?id=" + userID).then((res) => {
+      if(res.status !== 200){
+        reject("Invalid status-code: " + res.status);
+      }else if(!res.data){
+        reject("Backend did not return any data");
+      }
+      const usr: User = new User(res.data.id, res.data.username, res.data.description, res.data.creationDate, res.data.password, res.data.suspended, res.data.admin);
+      resolve(usr)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
+
+
 
 export function createUser(register: Register) {
   return new Promise((resolve, reject)  => {
