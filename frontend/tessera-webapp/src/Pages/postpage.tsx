@@ -4,6 +4,8 @@ import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, getUser, updatePost } from "../Utility/data";
+import TextField from '@mui/material/TextField';
+
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -90,20 +92,21 @@ export default function PostPage() {
               <div className="description">
             <p>[{post.description}]</p>
               </div>
-              <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+              <Avatar style={{marginBottom:"20px", marginTop:"40px"}} alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
               {isCreator && post?.active ?
               <div>
-              <Button variant="contained" onClick={closePost} style={{backgroundColor:"#5899ad", fontWeight:"bold"}}> Close Post</Button >
               <label>
-              Title:
-              <input
+            
+              <TextField 
+              variant="standard"
                 type="text"
                 name="closer"
                 value={closer}
                 onChange={(e) => setCloser(e.target.value)}
                 placeholder="Username"
               />
-            </label>
+              <Button variant="contained" size="small" onClick={closePost} style={{backgroundColor:"#5899ad", fontWeight:"bold", marginLeft:"15px"}}> Close Post</Button >
+            </label >
             <div className="error">
               {errorMessage && <div>{errorMessage}</div>}
             </div>
