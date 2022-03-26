@@ -134,12 +134,14 @@ export default function PostPage() {
               </div>
             </header>
             <body>
-              <p className="location"> {post.location} &emsp; {post.eventDate} </p>
-              <p className="created">Created {post.createdAt}</p>
-              <p> {post.price} kr</p>
-              <p className="contact">{post.contactPoint}</p>
+              <p className="location"> Location: {post.location} </p>
+              <p className="eventTime"> Event Time: {post.eventDate.split('T')[0]} {post.eventDate.split('T')[1]} </p>
+              <p className="eventTime"> Event Type: {post.eventType} </p>
+              <p className="created">Created at: {post.createdAt}</p>
+              <p> Price: {post.price} kr</p>
+              <p className="contact">Contact Point: {post.contactPoint}</p>
                 <div className="description">
-              <p>[{post.description}]</p>
+              <p>"{post.description}"</p>
                 </div>
                 <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
             </body>
