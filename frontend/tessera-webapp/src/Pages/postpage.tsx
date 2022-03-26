@@ -1,10 +1,10 @@
 import { Avatar, Button } from "@mui/material";
+import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import userprofile from "../assets/images/user-profile.png";
 import { Post } from "../DataTypes/Post";
 import { getLoadedPosts, getUser, updatePost } from "../Utility/data";
-import TextField from '@mui/material/TextField';
 
 
 export default function PostPage() {
@@ -85,19 +85,21 @@ export default function PostPage() {
             </div>
           </header>
           <body>
-            <p className="location"> {post.location} &emsp; {post.eventDate} </p>
-            <p className="created">Created {post.createdAt}</p>
-            <p> {post.price} kr</p>
-            <p className="contact">{post.contactPoint}</p>
+            <p className="location"> Location: {post.location} </p>
+            <p className="eventTime"> Event Time: {post.eventDate.split('T')[0]} {post.eventDate.split('T')[1]} </p>
+            <p className="eventTime"> Event Type: {post.eventType} </p>
+            <p className="created">Created at: {post.createdAt}</p>
+            <p> Price: {post.price} kr</p>
+            <p className="contact">Contact Point: {post.contactPoint}</p>
               <div className="description">
-            <p>[{post.description}]</p>
+            <p>"{post.description}"</p>
               </div>
               <Avatar style={{marginBottom:"20px", marginTop:"40px"}} alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
               {isCreator && post?.active ?
               <div>
               <label>
-            
-              <TextField 
+
+              <TextField
               variant="standard"
                 type="text"
                 name="closer"
