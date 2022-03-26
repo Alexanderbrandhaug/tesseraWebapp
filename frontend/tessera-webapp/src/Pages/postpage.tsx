@@ -93,7 +93,7 @@ export default function PostPage() {
               <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
               {isCreator && post?.active ?
               <div>
-              <Button variant="contained" onClick={closePost} > Close Post</Button >
+              <Button variant="contained" onClick={closePost} style={{backgroundColor:"#5899ad", fontWeight:"bold"}}> Close Post</Button >
               <label>
               Title:
               <input
