@@ -67,7 +67,7 @@ export default function LogIn(props: LogInProps) {
         <form onSubmit={handleSubmit} className = "loginForm">
         <div className="loginTitle"> Login</div>
             <TextField type="text" name="username" inputProps={{ style: { background: "white" } }}   value={name} onChange={(e) => setName(e.target.value)} placeholder="Username"/>
-            <TextField type="password" name="password" inputProps={{ style: { background: "white" } }} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <TextField id="password" type="password" name="password" inputProps={{ style: { background: "white" } }} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
           <Stack spacing={1} direction="row" mt={1}>
           <Button variant="contained" onClick={passwordVisibility} style={{width: 170,  backgroundColor:"#5899ad"}}>Show password</Button>
           <Button className="submitButton" variant="contained" type="submit" value="Submit" style={{width: 130, backgroundColor:"#5899ad"}}>Submit</Button>
