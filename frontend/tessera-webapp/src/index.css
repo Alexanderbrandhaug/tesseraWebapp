@@ -87,7 +87,6 @@ code {
     overflow: hidden;
     flex-direction: column;
     margin-left: 50px;
-    
 }
 
 .feedColumn {
@@ -98,7 +97,6 @@ code {
     color: rgb(0, 0, 0);
     width: 500px;
     margin: auto;
-    
 }
 
 /* POSTPAGE */
@@ -113,12 +111,15 @@ code {
     transform: scale(1.8);
 }
 
+.eventTime {
+    font-style: italic;
+}
+
 .location {
     font-style: italic;
 }
 
 .contact {
-    text-decoration: underline;
     color: var(--title-colour);
 }
 
@@ -143,7 +144,6 @@ code {
     margin-right: 100px;
     padding: 10px;
     text-align: center;
-    
 }
 
 /*.profileInfo {
@@ -193,7 +193,6 @@ code {
 }
 
 .contact {
-    text-decoration: underline;
     color: var(--title-colour);
 }
 
@@ -614,4 +613,3 @@ code {
     flex-direction: left;
     margin-right: 40%;
 }
-
