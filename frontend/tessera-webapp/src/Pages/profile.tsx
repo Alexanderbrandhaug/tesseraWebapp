@@ -13,7 +13,7 @@ export default function ProfilePage() {
   const isLoggedInUser: boolean = +(localStorage.getItem("userID") ?? 0) === userID;
 
   /**
-   * Retrieves userID from URL
+   * @effects Retrieves userID from URL
    */
   useEffect(() => {
     const pathArr = location.pathname.split('/');
@@ -29,7 +29,10 @@ export default function ProfilePage() {
     loadUser();
   }, [userID])
 
-
+  /**
+   * @effects Loads user with user id in url. If couldnt find or other error
+   * sets error message indicating error.
+   */
   function loadUser(){
     console.log("Attempting to update displayed user")
     getUserByID(userID).then((u: User) => {
