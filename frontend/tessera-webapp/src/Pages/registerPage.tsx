@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from '../Components/footer';
 import RegisterForm from "../Components/RegisterUser";
 
 
@@ -13,7 +12,6 @@ export default function RegisterPage() {
             <RegisterForm />
             </nav>
         </div>
-        <Footer></Footer>
     </main>
     );
   }

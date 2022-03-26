@@ -1,3 +1,5 @@
+import { Box, Button, TextField } from "@mui/material";
+import Stack from '@mui/material/Stack';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUser } from "../Utility/data";
@@ -8,9 +10,8 @@ interface LogInProps {
 }
 
 export default function LogIn(props: LogInProps) {
-
-  const { value:name, bind:bindName, reset:resetName } = useInput('');
-  const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = React.useState("");
 
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function LogIn(props: LogInProps) {
           localStorage.setItem('username', result.data.username);
           localStorage.setItem('userID', result.data.id);
           localStorage.setItem('isAdmin', result.data.admin);
-          resetName();
+          setName('');
           navigate("/feed");
           window.location.reload();
         }
@@ -58,26 +59,24 @@ export default function LogIn(props: LogInProps) {
       }).catch((err) => {
         setErrorMessage("Error loging in " + err.message)
       })
-      resetPassword();
+      setPassword('');
   }
 
     return (
       <div>
         <form onSubmit={handleSubmit} className = "loginForm">
         <div className="loginTitle"> Login</div>
-          <label>
-            Username:
-            <input className="userName" type="text" {...bindName} />
-          </label>
-          <label className="whole">
-            Password:
-            <input className="passwordButton" type="password" {...bindPassword} id="password"/>
-          </label>
-          <button type="button"className ="showPwButton" onClick={passwordVisibility}>Show password</button>
-          <input className="submit" type="submit" value="Submit" />
-          <button className="registerclass" type="button" onClick={props.handleRegister}>
+            <TextField type="text" name="username" inputProps={{ style: { background: "white" } }}   value={name} onChange={(e) => setName(e.target.value)} placeholder="Username"/>
+            <TextField type="password" name="password" inputProps={{ style: { background: "white" } }} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <Stack spacing={1} direction="row" mt={1}>
+          <Button variant="contained" onClick={passwordVisibility} style={{width: 170,  backgroundColor:"#5899ad"}}>Show password</Button>
+          <Button className="submitButton" variant="contained" type="submit" value="Submit" style={{width: 130, backgroundColor:"#5899ad"}}>Submit</Button>
+          </Stack>
+          <Box mt={1}>
+          <Button variant="contained" onClick={props.handleRegister} style={{width: 300,  backgroundColor:"#5899ad"}}>
             Register
-          </button>
+          </Button>
+          </Box>
           <div className="error">
             {errorMessage && <div>{errorMessage}</div>}
           </div>

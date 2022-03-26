@@ -66,51 +66,81 @@ export default function PostPage() {
   console.log("Posted by user: " + post?.userID)
 
   return (
-    <main style={{ padding: "1rem 0" }}>
-      {
+    <>
+    {
       post !== null ?
 
-      <div>
+      <div className={"postContainer " + (("" + post.active === "true") ? "" : "redBorder")}>
+          {"" + post.active === "true" ?
+        <div>
 
-        <header className="postHeader">
+          <header className="postHeader">
 
-          <div className="profileInfo">
+            <div className="profileInfo">
 
-            <h1 className="title"> {post.title}</h1>
-            <p> {post.username}</p>
-          </div>
-        </header>
-        <body>
-          <p className="location"> {post.location} &emsp; {post.eventDate} </p>
-          <p className="created">Created {post.createdAt}</p>
-          <p> {post.price} kr</p>
-          <p className="contact">{post.contactPoint}</p>
-            <div className="description">
-          <p>[{post.description}]</p>
+              <h1 className="title"> {post.title}</h1>
+              <p> {post.username}</p>
             </div>
-            <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
-            {isCreator && post?.active ?
-            <div>
-            <Button variant="contained" onClick={closePost} > Close Post</Button >
-            <label>
-            Title:
-            <input
-              type="text"
-              name="closer"
-              value={closer}
-              onChange={(e) => setCloser(e.target.value)}
-              placeholder="Username"
-            />
-          </label>
-          <div className="error">
-            {errorMessage && <div>{errorMessage}</div>}
-          </div>
+          </header>
+          <body>
+            <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+            <p className="created">Created {post.createdAt}</p>
+            <p> {post.price} kr</p>
+            <p className="contact">{post.contactPoint}</p>
+              <div className="description">
+            <p>[{post.description}]</p>
+              </div>
+              <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+              {isCreator && post?.active ?
+              <div>
+              <Button variant="contained" onClick={closePost} style={{backgroundColor:"#5899ad", fontWeight:"bold"}}> Close Post</Button >
+              <label>
+              Title:
+              <input
+                type="text"
+                name="closer"
+                value={closer}
+                onChange={(e) => setCloser(e.target.value)}
+                placeholder="Username"
+              />
+            </label>
+            <div className="error">
+              {errorMessage && <div>{errorMessage}</div>}
             </div>
-            :
-            <></>
-          }
-          {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
-        </body>
+              </div>
+              :
+              <></>
+            }
+            {/* <button className = "seeUserButton"onClick={redirect}>See user</button> */}
+          </body>
+        </div>
+        :
+        <div>
+
+            <header className="postHeader">
+                <div className="inactiveposts">
+                  <h2> Closed Post </h2>
+                </div>
+
+              <div className="profileInfo">
+
+                <h1 className="title"> {post.title}</h1>
+                <p> {post.username}</p>
+              </div>
+            </header>
+            <body>
+              <p className="location"> {post.location} &emsp; {post.eventDate} </p>
+              <p className="created">Created {post.createdAt}</p>
+              <p> {post.price} kr</p>
+              <p className="contact">{post.contactPoint}</p>
+                <div className="description">
+              <p>[{post.description}]</p>
+                </div>
+                <Avatar alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
+            </body>
+            </div>
+        }
+
       </div>
 
       :
@@ -118,6 +148,6 @@ export default function PostPage() {
         No post found at path {location.pathname} :(
       </div>
       }
-    </main>
+    </>
   );
 }

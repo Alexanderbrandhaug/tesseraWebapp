@@ -48,6 +48,7 @@ export default function FeedPage() {
           }
 
         </div>
+
         <div className="column-3">
           <Outlet context={posts} />
         </div>
@@ -152,7 +153,7 @@ function Sidebar(props: SidebarProps) {
 
   return (
     <div className="sidebar" >
-      <Button variant="contained" className="newpostbutton" style={{ fontSize: '20px' }} onClick={redirect} > New Post</Button >
+      <Button variant="contained" className="newpostbutton" style={{ fontSize: '14px', backgroundColor:"#5899ad" , height:"40px", fontWeight:"bold", width:"220px"}}  onClick={redirect} > New Post</Button >
       <div className="searchBar">
         <TextField id="outlined-basic" className='textField' label="Search titles!" variant="outlined" onChange={event => setQuery(event.target.value)}/>
       </div>    

@@ -125,13 +125,15 @@ export default function NewPostPage() {
            <form className="newPostForm" onSubmit={(e) => submitPost(e)}>
           <label>
             Selling (checked)   |   Buying (unchecked)
-            <Checkbox
+            <Checkbox  sx={{ color:"white", '&.Mui-checked': {
+                      color: "white",
+                       }, }}
               checked={isSelling}
               onChange={() => setIsSelling(!isSelling)}
             />
           </label>
           
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }}
               type="text"
               name="title"
               value={title}
@@ -141,7 +143,7 @@ export default function NewPostPage() {
          
 
           
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }}
               type="text"
               name="location"
               value={location}
@@ -150,22 +152,22 @@ export default function NewPostPage() {
             ></TextField>
          
          <FormControl size="medium"  >
-            <Select  style={{color: "#2196f3", fontWeight:"bold"}} size= "medium"  value={eventType}  onChange={(e) => setEventType(e.target.value)}>
+            <Select  style={{color: "white", fontWeight:"bold"}} size= "medium"  value={eventType}  onChange={(e) => setEventType(e.target.value)}>
               {eventTypes.map((type) => <MenuItem value={type}>{type}</MenuItem>)}
             </Select>
             </FormControl>
 
           
             
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} error={dateError} placeholder="yyyy-mm-dd" onChange ={(e) => onDatePickerChanged(e)}/>
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }} error={dateError} placeholder="yyyy-mm-dd" onChange ={(e) => onDatePickerChanged(e)}/>
          
 
           
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} error={timeError} placeholder="HH:MM" onChange ={(e) => onTimePickerChanged(e)}/>
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }} error={timeError} placeholder="HH:MM" onChange ={(e) => onTimePickerChanged(e)}/>
          
 
           
-            <TextField inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
+            <TextField inputProps={{ style: { color: "white", fontWeight:"bolder" } }}
               type="text"
               value={contactPoint}
               placeholder="Contact point"
@@ -174,7 +176,7 @@ export default function NewPostPage() {
           
 
          
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }}
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }}
               type="number"
               value={price}
               onChange={(e) => setPrice(+e.target.value)}
@@ -183,7 +185,7 @@ export default function NewPostPage() {
          
 
          <Box mt={4}>
-            <TextField  inputProps={{ style: { color: "#2196f3", fontWeight:"bolder" } }} style={{ width: 400 }}
+            <TextField  inputProps={{ style: { color: "white", fontWeight:"bolder" } }} style={{ width: 400 }}
             multiline={true}
            minRows={5}
               value={description}
@@ -193,7 +195,7 @@ export default function NewPostPage() {
             </Box>
           <Box mt={4}>
           <label>
-            <Button variant="contained" type="submit" value="Submit">Create Post</Button>
+            <Button variant="contained" type="submit" value="Submit" size="large" style={{fontWeight: "bold", backgroundColor:"white", color:"#5899ad"}}>Create Post</Button>
             
           </label>
           </Box>
