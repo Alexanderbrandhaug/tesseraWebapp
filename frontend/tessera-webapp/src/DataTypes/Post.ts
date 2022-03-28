@@ -27,7 +27,14 @@ class Post {
         this.location = location;
         this.description = description;
         this.createdAt = createdAt;
-        this.eventDate = eventDate;
+        
+        // Checks whether eventDate is null. Needs T as postpage depends on this
+        // to display eventTime (See postpage)
+        if(eventDate == null){
+            this.eventDate = "T"
+        }else{
+            this.eventDate = eventDate;
+        }
         this.price = price;
         this.contactPoint = contactPoint;
         this.active = active;
