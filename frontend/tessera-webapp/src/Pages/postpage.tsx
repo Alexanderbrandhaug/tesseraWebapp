@@ -86,7 +86,7 @@ export default function PostPage() {
           </header>
           <body>
             <p className="location"> Location: {post.location} </p>
-            <p className="eventTime"> Event Time: {post.eventDate.split('T')[0]} {post.eventDate.split('T')[1]} </p>
+            <p className="eventTime"> Event Time: {post?.eventDate ? post.eventDate.split('T')[0] : ""} {post.eventDate.split('T')[1]} </p>
             <p className="eventTime"> Event Type: {post.eventType} </p>
             <p className="created">Created at: {post.createdAt}</p>
             <p> Price: {post.price} kr</p>
@@ -135,7 +135,7 @@ export default function PostPage() {
             </header>
             <body>
               <p className="location"> Location: {post.location} </p>
-              <p className="eventTime"> Event Time: {post.eventDate.split('T')[0]} {post.eventDate.split('T')[1]} </p>
+              <p className="eventTime"> Event Time: {(post.eventDate === "T") ? "No time given" : post.eventDate.split('T')[0]} {post.eventDate.split('T')[1]} </p>
               <p className="eventTime"> Event Type: {post.eventType} </p>
               <p className="created">Created at: {post.createdAt}</p>
               <p> Price: {post.price} kr</p>

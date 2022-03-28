@@ -27,7 +27,7 @@ export default function FeedPage() {
   }, [posts])
 
   return (
-    <main style={{ padding: "1rem 0" }}>
+    <div style={{ padding: "1rem 0" }}>
 
       <div className="threeColumnFlex">
         <div className="sidebarColumn">
@@ -53,7 +53,7 @@ export default function FeedPage() {
           <Outlet context={posts} />
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 
@@ -227,52 +227,52 @@ export function MultipleSelectCheckmarks(props: MultipleSelectCheckmarksProps) {
 
   return (
     <div>
-      <h3> </h3>
-    <div>
+        <h3> </h3>
+      <div>
+        <FormControl sx={{ m: 0, width: 200 }}>
+          <InputLabel id="demo-multiple-checkbox-label">Locations</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={props.locationNames}
+            onChange={handleLocation}
+            input={<OutlinedInput label="Tag" />}
+            renderValue={(selected) => selected.join(', ')}
+            MenuProps={MenuProps}
+          >
+            {props.locations.map((location: string) => (
+              <MenuItem key={location} value={location}>
+                <Checkbox checked={props.locationNames.indexOf(location) > -1} />
+                <ListItemText primary={location} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <h6> </h6>
+      <div>
       <FormControl sx={{ m: 0, width: 200 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Locations</InputLabel>
+        <InputLabel id="demo-multiple-checkbox-label">EventTypes</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={props.locationNames}
-          onChange={handleLocation}
+          value={props.selectedEventTypes}
+          onChange={handleEventTypes}
           input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {props.locations.map((location: string) => (
-            <MenuItem key={location} value={location}>
-              <Checkbox checked={props.locationNames.indexOf(location) > -1} />
-              <ListItemText primary={location} />
+          {eventTypes.map((eventType: string) => (
+            <MenuItem key={eventType} value={eventType}>
+              <Checkbox checked={props.selectedEventTypes.indexOf(eventType) > -1} />
+              <ListItemText primary={eventType} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
     </div>
-    <h6> </h6>
-    <div>
-    <FormControl sx={{ m: 0, width: 200 }}>
-      <InputLabel id="demo-multiple-checkbox-label">EventTypes</InputLabel>
-      <Select
-        labelId="demo-multiple-checkbox-label"
-        id="demo-multiple-checkbox"
-        multiple
-        value={props.selectedEventTypes}
-        onChange={handleEventTypes}
-        input={<OutlinedInput label="Tag" />}
-        renderValue={(selected) => selected.join(', ')}
-        MenuProps={MenuProps}
-      >
-        {eventTypes.map((eventType: string) => (
-          <MenuItem key={eventType} value={eventType}>
-            <Checkbox checked={props.selectedEventTypes.indexOf(eventType) > -1} />
-            <ListItemText primary={eventType} />
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  </div>
   </div>
   );
 }
