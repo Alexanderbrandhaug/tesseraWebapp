@@ -217,6 +217,7 @@ code {
 
 .description {
     margin: auto;
+    font-style: oblique;
 }
 
 .postInfo {
@@ -612,3 +613,8 @@ code {
     flex-direction: left;
     margin-right: 40%;
 }
+
+.feedColumn::-webkit-scrollbar {
+    display: none;
+  }
+  

@@ -92,7 +92,7 @@ export default function PostPage() {
             <p> Price: {post.price} kr</p>
             <p className="contact">Contact Point: {post.contactPoint}</p>
               <div className="description">
-            <p>"{post.description}"</p>
+            <p>{post.description}</p>
               </div>
               <Avatar style={{marginBottom:"20px", marginTop:"40px"}} alt='user-profile' src={userprofile} className='userprofile-image' onClick={redirect}/>
               {isCreator && post?.active ?

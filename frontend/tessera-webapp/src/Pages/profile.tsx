@@ -56,7 +56,7 @@ export default function ProfilePage() {
       <div className="profileContainer">
         {errorMessage !== "" ? <p className="error">{errorMessage}</p> : <></>}
         <div className="profileContent">
-          <h1>{user?.username} (ID: {user?.userID})</h1>
+          <h1>{user?.username} </h1>
           <p className="subHeader">Description</p>
           <p>{user?.description}</p>
         </div>
