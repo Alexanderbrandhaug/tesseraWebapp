@@ -135,7 +135,6 @@ code {
 
 .postContainer {
     width: 350px;
-    height: 100%;
     overflow: hidden;
     background-color: var(--colour--two);
     border-color: var(--colour--two);
