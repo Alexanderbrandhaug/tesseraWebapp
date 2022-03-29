@@ -13,7 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tessera</name>
 	<description>gruppe4 TDT4145</description>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
